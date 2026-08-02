@@ -19,19 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-NOTE ON THIRD-PARTY CODE
-
-This licence covers the harness only. Evaluated implementations are fetched
-from their own upstream repositories at pinned commits and are NOT vendored
-here; each remains under its own licence:
-
-  pq-crystals/kyber          public domain / Apache-2.0 (see upstream)
-  pq-code-package/mlkem-native   Apache-2.0 / ISC / MIT
-  cloudflare/circl           BSD-3-Clause
-
-Instrumented copies produced by scripts/make_instrumented.py are derivative
-works of their upstream sources and inherit those licences. They are written to
-a temporary directory and are not distributed with this repository.

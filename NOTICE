@@ -1,0 +1,18 @@
+THIRD-PARTY CODE
+================
+
+The MIT licence in LICENSE covers this harness only.
+
+The ML-KEM and Kyber implementations evaluated by this harness are NOT vendored
+here. They are fetched from their own upstream repositories at pinned commits
+(see configs/commits.json and configs/targets.yaml), and each remains under its
+own licence:
+
+  pq-crystals/kyber            public domain / Apache-2.0 (see upstream)
+  pq-code-package/mlkem-native Apache-2.0 / ISC / MIT
+  cloudflare/circl             BSD-3-Clause
+  open-quantum-safe/liboqs     MIT
+
+Instrumented copies produced by scripts/make_instrumented.py are derivative works
+of their upstream sources and inherit those licences. They are written to a
+temporary directory and are not distributed with this repository.
