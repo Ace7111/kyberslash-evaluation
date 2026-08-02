@@ -55,6 +55,18 @@ DIV_MNEMONICS = {
 
 FUNC_HEADER = re.compile(r"^[0-9a-f]+\s+<(?P<name>.+)>:\s*$")
 
+# Extract the mnemonic from a disassembly line, tolerating both objdump layouts:
+#
+#   LLVM (macOS):  "       0: 1ac10800     \tudiv\tw0, w0, w1"
+#                  address and bytes share field 0, mnemonic is field 1
+#   GNU (Linux):   "   0:\tf7 f1                \tdiv    %ecx"
+#                  address is field 0, BYTES are field 1, mnemonic is field 2
+#
+# Indexing a fixed field therefore works on one platform and silently fails on the
+# other -- on x86-64 it read the hex bytes as the mnemonic, matched nothing, and
+# reported every binary clean. Matching the structure instead is layout-independent.
+MNEMONIC = re.compile(r"^\s*[0-9a-f]+:\s*(?:[0-9a-f]{2,8}\s+)*([a-z][a-z0-9._]*)")
+
 
 def detect_arch() -> str:
     import platform
@@ -90,13 +102,9 @@ def analyse(disasm: str, mnemonics: tuple) -> list:
         if header:
             current = header.group("name")
             continue
-        # objdump lines are "<addr>: <bytes>\t<mnemonic>\t<operands>".
-        # Match only the mnemonic field so register names like x5 never false-positive.
-        fields = line.split("\t")
-        if len(fields) < 2:
-            continue
-        mnemonic = fields[1].strip().split()[0] if fields[1].strip() else ""
-        if pattern.fullmatch(mnemonic):
+        # Match only the mnemonic so register names and operands never false-positive.
+        m = MNEMONIC.match(line)
+        if m and pattern.fullmatch(m.group(1)):
             hits[current] = hits.get(current, 0) + 1
 
     findings = []

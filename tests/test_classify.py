@@ -17,7 +17,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
-from inspect_binary import classify  # noqa: E402
+from inspect_binary import DIV_MNEMONICS, analyse, classify  # noqa: E402
 
 CASES = [
     # pq-crystals reference naming
@@ -51,6 +51,58 @@ CASES = [
 ]
 
 
+# Disassembly-parsing cases. objdump's line layout differs by platform, and indexing a
+# fixed field works on one and silently fails on the other -- which made every x86-64
+# audit report clean. These pin both layouts.
+#
+#   LLVM (macOS):  address and bytes share field 0, mnemonic in field 1
+#   GNU (Linux):   address in field 0, BYTES in field 1, mnemonic in field 2
+DISASM_CASES = [
+    (
+        "aarch64 / LLVM objdump",
+        "aarch64",
+        "00000001000024c0 <_pqcrystals_kyber768_ref_poly_tomsg>:\n"
+        "     de4: 1ac10800     \tudiv\tw0, w0, w1\n"
+        "     de8: d10683ff     \tsub\tsp, sp, #0x1a0\n",
+        1,
+    ),
+    (
+        "x86-64 / GNU objdump",
+        "x86_64",
+        "0000000000001180 <pqcrystals_kyber768_ref_poly_tomsg>:\n"
+        "    1180:\t55                   \tpush   %rbp\n"
+        "    1185:\tf7 f1                \tdiv    %ecx\n"
+        "    1187:\t48 f7 f6             \tdiv    %rsi\n",
+        2,
+    ),
+    (
+        "x86-64 / GNU objdump, idiv",
+        "x86_64",
+        "0000000000001180 <pqcrystals_kyber768_ref_poly_compress>:\n"
+        "    1185:\tf7 fe                \tidiv   %esi\n",
+        1,
+    ),
+    (
+        "operands must not false-positive",
+        "aarch64",
+        "0000000100002000 <_some_function>:\n"
+        "     100: aa0103f3     \tmov\tx19, x1\n"
+        "     104: 91008029     \tadd\tx9, x1, #0x20\n",
+        0,
+    ),
+]
+
+
+def check_disassembly() -> list:
+    failures = []
+    for name, arch, disasm, expected in DISASM_CASES:
+        findings = analyse(disasm, DIV_MNEMONICS[arch])
+        total = sum(f["division_count"] for f in findings)
+        if total != expected:
+            failures.append(f"{name}: expected {expected} division(s), found {total}")
+    return failures
+
+
 def main() -> int:
     failures = []
     for symbol, expected in CASES:
@@ -60,9 +112,15 @@ def main() -> int:
 
     for symbol, expected, actual in failures:
         print(f"FAIL {symbol}: expected {expected}, got {actual}", file=sys.stderr)
-
     print(f"{len(CASES) - len(failures)}/{len(CASES)} classifier cases passed")
-    return 1 if failures else 0
+
+    disasm_failures = check_disassembly()
+    for f in disasm_failures:
+        print(f"FAIL {f}", file=sys.stderr)
+    print(f"{len(DISASM_CASES) - len(disasm_failures)}/{len(DISASM_CASES)} "
+          f"disassembly-parsing cases passed")
+
+    return 1 if (failures or disasm_failures) else 0
 
 
 if __name__ == "__main__":
