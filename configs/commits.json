@@ -1,0 +1,32 @@
+{
+  "kyber-vulnerable": {
+    "commit": "a621b8dde405cc507cbcfc5f794570a4f98d69cc",
+    "patch_state": "vulnerable",
+    "build_dir": "ref"
+  },
+  "kyber-ks1-fixed": {
+    "commit": "dda29cc63af721981ee2c831cf00822e69be3220",
+    "patch_state": "kyberslash1-fixed-only",
+    "build_dir": "ref"
+  },
+  "kyber-patched": {
+    "commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+    "patch_state": "kyberslash1+2-fixed",
+    "build_dir": "ref"
+  },
+  "kyber-clangover-fixed": {
+    "commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+    "patch_state": "kyberslash1+2+clangover-fixed",
+    "build_dir": "ref"
+  },
+  "kyber-clangover-vulnerable": {
+    "commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+    "patch_state": "kyberslash1+2-fixed, clangover-vulnerable",
+    "build_dir": "ref"
+  },
+  "kyber-current": {
+    "commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+    "patch_state": "current HEAD of main (all published fixes applied)",
+    "build_dir": "ref"
+  }
+}

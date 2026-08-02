@@ -1,0 +1,155 @@
+{
+  "experiment_id": "EXP-LEAK-patched-gcc16-O2-seed20260801",
+  "source": "results/raw/EXP-LEAK-patched-gcc16-O2-seed20260801.csv",
+  "total_samples": 40000,
+  "columns": {
+    "ks1_cycles": {
+      "column": "ks1_cycles",
+      "fixed_class": {
+        "n": 19842,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "distinct_values": 1
+      },
+      "random_class": {
+        "n": 20158,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "distinct_values": 1
+      },
+      "difference_in_means": 0.0,
+      "welch_t": 0.0,
+      "cohens_d": 0.0,
+      "ci95_difference": [
+        0.0,
+        0.0
+      ],
+      "ci_method": "Welch normal approximation",
+      "threshold_tvla": 4.5,
+      "threshold_dudect_moderate": 10.0,
+      "threshold_dudect_bananas": 500.0,
+      "exceeds_dudect_moderate": false,
+      "exceeds_dudect_bananas": false,
+      "leakage_detected": false,
+      "degenerate_variance": true,
+      "note": "One class has zero variance: the model is deterministic, so this is a noise-free signal magnitude rather than a hardware measurement."
+    },
+    "ks2_cycles": {
+      "column": "ks2_cycles",
+      "fixed_class": {
+        "n": 19842,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "distinct_values": 1
+      },
+      "random_class": {
+        "n": 20158,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "distinct_values": 1
+      },
+      "difference_in_means": 0.0,
+      "welch_t": 0.0,
+      "cohens_d": 0.0,
+      "ci95_difference": [
+        0.0,
+        0.0
+      ],
+      "ci_method": "Welch normal approximation",
+      "threshold_tvla": 4.5,
+      "threshold_dudect_moderate": 10.0,
+      "threshold_dudect_bananas": 500.0,
+      "exceeds_dudect_moderate": false,
+      "exceeds_dudect_bananas": false,
+      "leakage_detected": false,
+      "degenerate_variance": true,
+      "note": "One class has zero variance: the model is deterministic, so this is a noise-free signal magnitude rather than a hardware measurement."
+    },
+    "modelled_cycles": {
+      "column": "modelled_cycles",
+      "fixed_class": {
+        "n": 19842,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "distinct_values": 1
+      },
+      "random_class": {
+        "n": 20158,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "distinct_values": 1
+      },
+      "difference_in_means": 0.0,
+      "welch_t": 0.0,
+      "cohens_d": 0.0,
+      "ci95_difference": [
+        0.0,
+        0.0
+      ],
+      "ci_method": "Welch normal approximation",
+      "threshold_tvla": 4.5,
+      "threshold_dudect_moderate": 10.0,
+      "threshold_dudect_bananas": 500.0,
+      "exceeds_dudect_moderate": false,
+      "exceeds_dudect_bananas": false,
+      "leakage_detected": false,
+      "degenerate_variance": true,
+      "note": "One class has zero variance: the model is deterministic, so this is a noise-free signal magnitude rather than a hardware measurement."
+    },
+    "host_ns": {
+      "column": "host_ns",
+      "fixed_class": {
+        "n": 19842,
+        "mean": 51013.735298861,
+        "median": 50416.7,
+        "stdev": 2339.06547390189,
+        "min": 50041.7,
+        "max": 186916.7,
+        "distinct_values": 353
+      },
+      "random_class": {
+        "n": 20158,
+        "mean": 51006.93056850878,
+        "median": 50375.0,
+        "stdev": 2675.933726754425,
+        "min": 50041.7,
+        "max": 204750.0,
+        "distinct_values": 339
+      },
+      "difference_in_means": 6.80473035221803,
+      "welch_t": 0.2708996590412662,
+      "cohens_d": 0.0027062202809134592,
+      "ci95_difference": [
+        -42.427618131292135,
+        56.037078835728195
+      ],
+      "ci_method": "Welch normal approximation",
+      "threshold_tvla": 4.5,
+      "threshold_dudect_moderate": 10.0,
+      "threshold_dudect_bananas": 500.0,
+      "exceeds_dudect_moderate": false,
+      "exceeds_dudect_bananas": false,
+      "leakage_detected": false,
+      "degenerate_variance": false,
+      "note": null
+    }
+  }
+}

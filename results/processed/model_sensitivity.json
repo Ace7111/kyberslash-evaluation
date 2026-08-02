@@ -1,0 +1,499 @@
+{
+  "samples": 20000,
+  "models": {
+    "m4-default": {
+      "min": 2,
+      "max": 12,
+      "per_bit": 1
+    },
+    "m4-wide": {
+      "min": 2,
+      "max": 20,
+      "per_bit": 1
+    },
+    "m4-narrow": {
+      "min": 2,
+      "max": 6,
+      "per_bit": 1
+    },
+    "m3-slow": {
+      "min": 2,
+      "max": 24,
+      "per_bit": 2
+    },
+    "a7-like": {
+      "min": 3,
+      "max": 20,
+      "per_bit": 1
+    },
+    "flat": {
+      "min": 1,
+      "max": 1,
+      "per_bit": 0
+    }
+  },
+  "results": [
+    {
+      "model": "m4-default",
+      "params": {
+        "min": 2,
+        "max": 12,
+        "per_bit": 1
+      },
+      "seed": 1,
+      "ks1": {
+        "difference": 63.47935710698141,
+        "welch_t": 762.2325386807948,
+        "cohens_d": 10.828325841749674
+      },
+      "ks2": {
+        "difference": 52.36966348568603,
+        "welch_t": 117.5348020856977,
+        "cohens_d": 1.6697071695891914
+      }
+    },
+    {
+      "model": "m4-default",
+      "params": {
+        "min": 2,
+        "max": 12,
+        "per_bit": 1
+      },
+      "seed": 42,
+      "ks1": {
+        "difference": 70.57447232178413,
+        "welch_t": 850.1450981019386,
+        "cohens_d": 11.97019578206045
+      },
+      "ks2": {
+        "difference": -6.246814018319128,
+        "welch_t": -14.227801482286921,
+        "cohens_d": -0.20033000210376198
+      }
+    },
+    {
+      "model": "m4-default",
+      "params": {
+        "min": 2,
+        "max": 12,
+        "per_bit": 1
+      },
+      "seed": 99,
+      "ks1": {
+        "difference": 66.5758661887694,
+        "welch_t": 805.5372346639837,
+        "cohens_d": 11.34210904726202
+      },
+      "ks2": {
+        "difference": -35.60294703305408,
+        "welch_t": -80.91161193725597,
+        "cohens_d": -1.1392500387209428
+      }
+    },
+    {
+      "model": "m4-default",
+      "params": {
+        "min": 2,
+        "max": 12,
+        "per_bit": 1
+      },
+      "seed": 20260801,
+      "ks1": {
+        "difference": 58.46328862394432,
+        "welch_t": 710.385647673953,
+        "cohens_d": 9.981487263039968
+      },
+      "ks2": {
+        "difference": 21.729955290611542,
+        "welch_t": 49.052907989287675,
+        "cohens_d": 0.6892326413312739
+      }
+    },
+    {
+      "model": "m4-wide",
+      "params": {
+        "min": 2,
+        "max": 20,
+        "per_bit": 1
+      },
+      "seed": 1,
+      "ks1": {
+        "difference": 63.47935710698141,
+        "welch_t": 762.2325386807948,
+        "cohens_d": 10.828325841749674
+      },
+      "ks2": {
+        "difference": 52.36966348568603,
+        "welch_t": 117.5348020856977,
+        "cohens_d": 1.6697071695891914
+      }
+    },
+    {
+      "model": "m4-wide",
+      "params": {
+        "min": 2,
+        "max": 20,
+        "per_bit": 1
+      },
+      "seed": 42,
+      "ks1": {
+        "difference": 70.57447232178413,
+        "welch_t": 850.1450981019386,
+        "cohens_d": 11.97019578206045
+      },
+      "ks2": {
+        "difference": -6.246814018319128,
+        "welch_t": -14.227801482286921,
+        "cohens_d": -0.20033000210376198
+      }
+    },
+    {
+      "model": "m4-wide",
+      "params": {
+        "min": 2,
+        "max": 20,
+        "per_bit": 1
+      },
+      "seed": 99,
+      "ks1": {
+        "difference": 66.5758661887694,
+        "welch_t": 805.5372346639837,
+        "cohens_d": 11.34210904726202
+      },
+      "ks2": {
+        "difference": -35.60294703305408,
+        "welch_t": -80.91161193725597,
+        "cohens_d": -1.1392500387209428
+      }
+    },
+    {
+      "model": "m4-wide",
+      "params": {
+        "min": 2,
+        "max": 20,
+        "per_bit": 1
+      },
+      "seed": 20260801,
+      "ks1": {
+        "difference": 58.46328862394432,
+        "welch_t": 710.385647673953,
+        "cohens_d": 9.981487263039968
+      },
+      "ks2": {
+        "difference": 21.729955290611542,
+        "welch_t": 49.052907989287675,
+        "cohens_d": 0.6892326413312739
+      }
+    },
+    {
+      "model": "m4-narrow",
+      "params": {
+        "min": 2,
+        "max": 6,
+        "per_bit": 1
+      },
+      "seed": 1,
+      "ks1": {
+        "difference": 63.47935710698141,
+        "welch_t": 762.2325386807948,
+        "cohens_d": 10.828325841749674
+      },
+      "ks2": {
+        "difference": 26.352385735811367,
+        "welch_t": 137.29208400444992,
+        "cohens_d": 1.9503804228378967
+      }
+    },
+    {
+      "model": "m4-narrow",
+      "params": {
+        "min": 2,
+        "max": 6,
+        "per_bit": 1
+      },
+      "seed": 42,
+      "ks1": {
+        "difference": 70.57447232178413,
+        "welch_t": 850.1450981019386,
+        "cohens_d": 11.97019578206045
+      },
+      "ks2": {
+        "difference": 2.0064715252883616,
+        "welch_t": 10.672833995240781,
+        "cohens_d": 0.15027542093425525
+      }
+    },
+    {
+      "model": "m4-narrow",
+      "params": {
+        "min": 2,
+        "max": 6,
+        "per_bit": 1
+      },
+      "seed": 99,
+      "ks1": {
+        "difference": 66.5758661887694,
+        "welch_t": 805.5372346639837,
+        "cohens_d": 11.34210904726202
+      },
+      "ks2": {
+        "difference": -1.6256471525284724,
+        "welch_t": -8.59430583240995,
+        "cohens_d": -0.12100937081744553
+      }
+    },
+    {
+      "model": "m4-narrow",
+      "params": {
+        "min": 2,
+        "max": 6,
+        "per_bit": 1
+      },
+      "seed": 20260801,
+      "ks1": {
+        "difference": 58.46328862394432,
+        "welch_t": 710.385647673953,
+        "cohens_d": 9.981487263039968
+      },
+      "ks2": {
+        "difference": 25.112866368604045,
+        "welch_t": 132.7266687052463,
+        "cohens_d": 1.8649159896248235
+      }
+    },
+    {
+      "model": "m3-slow",
+      "params": {
+        "min": 2,
+        "max": 24,
+        "per_bit": 2
+      },
+      "seed": 1,
+      "ks1": {
+        "difference": 126.95871421396282,
+        "welch_t": 762.2325386807948,
+        "cohens_d": 10.828325841749674
+      },
+      "ks2": {
+        "difference": 104.73932697137207,
+        "welch_t": 117.5348020856977,
+        "cohens_d": 1.6697071695891914
+      }
+    },
+    {
+      "model": "m3-slow",
+      "params": {
+        "min": 2,
+        "max": 24,
+        "per_bit": 2
+      },
+      "seed": 42,
+      "ks1": {
+        "difference": 141.14894464356826,
+        "welch_t": 850.1450981019386,
+        "cohens_d": 11.97019578206045
+      },
+      "ks2": {
+        "difference": -12.493628036638256,
+        "welch_t": -14.227801482286921,
+        "cohens_d": -0.20033000210376198
+      }
+    },
+    {
+      "model": "m3-slow",
+      "params": {
+        "min": 2,
+        "max": 24,
+        "per_bit": 2
+      },
+      "seed": 99,
+      "ks1": {
+        "difference": 133.1517323775388,
+        "welch_t": 805.5372346639837,
+        "cohens_d": 11.34210904726202
+      },
+      "ks2": {
+        "difference": -71.20589406610816,
+        "welch_t": -80.91161193725597,
+        "cohens_d": -1.1392500387209428
+      }
+    },
+    {
+      "model": "m3-slow",
+      "params": {
+        "min": 2,
+        "max": 24,
+        "per_bit": 2
+      },
+      "seed": 20260801,
+      "ks1": {
+        "difference": 116.92657724788876,
+        "welch_t": 710.3856476739537,
+        "cohens_d": 9.981487263039977
+      },
+      "ks2": {
+        "difference": 43.459910581223085,
+        "welch_t": 49.052907989287675,
+        "cohens_d": 0.6892326413312739
+      }
+    },
+    {
+      "model": "a7-like",
+      "params": {
+        "min": 3,
+        "max": 20,
+        "per_bit": 1
+      },
+      "seed": 1,
+      "ks1": {
+        "difference": 63.47935710698141,
+        "welch_t": 762.2325386807948,
+        "cohens_d": 10.828325841749674
+      },
+      "ks2": {
+        "difference": 52.36966348568603,
+        "welch_t": 117.5348020856977,
+        "cohens_d": 1.6697071695891914
+      }
+    },
+    {
+      "model": "a7-like",
+      "params": {
+        "min": 3,
+        "max": 20,
+        "per_bit": 1
+      },
+      "seed": 42,
+      "ks1": {
+        "difference": 70.57447232178413,
+        "welch_t": 850.1450981019386,
+        "cohens_d": 11.97019578206045
+      },
+      "ks2": {
+        "difference": -6.246814018319128,
+        "welch_t": -14.227801482286921,
+        "cohens_d": -0.20033000210376198
+      }
+    },
+    {
+      "model": "a7-like",
+      "params": {
+        "min": 3,
+        "max": 20,
+        "per_bit": 1
+      },
+      "seed": 99,
+      "ks1": {
+        "difference": 66.5758661887694,
+        "welch_t": 805.5372346639837,
+        "cohens_d": 11.34210904726202
+      },
+      "ks2": {
+        "difference": -35.60294703305408,
+        "welch_t": -80.91161193725597,
+        "cohens_d": -1.1392500387209428
+      }
+    },
+    {
+      "model": "a7-like",
+      "params": {
+        "min": 3,
+        "max": 20,
+        "per_bit": 1
+      },
+      "seed": 20260801,
+      "ks1": {
+        "difference": 58.46328862394432,
+        "welch_t": 710.385647673953,
+        "cohens_d": 9.981487263039968
+      },
+      "ks2": {
+        "difference": 21.729955290611542,
+        "welch_t": 49.052907989287675,
+        "cohens_d": 0.6892326413312739
+      }
+    },
+    {
+      "model": "flat",
+      "params": {
+        "min": 1,
+        "max": 1,
+        "per_bit": 0
+      },
+      "seed": 1,
+      "ks1": {
+        "difference": 0.0,
+        "welch_t": 0.0,
+        "cohens_d": 0.0
+      },
+      "ks2": {
+        "difference": 0.0,
+        "welch_t": 0.0,
+        "cohens_d": 0.0
+      }
+    },
+    {
+      "model": "flat",
+      "params": {
+        "min": 1,
+        "max": 1,
+        "per_bit": 0
+      },
+      "seed": 42,
+      "ks1": {
+        "difference": 0.0,
+        "welch_t": 0.0,
+        "cohens_d": 0.0
+      },
+      "ks2": {
+        "difference": 0.0,
+        "welch_t": 0.0,
+        "cohens_d": 0.0
+      }
+    },
+    {
+      "model": "flat",
+      "params": {
+        "min": 1,
+        "max": 1,
+        "per_bit": 0
+      },
+      "seed": 99,
+      "ks1": {
+        "difference": 0.0,
+        "welch_t": 0.0,
+        "cohens_d": 0.0
+      },
+      "ks2": {
+        "difference": 0.0,
+        "welch_t": 0.0,
+        "cohens_d": 0.0
+      }
+    },
+    {
+      "model": "flat",
+      "params": {
+        "min": 1,
+        "max": 1,
+        "per_bit": 0
+      },
+      "seed": 20260801,
+      "ks1": {
+        "difference": 0.0,
+        "welch_t": 0.0,
+        "cohens_d": 0.0
+      },
+      "ks2": {
+        "difference": 0.0,
+        "welch_t": 0.0,
+        "cohens_d": 0.0
+      }
+    }
+  ],
+  "summary": {
+    "ks1_positive_all_models": true,
+    "ks1_detected_all_models": true,
+    "ks2_sign_stable_across_models": false,
+    "flat_control_null": true
+  }
+}

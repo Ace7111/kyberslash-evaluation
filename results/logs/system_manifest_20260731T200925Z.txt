@@ -1,0 +1,67 @@
+# System manifest captured 20260731T200925Z
+
+## uname
+Darwin [redacted-hostname] 25.3.0 Darwin Kernel Version 25.3.0: Wed Jan 28 20:53:31 PST 2026; root:xnu-12377.91.3~2/RELEASE_ARM64_T8103 arm64
+
+## OS release
+ProductName:		macOS
+ProductVersion:		26.3.1
+BuildVersion:		25D2128
+
+## CPU
+Apple M1
+hw.ncpu: 8
+hw.physicalcpu: 8
+hw.logicalcpu: 8
+hw.memsize: 8589934592
+hw.cachelinesize: 128
+hw.l1dcachesize: 65536
+hw.l2cachesize: 4194304
+
+## Scaling governor (Linux only, best effort)
+not available on this platform
+
+## Toolchain: git
+git version 2.50.1 (Apple Git-155)
+
+## Toolchain: system clang
+Apple clang version 17.0.0 (clang-1700.6.3.2)
+Target: arm64-apple-darwin25.3.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+
+## Toolchain: Homebrew gcc-16 (or nearest available gcc-*)
+Using built-in specs.
+COLLECT_GCC=/opt/homebrew/bin/gcc-16
+COLLECT_LTO_WRAPPER=/opt/homebrew/Cellar/gcc/16.1.0/bin/../libexec/gcc/aarch64-apple-darwin25/16/lto-wrapper
+Target: aarch64-apple-darwin25
+Configured with: ../configure --prefix=/opt/homebrew/opt/gcc --libdir=/opt/homebrew/opt/gcc/lib/gcc/current --disable-nls --enable-checking=release --with-gcc-major-version-only --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-16 --with-gmp=/opt/homebrew/opt/gmp --with-mpfr=/opt/homebrew/opt/mpfr --with-mpc=/opt/homebrew/opt/libmpc --with-isl=/opt/homebrew/opt/isl --with-zstd=/opt/homebrew/opt/zstd --with-pkgversion='Homebrew GCC 16.1.0' --with-bugurl=https://github.com/Homebrew/homebrew-core/issues --with-system-zlib --build=aarch64-apple-darwin25 --with-sysroot=/Library/Developer/CommandLineTools/SDKs/MacOSX26.sdk
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 16.1.0 (Homebrew GCC 16.1.0) 
+
+## Toolchain: cmake
+cmake version 4.4.1
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+
+## Toolchain: ninja
+1.13.2
+
+## Toolchain: make
+GNU Make 3.81
+Copyright (C) 2006  Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.
+
+## Toolchain: python3
+Python 3.12.3
+
+## Toolchain: objdump
+Apple LLVM version 17.0.0
+  Optimized build.
+
+
+## ld
+@(#)PROGRAM:ld PROJECT:ld-1230.1
+BUILD 06:36:05 Dec  2 2025
+configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em armv8m.main armv8.1m.main

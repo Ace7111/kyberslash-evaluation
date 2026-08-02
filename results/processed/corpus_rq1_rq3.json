@@ -1,0 +1,36 @@
+[
+  {
+    "target": "mlkem-native",
+    "project": "pq-code-package/mlkem-native",
+    "commit": "61c831345d8fec5b2ba9d727dddb486b7cce512a",
+    "language": "C90",
+    "arch": "aarch64",
+    "total_divisions": 0,
+    "secret_dependent_divisions": 0,
+    "vulnerable_functions": [],
+    "verdict": "NO_SECRET_DEPENDENT_DIV"
+  },
+  {
+    "target": "circl",
+    "project": "cloudflare/circl",
+    "commit": "df9fbeabf921471216232de66f0392196dcdc37c",
+    "language": "Go",
+    "arch": "aarch64",
+    "total_divisions": 43,
+    "secret_dependent_divisions": 0,
+    "vulnerable_functions": [],
+    "verdict": "NO_SECRET_DEPENDENT_DIV"
+  },
+  {
+    "target": "liboqs",
+    "project": "open-quantum-safe/liboqs",
+    "commit": "9d20051143544daa348bc0bbdcef5ef121e385d3",
+    "language": "C",
+    "arch": "aarch64",
+    "total_divisions": 0,
+    "secret_dependent_divisions": 0,
+    "vulnerable_functions": [],
+    "verdict": "NO_SECRET_DEPENDENT_DIV",
+    "provenance": "vendors mlkem-native for all parameter sets and backends; NOT independent evidence"
+  }
+]

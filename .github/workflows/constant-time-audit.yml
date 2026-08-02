@@ -1,0 +1,154 @@
+# Binary audit for secret-dependent variable-latency instructions.
+#
+# This is the CI recommendation from the dissertation (§8.4), implemented rather than
+# merely asserted. It is the cheap tier: deterministic, hardware-independent, and it
+# runs in under two minutes on a standard runner.
+#
+# What it does NOT do is statistical leakage testing, which needs dedicated hardware
+# with a known divider to mean anything. Treat this as a regression gate on the
+# mechanism, not as evidence of constant-time behaviour.
+#
+# To adapt for another project: change the corpus in the "Fetch corpus" step and add
+# that project's symbol naming to SECRET_DEPENDENT_PATTERNS in inspect_binary.py.
+
+name: constant-time audit
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    # Weekly, so a toolchain update that changes code generation is caught even
+    # when the source has not moved. Compiler drift is the failure mode this
+    # project is about.
+    - cron: '0 6 * * 1'
+
+jobs:
+  classifier-tests:
+    name: classifier regression tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # Runs first and gates everything else. An audit tool that has not been shown
+      # to detect a known positive has not been shown to work, and a silently broken
+      # classifier reports every binary as clean.
+      - name: Verify the auditor detects known positives and negatives
+        run: python3 tests/test_classify.py
+
+  binary-audit:
+    name: audit ${{ matrix.target }} / ${{ matrix.cc }} ${{ matrix.opt }}
+    needs: classifier-tests
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [kyber-current, kyber-patched]
+        cc: [gcc, clang]
+        # -Os and -Oz are included deliberately: they are the levels at which the
+        # historical revision emitted the division. -O0 is included because Clang
+        # emitted it there too, which no "size optimisation is dangerous" rule
+        # would have predicted.
+        opt: ['-O0', '-O2', '-Os']
+        include:
+          - target: kyber-vulnerable
+            cc: gcc
+            opt: '-Os'
+            expect_vulnerable: true
+          - target: kyber-vulnerable
+            cc: gcc
+            opt: '-O2'
+            expect_vulnerable: false
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fetch corpus
+        run: |
+          git clone --quiet https://github.com/pq-crystals/kyber.git targets/pq-crystals-kyber
+
+      - name: Record toolchain
+        run: |
+          ${{ matrix.cc }} --version
+          objdump --version | head -1
+          uname -m
+
+      - name: Build and audit
+        id: audit
+        run: |
+          # NOTE the "=" on --opt-levels. Without it argparse reads a value like
+          # "-Os" as a flag and the run fails with "expected at least one argument".
+          python3 scripts/build_matrix.py \
+            --targets ${{ matrix.target }} \
+            --compilers ${{ matrix.cc }} \
+            --opt-levels='${{ matrix.opt }}' \
+            --out audit.json
+
+      # The positive control. If the known-vulnerable revision at -Os stops being
+      # reported as vulnerable, the auditor has broken -- and every "clean" verdict
+      # in this workflow becomes worthless. Failing here is the point.
+      - name: Positive control must still be detected
+        if: matrix.expect_vulnerable == true
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          rows = json.load(open("audit.json"))
+          bad = [r for r in rows if r.get("verdict") != "VULNERABLE"]
+          if bad:
+              print("POSITIVE CONTROL FAILED: known-vulnerable build reported clean.")
+              print("The auditor is not detecting the mechanism. Do not trust any")
+              print("clean verdict from this run.")
+              for r in bad:
+                  print(f"  {r['experiment_id']}: {r.get('verdict')}")
+              sys.exit(1)
+          print("Positive control detected, as expected.")
+          PY
+
+      - name: Fail on secret-dependent division
+        if: matrix.expect_vulnerable != true
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          rows = json.load(open("audit.json"))
+
+          gated = [r for r in rows if r.get("gate_failed_at")]
+          for r in gated:
+              print(f"::warning::{r['experiment_id']} failed at "
+                    f"{r['gate_failed_at']} - no security verdict produced")
+
+          vulnerable = [r for r in rows if r.get("verdict") == "VULNERABLE"]
+          for r in vulnerable:
+              fns = ", ".join(r.get("vulnerable_functions", []))
+              variants = ", ".join(r.get("kyberslash_variants", []))
+              print(f"::error::{r['experiment_id']}: secret-dependent division in "
+                    f"{fns} ({variants})")
+
+          if vulnerable:
+              sys.exit(1)
+
+          audited = [r for r in rows if not r.get("gate_failed_at")]
+          if not audited:
+              print("::error::no cell produced a verdict - nothing was actually audited")
+              sys.exit(1)
+
+          # Incidental divisions are expected and must not fail the build. Reporting
+          # them keeps the distinction visible: a correctly patched binary still
+          # contains divisions in Keccak and rejection sampling, and a check that
+          # merely grepped for a division mnemonic would reject it.
+          for r in audited:
+              print(f"{r['experiment_id']}: clean "
+                    f"({r.get('total_divisions', 0)} incidental division(s))")
+          PY
+
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-${{ matrix.target }}-${{ matrix.cc }}-${{ matrix.opt }}
+          path: audit.json

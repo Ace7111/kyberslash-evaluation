@@ -1,0 +1,154 @@
+# Pinned experimental corpus. Commits frozen 2026-07-31.
+# "current" must never mean a moving branch; every entry carries a full hash.
+
+freeze_date: 2026-07-31
+
+targets:
+  kyber-vulnerable:
+    project: pq-crystals/kyber
+    repository: https://github.com/pq-crystals/kyber.git
+    commit: a621b8dde405cc507cbcfc5f794570a4f98d69cc
+    commit_date: 2023-05-09
+    subject: "Merge pull request #55 from jschanck/value-barrier"
+    patch_state: vulnerable
+    role: positive control (paired historical baseline)
+    ml_kem_status: legacy Kyber (pre-FIPS 203)
+    provenance: independent reference implementation
+    kyberslash1_site: ref/poly.c poly_tomsg  # (((t << 1) + KYBER_Q/2)/KYBER_Q)
+    kyberslash2_site: ref/poly.c poly_compress, ref/polyvec.c polyvec_compress
+    build_dir: ref
+
+  kyber-ks1-fixed:
+    project: pq-crystals/kyber
+    repository: https://github.com/pq-crystals/kyber.git
+    commit: dda29cc63af721981ee2c831cf00822e69be3220
+    commit_date: 2023-12-01
+    subject: "Updated poly_tomsg to prevent a compiler from using DIV"
+    patch_state: kyberslash1-fixed-only
+    role: isolates the KyberSlash1 fix from the KyberSlash2 fix
+    ml_kem_status: legacy Kyber (pre-FIPS 203)
+    provenance: independent reference implementation
+    build_dir: ref
+
+  kyber-patched:
+    project: pq-crystals/kyber
+    repository: https://github.com/pq-crystals/kyber.git
+    commit: 272125f6acc8e8b6850fd68ceb901a660ff48196
+    commit_date: 2023-12-29
+    subject: 'Removed "/KYBER_Q" in poly_compress and polyvec_compress'
+    patch_state: kyberslash1+2-fixed
+    role: primary mitigation-effectiveness target (paired with kyber-vulnerable)
+    ml_kem_status: legacy Kyber (pre-FIPS 203)
+    provenance: independent reference implementation
+    build_dir: ref
+
+  kyber-current:
+    project: pq-crystals/kyber
+    repository: https://github.com/pq-crystals/kyber.git
+    commit: da52c4d60a73d745cabdf70829eb1e6a64ccce2f
+    commit_date: 2026-07-28
+    subject: "Slight update to the README.md"
+    patch_state: current HEAD of main, all published fixes applied
+    role: >
+      RQ2 as worded - the "current reference implementation". Clean in 12/12
+      configurations; poly_frommsg retains cmov_int16, called not inlined.
+    ml_kem_status: legacy Kyber lineage (repository predates FIPS 203 naming)
+    provenance: independent reference implementation
+    build_dir: ref
+
+  kyber-clangover-fixed:
+    project: pq-crystals/kyber
+    repository: https://github.com/pq-crystals/kyber.git
+    commit: 0264efacf18dd665d2066f21df3a3290b52ba240
+    commit_date: 2024-06-03
+    subject: "Fixed secret-dependent branch in poly_frommsg introduced by recent versions of clang"
+    patch_state: kyberslash1+2+clangover-fixed
+    role: RQ2 target (Clangover-class compiler-induced regression, CVE-2024-37880)
+    ml_kem_status: legacy Kyber (pre-FIPS 203)
+    provenance: independent reference implementation
+    build_dir: ref
+
+# Planned additions once the positive control is stable. Do not expand before then.
+planned:
+  - project: pq-code-package/mlkem-native
+    role: contemporary high-assurance FIPS 203 baseline (RQ1)
+    priority: essential
+  - project: open-quantum-safe/liboqs
+    role: integration framework; check whether result is inherited from mlkem-native
+    priority: essential
+    caution: not independent evidence if it vendors mlkem-native
+  - project: cloudflare/circl
+    role: independent Go implementation (RQ3)
+    priority: high
+  - project: cryspen/libcrux
+    role: independent Rust implementation with formal-assurance claims (RQ3)
+    priority: medium
+
+# Instruction classes treated as variable-latency on the measurement host.
+# aarch64 has no integer DIV in the classic x86 sense; udiv/sdiv are the targets.
+variable_latency_instructions:
+  aarch64: [udiv, sdiv]
+  x86_64: [div, idiv]
+
+# Functions whose divisions are secret-dependent and therefore security-relevant.
+# Divisions outside this set (Keccak buffer arithmetic, rejection-sampling loop
+# counters) are incidental and must not be reported as KyberSlash findings.
+secret_dependent_functions:
+  - poly_tomsg        # KyberSlash1
+  - poly_compress     # KyberSlash2
+  - polyvec_compress  # KyberSlash2
+
+# --- Added 2026-07-31: RQ1 and RQ3 targets, verified and audited ---
+rq1_rq3_targets:
+  mlkem-native:
+    project: pq-code-package/mlkem-native
+    repository: https://github.com/pq-code-package/mlkem-native.git
+    commit: 61c831345d8fec5b2ba9d727dddb486b7cce512a
+    commit_date: 2026-07-23
+    release_tag: v1.2.0
+    language: C90
+    ml_kem_status: FIPS 203
+    role: contemporary high-assurance baseline (RQ1)
+    provenance: independent implementation
+    assurance_claims: >
+      CBMC memory/type safety on C; HOL-Light functional correctness on AArch64 and
+      x86_64 assembly; secret-independent timing verified; tested against official
+      ACVP and Wycheproof vectors. Claims are project statements, verified here only
+      at the binary level for division.
+    mitigation_technique: multiply-shift (no runtime division by MLKEM_Q)
+    licence: Apache-2.0 / ISC / MIT
+
+  circl:
+    project: cloudflare/circl
+    repository: https://github.com/cloudflare/circl.git
+    commit: df9fbeabf921471216232de66f0392196dcdc37c
+    commit_date: 2026-07-31
+    language: Go
+    ml_kem_status: FIPS 203 (kem/mlkem/mlkem768) plus legacy Kyber packages
+    role: independent non-C implementation (RQ3)
+    provenance: independent implementation, named in the KyberSlash disclosure
+    mitigation_technique: >
+      Compression uses multiply-shift ((x*315)>>20 for d in {4,5};
+      20642679/2^36 for d in {10,11}). CompressMessageTo uses a branchless
+      sign-bit range test rather than multiply-shift - a different technique
+      from the pq-crystals patch.
+
+  liboqs:
+    project: open-quantum-safe/liboqs
+    repository: https://github.com/open-quantum-safe/liboqs.git
+    commit: 9d20051143544daa348bc0bbdcef5ef121e385d3
+    commit_date: 2026-07-28
+    language: C
+    ml_kem_status: FIPS 203, via vendored mlkem-native
+    role: >
+      Integration framework. Included to test the provenance question, NOT as
+      independent RQ1 evidence.
+    provenance: >
+      VENDORS mlkem-native. Nine directories under src/kem/ml_kem/ cover all three
+      parameter sets across the ref, aarch64 and x86_64 backends, referenced directly
+      from that directory's CMakeLists.txt. A clean liboqs result is mlkem-native's
+      result restated, not a second confirmation of it.
+    build_note: >
+      Configure with -DOQS_USE_OPENSSL=OFF for a standalone static link; otherwise
+      liboqs.a requires libcrypto and linking fails on _CRYPTO_free.
+    result: zero divisions of any kind at ML-KEM-768, GCC 16.1.0

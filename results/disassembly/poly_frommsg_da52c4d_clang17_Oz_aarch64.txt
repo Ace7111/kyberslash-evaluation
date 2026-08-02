@@ -1,0 +1,34 @@
+00000000000001cc <_pqcrystals_kyber512_ref_poly_frommsg>:
+     1cc: a9bc5ff8     	stp	x24, x23, [sp, #-0x40]!
+     1d0: a90157f6     	stp	x22, x21, [sp, #0x10]
+     1d4: a9024ff4     	stp	x20, x19, [sp, #0x20]
+     1d8: a9037bfd     	stp	x29, x30, [sp, #0x30]
+     1dc: 9100c3fd     	add	x29, sp, #0x30
+     1e0: aa0103f3     	mov	x19, x1
+     1e4: aa0003f4     	mov	x20, x0
+     1e8: d2800015     	mov	x21, #0x0               ; =0
+     1ec: f10082bf     	cmp	x21, #0x20
+     1f0: 54000240     	b.eq	0x238 <_pqcrystals_kyber512_ref_poly_frommsg+0x6c>
+     1f4: 928000f6     	mov	x22, #-0x8              ; =-8
+     1f8: aa1403e0     	mov	x0, x20
+     1fc: b4000196     	cbz	x22, 0x22c <_pqcrystals_kyber512_ref_poly_frommsg+0x60>
+     200: aa0003f7     	mov	x23, x0
+     204: 780026ff     	strh	wzr, [x23], #0x2
+     208: 38756a68     	ldrb	w8, [x19, x21]
+     20c: 110022c9     	add	w9, w22, #0x8
+     210: 1ac92508     	lsr	w8, w8, w9
+     214: 12000102     	and	w2, w8, #0x1
+     218: 5280d021     	mov	w1, #0x681              ; =1665
+     21c: 94000000     	bl	0x21c <_pqcrystals_kyber512_ref_poly_frommsg+0x50>
+     220: 910006d6     	add	x22, x22, #0x1
+     224: aa1703e0     	mov	x0, x23
+     228: b5fffed6     	cbnz	x22, 0x200 <_pqcrystals_kyber512_ref_poly_frommsg+0x34>
+     22c: 910006b5     	add	x21, x21, #0x1
+     230: 91004294     	add	x20, x20, #0x10
+     234: 17ffffee     	b	0x1ec <_pqcrystals_kyber512_ref_poly_frommsg+0x20>
+     238: a9437bfd     	ldp	x29, x30, [sp, #0x30]
+     23c: a9424ff4     	ldp	x20, x19, [sp, #0x20]
+     240: a94157f6     	ldp	x22, x21, [sp, #0x10]
+     244: a8c45ff8     	ldp	x24, x23, [sp], #0x40
+     248: d65f03c0     	ret
+

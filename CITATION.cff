@@ -1,0 +1,58 @@
+cff-version: 1.2.0
+title: >-
+  KyberSlash Reproducibility and Mitigation Evaluation Harness
+message: >-
+  If you use this software or its data, please cite both the software and
+  the dissertation it supports.
+type: software
+authors:
+  - given-names: "Mateen"
+    family-names: "Rafique"
+    affiliation: Manchester Metropolitan University
+abstract: >-
+  An evaluation harness that builds pinned ML-KEM and Kyber revisions across a
+  compiler and optimisation matrix, gates on functional correctness, and audits
+  each binary for secret-dependent variable-latency division with per-function
+  attribution. Includes a divider-model instrumented timing harness for measuring
+  operand-level leakage on hosts whose divider is constant-latency.
+keywords:
+  - ML-KEM
+  - Kyber
+  - KyberSlash
+  - timing side channel
+  - constant-time
+  - post-quantum cryptography
+  - reproducibility
+license: MIT
+repository-code: "https://github.com/Ace7111/kyberslash-evaluation"
+version: "1.0.0"
+date-released: "2026-09-11"
+references:
+  - type: article
+    title: >-
+      KyberSlash: Exploiting secret-dependent division timings in Kyber
+      implementations
+    authors:
+      - family-names: Bernstein
+        given-names: Daniel J.
+      - family-names: Bhargavan
+        given-names: Karthikeyan
+      - family-names: Bhasin
+        given-names: Shivam
+      - family-names: Chattopadhyay
+        given-names: Anupam
+      - family-names: Chia
+        given-names: Tee Kiah
+      - family-names: Kannwischer
+        given-names: Matthias J.
+      - family-names: Kiefer
+        given-names: Franziskus
+      - family-names: Paiva
+        given-names: Thales
+      - family-names: Ravi
+        given-names: Prasanna
+      - family-names: Tamvada
+        given-names: Goutam
+    journal: >-
+      IACR Transactions on Cryptographic Hardware and Embedded Systems
+    year: 2025
