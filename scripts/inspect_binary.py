@@ -30,6 +30,13 @@ SECRET_DEPENDENT_PATTERNS = [
     (re.compile(r"(^|_)poly_tomsg$"), "KyberSlash1"),
     (re.compile(r"(^|_)poly_compress(_d\d+|_du|_dv)?$"), "KyberSlash2"),
     (re.compile(r"(^|_)polyvec_compress(_d\d+|_du|_dv)?$"), "KyberSlash2"),
+    # wolfSSL names its ML-KEM routines differently again: mlkem_to_msg is the
+    # message decoding, and compression is split per output width as
+    # mlkem_compress_4 / mlkem_vec_compress_10. The trailing anchor keeps
+    # "mlkem_decompress_4" from matching, since "compress" there is preceded by
+    # "de" rather than an underscore.
+    (re.compile(r"(^|_)to_msg$"), "KyberSlash1"),
+    (re.compile(r"(^|_)compress_\d+$"), "KyberSlash2"),
     # Go implementations (CIRCL). Method symbols carry a receiver, e.g.
     # "github.com/cloudflare/circl/pke/kyber/internal/common.(*Poly).CompressTo".
     # CompressMessageTo is Compress_q(p, 1), the message decoding that corresponds

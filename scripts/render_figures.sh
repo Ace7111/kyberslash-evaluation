@@ -46,8 +46,17 @@ trap 'rm -rf "$WORK"' EXIT
 
 # Mermaid needs a wider default canvas than the diagrams assume, and a white
 # background so the SVG does not inherit a transparent one when placed in Word.
+#
+# htmlLabels MUST be false. With htmlLabels true, mermaid emits every label inside
+# an SVG <foreignObject> holding HTML. Browsers render that; almost nothing else
+# does -- rsvg-convert, and therefore the SVG-to-PNG step, silently drops it and
+# produces a diagram of empty boxes with no error. That is exactly what happened to
+# figures 2.1, 2.2 and 4.1 in an earlier run. With htmlLabels false the labels are
+# real SVG <text> elements and survive any converter.
+#
+# Check after rendering: `grep -c "<text" figure_2_1.svg` must be greater than zero.
 cat > "$WORK/config.json" <<'JSON'
-{ "theme": "default", "flowchart": { "useMaxWidth": false, "htmlLabels": true } }
+{ "theme": "default", "flowchart": { "useMaxWidth": false, "htmlLabels": false } }
 JSON
 
 python3 - "$FIGURES_MD" "$WORK" <<'PY'
@@ -83,6 +92,24 @@ for f in "$WORK"/figure_*.mmd; do
     tail -5 "$WORK/err.log" >&2
   fi
 done
+
+# The dissertation embeds PNGs, so convert here rather than leaving it to a manual
+# step that can silently lose the labels.
+if command -v rsvg-convert >/dev/null 2>&1; then
+  for svg in "$OUT_DIR"/figure_2_*.svg "$OUT_DIR"/figure_4_*.svg; do
+    [ -e "$svg" ] || continue
+    base="$(basename "$svg" .svg)"
+    if [ "$(grep -c "<text" "$svg")" -eq 0 ]; then
+      echo "  ERROR: $base.svg contains no <text> elements -- labels would be lost." >&2
+      echo "         Check that htmlLabels is false in the mermaid config." >&2
+      exit 1
+    fi
+    rsvg-convert -z 2 -b white -o "$OUT_DIR/${base}.png" "$svg"
+    echo "  wrote $base.png"
+  done
+else
+  echo "  note: rsvg-convert not found; SVGs written but PNGs not regenerated" >&2
+fi
 
 echo
 echo "Rendered $count figure(s) to $OUT_DIR"

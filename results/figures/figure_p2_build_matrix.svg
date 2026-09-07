@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" font-family="Aptos, Helvetica, Arial, sans-serif">
+<rect width="960" height="400" fill="#fcfcfb"/>
+<text x="40" y="36" font-size="20" font-weight="600" fill="#0b0b0b">Identical source. The build flags decide whether it leaks.</text>
+<text x="40" y="58" font-size="14" fill="#52514e">Historical revision a621b8d at ML-KEM-768 — secret-dependent divisions per build</text>
+<text x="253.0" y="106" font-size="14" fill="#0b0b0b" text-anchor="middle" font-weight="600">-O0</text>
+<text x="369.0" y="106" font-size="14" fill="#0b0b0b" text-anchor="middle" font-weight="600">-O1</text>
+<text x="485.0" y="106" font-size="14" fill="#0b0b0b" text-anchor="middle" font-weight="600">-O2</text>
+<text x="601.0" y="106" font-size="14" fill="#0b0b0b" text-anchor="middle" font-weight="600">-O3</text>
+<text x="717.0" y="106" font-size="14" fill="#0b0b0b" text-anchor="middle" font-weight="600">-Os</text>
+<text x="833.0" y="106" font-size="14" fill="#0b0b0b" text-anchor="middle" font-weight="600">-Oz</text>
+<text x="182" y="162.0" font-size="14.5" fill="#0b0b0b" text-anchor="end">GCC 16.1.0</text>
+<rect x="200" y="120" width="106" height="74" rx="6" fill="#ffffff" stroke="#e4e3df" stroke-width="1.5"/>
+<text x="253.0" y="163.0" font-size="17" fill="#52514e" text-anchor="middle">—</text>
+<rect x="316" y="120" width="106" height="74" rx="6" fill="#ffffff" stroke="#e4e3df" stroke-width="1.5"/>
+<text x="369.0" y="163.0" font-size="17" fill="#52514e" text-anchor="middle">—</text>
+<rect x="432" y="120" width="106" height="74" rx="6" fill="#ffffff" stroke="#e4e3df" stroke-width="1.5"/>
+<text x="485.0" y="163.0" font-size="17" fill="#52514e" text-anchor="middle">—</text>
+<rect x="548" y="120" width="106" height="74" rx="6" fill="#ffffff" stroke="#e4e3df" stroke-width="1.5"/>
+<text x="601.0" y="163.0" font-size="17" fill="#52514e" text-anchor="middle">—</text>
+<rect x="664" y="120" width="106" height="74" rx="6" fill="#eb6834" stroke="#eb6834" stroke-width="2"/>
+<text x="717.0" y="155.0" font-size="22" fill="#ffffff" text-anchor="middle" font-weight="700">▲ 3</text>
+<text x="717.0" y="175.0" font-size="12" fill="#ffffff" text-anchor="middle">emitted</text>
+<rect x="780" y="120" width="106" height="74" rx="6" fill="#eb6834" stroke="#eb6834" stroke-width="2"/>
+<text x="833.0" y="155.0" font-size="22" fill="#ffffff" text-anchor="middle" font-weight="700">▲ 3</text>
+<text x="833.0" y="175.0" font-size="12" fill="#ffffff" text-anchor="middle">emitted</text>
+<text x="182" y="246.0" font-size="14.5" fill="#0b0b0b" text-anchor="end">Clang 17.0.0</text>
+<rect x="200" y="204" width="106" height="74" rx="6" fill="#eb6834" stroke="#eb6834" stroke-width="2"/>
+<text x="253.0" y="239.0" font-size="22" fill="#ffffff" text-anchor="middle" font-weight="700">▲ 3</text>
+<text x="253.0" y="259.0" font-size="12" fill="#ffffff" text-anchor="middle">emitted</text>
+<rect x="316" y="204" width="106" height="74" rx="6" fill="#ffffff" stroke="#e4e3df" stroke-width="1.5"/>
+<text x="369.0" y="247.0" font-size="17" fill="#52514e" text-anchor="middle">—</text>
+<rect x="432" y="204" width="106" height="74" rx="6" fill="#ffffff" stroke="#e4e3df" stroke-width="1.5"/>
+<text x="485.0" y="247.0" font-size="17" fill="#52514e" text-anchor="middle">—</text>
+<rect x="548" y="204" width="106" height="74" rx="6" fill="#ffffff" stroke="#e4e3df" stroke-width="1.5"/>
+<text x="601.0" y="247.0" font-size="17" fill="#52514e" text-anchor="middle">—</text>
+<rect x="664" y="204" width="106" height="74" rx="6" fill="#ffffff" stroke="#e4e3df" stroke-width="1.5"/>
+<text x="717.0" y="247.0" font-size="17" fill="#52514e" text-anchor="middle">—</text>
+<rect x="780" y="204" width="106" height="74" rx="6" fill="#eb6834" stroke="#eb6834" stroke-width="2"/>
+<text x="833.0" y="239.0" font-size="22" fill="#ffffff" text-anchor="middle" font-weight="700">▲ 3</text>
+<text x="833.0" y="259.0" font-size="12" fill="#ffffff" text-anchor="middle">emitted</text>
+<rect x="200" y="311" width="15" height="15" rx="3" fill="#eb6834"/>
+<text x="223" y="324" font-size="13.5" fill="#0b0b0b">▲ emitted — three secret-dependent divisions</text>
+<text x="530" y="324" font-size="13.5" fill="#52514e">— clean</text>
+<text x="40" y="380" font-size="13.5" fill="#52514e">No rule fits: GCC leaks at -Os, Clang does not. Clang leaks at -O0, which optimises least. "Avoid -Os" protects one compiler and misses three cases.</text>
+</svg>

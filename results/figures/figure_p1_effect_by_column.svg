@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="Aptos, Helvetica, Arial, sans-serif">
+<rect width="960" height="470" fill="#fcfcfb"/>
+<text x="150" y="30" font-size="20" font-weight="600" fill="#0b0b0b">The same binary, the same run: a large leak and no signal</text>
+<text x="150" y="52" font-size="14" fill="#52514e">Cohen's d, vulnerable revision at gcc -Os, 40,000 decapsulations</text>
+<line x1="150.0" y1="74" x2="150.0" y2="374" stroke="#e4e3df" stroke-width="1"/>
+<text x="150.0" y="396" font-size="13" fill="#52514e" text-anchor="middle">0</text>
+<line x1="304.0" y1="74" x2="304.0" y2="374" stroke="#e4e3df" stroke-width="1"/>
+<text x="304.0" y="396" font-size="13" fill="#52514e" text-anchor="middle">2</text>
+<line x1="458.0" y1="74" x2="458.0" y2="374" stroke="#e4e3df" stroke-width="1"/>
+<text x="458.0" y="396" font-size="13" fill="#52514e" text-anchor="middle">4</text>
+<line x1="612.0" y1="74" x2="612.0" y2="374" stroke="#e4e3df" stroke-width="1"/>
+<text x="612.0" y="396" font-size="13" fill="#52514e" text-anchor="middle">6</text>
+<line x1="766.0" y1="74" x2="766.0" y2="374" stroke="#e4e3df" stroke-width="1"/>
+<text x="766.0" y="396" font-size="13" fill="#52514e" text-anchor="middle">8</text>
+<line x1="920.0" y1="74" x2="920.0" y2="374" stroke="#e4e3df" stroke-width="1"/>
+<text x="920.0" y="396" font-size="13" fill="#52514e" text-anchor="middle">10</text>
+<rect x="150" y="92.0" width="768.5" height="39.0" fill="#2a78d6" rx="4"/>
+<text x="136" y="107.5" font-size="13.5" fill="#0b0b0b" text-anchor="end">KyberSlash1</text>
+<text x="136" y="123.5" font-size="13.5" fill="#0b0b0b" text-anchor="end">operand-level</text>
+<text x="928.5" y="116.5" font-size="14" font-weight="600" fill="#0b0b0b">9.98</text>
+<rect x="150" y="167.0" width="53.5" height="39.0" fill="#2a78d6" rx="4"/>
+<text x="136" y="182.5" font-size="13.5" fill="#0b0b0b" text-anchor="end">KyberSlash2</text>
+<text x="136" y="198.5" font-size="13.5" fill="#0b0b0b" text-anchor="end">operand-level</text>
+<text x="213.5" y="191.5" font-size="14" font-weight="600" fill="#0b0b0b">0.70</text>
+<rect x="150" y="242.0" width="193.2" height="39.0" fill="#2a78d6" rx="4"/>
+<text x="136" y="257.5" font-size="13.5" fill="#0b0b0b" text-anchor="end">Both variants</text>
+<text x="136" y="273.5" font-size="13.5" fill="#0b0b0b" text-anchor="end">summed</text>
+<text x="353.2" y="266.5" font-size="14" font-weight="600" fill="#0b0b0b">2.51</text>
+<rect x="150" y="317.0" width="2.0" height="39.0" fill="#eb6834" rx="4"/>
+<text x="136" y="332.5" font-size="13.5" fill="#0b0b0b" text-anchor="end">Wall-clock time</text>
+<text x="136" y="348.5" font-size="13.5" fill="#0b0b0b" text-anchor="end">on this host</text>
+<text x="162.0" y="341.5" font-size="14" font-weight="600" fill="#0b0b0b">0.010</text>
+<line x1="150" y1="374" x2="920" y2="374" stroke="#52514e" stroke-width="1.5"/>
+<text x="535.0" y="422" font-size="13.5" fill="#52514e" text-anchor="middle">Effect size (Cohen's d) — higher means more leakage</text>
+<text x="150" y="448" font-size="13" fill="#52514e">The mechanism is fully present. This processor's divider does not vary with its operands, so nothing reaches wall-clock time.</text>
+</svg>

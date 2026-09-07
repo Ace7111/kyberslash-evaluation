@@ -165,21 +165,25 @@ from d = −1.14 to +2.13. Report the sweep, not a single key.
 git clone https://github.com/pq-code-package/mlkem-native.git targets/mlkem-native
 cd targets/mlkem-native && git checkout 61c831345d8fec5b2ba9d727dddb486b7cce512a && cd ../..
 
-for opt in -O0 -O1 -O2 -O3 -Os -Oz; do
-  for cc in gcc-16 clang; do
-    (cd targets/mlkem-native && make clean >/dev/null 2>&1
-     make func CC="$cc $opt -w" >/dev/null 2>&1)
-    python3 scripts/inspect_binary.py \
-      targets/mlkem-native/test/build/mlkem768/bin/test_mlkem768
-  done
-done
+python3 scripts/audit_rq1_rq3.py     # writes one record per cell, with binary hashes
 ```
 
-Pass the optimisation flag inside `CC`, not as `CFLAGS`. mlkem-native assigns
-`CFLAGS :=` in `test/mk/config.mk`, so a command-line `CFLAGS` wipes its own required
-flags and every build fails with a missing `mlkem_native_config.h`.
+**Setting the optimisation level here is a trap; read this before changing it.**
+`test/mk/config.mk` builds its own `CFLAGS` with `-O3` hard-coded, ending `... $(CFLAGS)`.
 
-Expected: 12/12 build and pass functional tests, `total_divisions = 0` in every cell.
+  * A command-line `CFLAGS=` overrides the whole assignment, discarding the required
+    flags; every build then fails with a missing `mlkem_native_config.h`.
+  * Putting the flag inside `CC` compiles as `gcc-16 -O0 -O3`. The last `-O` wins, so
+    every build is `-O3` whatever was asked for. This yields twelve byte-identical
+    binaries and a sweep that varied nothing — see D7 in findings.md.
+  * Passing it through the **environment** expands into the trailing `$(CFLAGS)`, landing
+    after `-O3`, and wins. That is what the script does.
+
+Check with `CFLAGS=-O0 make func CC="gcc-16 -w" -n`: the compile line must end `-O3 -O0`.
+
+Expected: 12/12 build and pass functional tests, zero *secret-dependent* divisions in
+every cell, and incidental divisions in four (GCC `-Os`/`-Oz`, Clang `-O0`/`-Oz`).
+Eleven of the twelve binaries are distinct; GCC `-Os` and `-Oz` coincide.
 
 ```sh
 # RQ3 - independent Go implementation
@@ -196,6 +200,59 @@ python3 scripts/inspect_binary.py /tmp/circl_probe/circl_probe
 Expected: `NO_SECRET_DEPENDENT_DIV`, 0 secret-dependent divisions, 43 total (Go runtime).
 Confirm `(*Poly).CompressTo` and `(*Vec).CompressTo` appear in `nm` output — if the
 compression symbols were inlined away, a null result would be meaningless.
+
+## 6b. wolfSSL (RQ3, second independent implementation) (~2 min)
+
+**Provenance of this section.** The original wolfSSL audit (2026-08-02, commit `1d333cf`)
+was performed by hand and no script was written for it at the time. What the original run
+recorded is the `build_note` in `configs/targets.yaml`: the file audited, the defines used,
+and the fact that autotools was unavailable so the audit was done at object level rather
+than against a linked library. The commands below were reconstructed from that note on
+2026-09-06 and validated against the pinned source. They are **later reproducibility
+tooling, not a transcript of the original session.**
+
+The note's define list is necessary but not sufficient: `wc_Sha3` and `wc_Shake` are
+declared in `wolfssl/wolfcrypt/sha3.h` behind `WOLFSSL_SHA3`, and reaching them requires a
+settings header. A minimal `user_settings.h` with `-DWOLFSSL_USER_SETTINGS` is enough.
+
+```sh
+git clone https://github.com/wolfSSL/wolfssl.git targets/wolfssl
+cd targets/wolfssl && git checkout 7a8aae3e40138d19c640ae5bc0bc4e8f2998c22d && cd ../..
+
+mkdir -p /tmp/wolfcfg && cat > /tmp/wolfcfg/user_settings.h <<'H'
+#define WOLFSSL_SHA3
+#define WOLFSSL_SHAKE128
+#define WOLFSSL_SHAKE256
+#define WOLFSSL_HAVE_MLKEM
+#define WOLFSSL_WC_MLKEM
+H
+
+DEFS="-DWOLFSSL_HAVE_MLKEM -DWOLFSSL_WC_MLKEM -DWOLFSSL_SHA3 -DWOLFSSL_SHAKE128 -DWOLFSSL_SHAKE256"
+for opt in -O2 -Os; do
+  for cfg in "" "-DCONV_WITH_DIV"; do
+    gcc-16 -c -w $opt -DWOLFSSL_USER_SETTINGS $DEFS $cfg \
+      -I/tmp/wolfcfg -Itargets/wolfssl \
+      -o /tmp/wolf.o targets/wolfssl/wolfcrypt/src/wc_mlkem_poly.c
+    echo "$opt ${cfg:-default}"
+    python3 scripts/inspect_binary.py /tmp/wolf.o
+  done
+done
+```
+
+Expected, and confirmed by the 2026-09-06 validation run:
+
+| Configuration | `-O2` | `-Os` |
+| --- | --- | --- |
+| default | 0 | 0 |
+| `-DCONV_WITH_DIV` | 0 | **48** |
+
+The 48 localise to `mlkem_to_msg` (KyberSlash1) and `mlkem_compress_4`, `mlkem_compress_5`,
+`mlkem_vec_compress_10`, `mlkem_vec_compress_11` (KyberSlash2). At `-O2` the same flag
+yields zero because the compiler strength-reduces the divisions away, so the build flag and
+the optimisation level are jointly necessary — which is the point of the finding.
+
+Note the scope: this audits one translation unit, not a linked library. §6.8 records that
+limitation.
 
 ## 7. Clangover check (~2 min)
 

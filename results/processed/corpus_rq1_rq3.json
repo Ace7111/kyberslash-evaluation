@@ -32,5 +32,39 @@
     "vulnerable_functions": [],
     "verdict": "NO_SECRET_DEPENDENT_DIV",
     "provenance": "vendors mlkem-native for all parameter sets and backends; NOT independent evidence"
+  },
+  {
+    "target": "wolfssl",
+    "project": "wolfSSL/wolfssl",
+    "commit": "7a8aae3e40138d19c640ae5bc0bc4e8f2998c22d",
+    "language": "C",
+    "config": "default",
+    "optimisation": "-Os",
+    "arch": "aarch64",
+    "total_divisions": 0,
+    "secret_dependent_divisions": 0,
+    "vulnerable_functions": [],
+    "verdict": "NO_SECRET_DEPENDENT_DIV",
+    "provenance": "independent implementation; not derived from pq-crystals or mlkem-native"
+  },
+  {
+    "target": "wolfssl",
+    "project": "wolfSSL/wolfssl",
+    "commit": "7a8aae3e40138d19c640ae5bc0bc4e8f2998c22d",
+    "language": "C",
+    "config": "CONV_WITH_DIV",
+    "optimisation": "-Os",
+    "arch": "aarch64",
+    "total_divisions": 48,
+    "secret_dependent_divisions": 48,
+    "vulnerable_functions": [
+      "mlkem_vec_compress_10",
+      "mlkem_vec_compress_11",
+      "mlkem_compress_4",
+      "mlkem_compress_5",
+      "mlkem_to_msg"
+    ],
+    "verdict": "VULNERABLE",
+    "provenance": "independent implementation; not derived from pq-crystals or mlkem-native"
   }
 ]

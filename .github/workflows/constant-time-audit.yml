@@ -47,10 +47,12 @@ jobs:
       matrix:
         target: [kyber-current, kyber-patched]
         cc: [gcc, clang]
-        # -Os and -Oz are included deliberately: they are the levels at which the
-        # historical revision emitted the division. -O0 is included because Clang
-        # emitted it there too, which no "size optimisation is dangerous" rule
-        # would have predicted.
+        # -Os is included deliberately: it is the level at which the historical
+        # revision emitted the division on both architectures. -O0 is included
+        # because Clang emitted it there too on aarch64, which no "size
+        # optimisation is dangerous" rule would have predicted. -Oz is covered
+        # locally but omitted here to keep CI minutes down; the aarch64 matrix in
+        # Table 5.2 carries it.
         opt: ['-O0', '-O2', '-Os']
         include:
           - target: kyber-vulnerable

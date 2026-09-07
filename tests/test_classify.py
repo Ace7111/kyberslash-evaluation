@@ -32,6 +32,16 @@ CASES = [
     ("_PQCP_MLKEM_NATIVE_MLKEM768_poly_compress_d10", "KyberSlash2"),
     ("_PQCP_MLKEM_NATIVE_MLKEM768_polyvec_compress_du", "KyberSlash2"),
     ("_mlk_poly_tomsg", "KyberSlash1"),
+    # wolfSSL naming
+    ("_mlkem_to_msg", "KyberSlash1"),
+    ("_mlkem_compress_4", "KyberSlash2"),
+    ("_mlkem_compress_5", "KyberSlash2"),
+    ("_mlkem_vec_compress_10", "KyberSlash2"),
+    ("_mlkem_vec_compress_11", "KyberSlash2"),
+    # wolfSSL decompression must NOT match: "compress" there follows "de", not "_"
+    ("_mlkem_decompress_4", None),
+    ("_mlkem_vec_decompress_10", None),
+    ("_mlkem_from_msg", None),
     # Decompression is the inverse operation on public data - must not be flagged
     ("_PQCP_MLKEM_NATIVE_MLKEM768_poly_decompress_d4", None),
     ("_PQCP_MLKEM_NATIVE_MLKEM768_polyvec_decompress_du", None),

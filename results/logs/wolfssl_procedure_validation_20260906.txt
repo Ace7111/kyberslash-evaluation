@@ -1,0 +1,35 @@
+wolfSSL procedure validation — 2026-09-06
+=========================================
+
+THIS IS NOT THE ORIGINAL EXPERIMENT. The original wolfSSL audit was run on 2026-08-02
+(commit 1d333cf) by hand, and its results are in results/processed/corpus_rq1_rq3.json
+(the two -Os cells) and in the `result:` field of configs/targets.yaml (all four cells).
+
+This file records a later run whose only purpose was to check that the procedure
+reconstructed in docs/reproduction_guide.md §6b actually reproduces what the original
+reported. It is validation of the documented method, not new experimental evidence, and
+the dissertation's figures continue to cite the 2026-08-02 run.
+
+Source, unchanged:
+  targets/wolfssl at 7a8aae3e40138d19c640ae5bc0bc4e8f2998c22d (matches configs/targets.yaml)
+  wolfcrypt/src/wc_mlkem_poly.c
+
+Compiler: gcc-16 (Homebrew GCC 16.1.0) on aarch64-apple-darwin25.
+
+Result, secret-dependent divisions:
+
+  default        -O2      0      matches reported
+  CONV_WITH_DIV  -O2      0      matches reported
+  default        -Os      0      matches reported
+  CONV_WITH_DIV  -Os     48      matches reported
+
+All four agree with what the dissertation reports, including the two -O2 cells that have
+no per-cell JSON record. The -O2 outcome recorded in prose in configs/targets.yaml -- that
+CONV_WITH_DIV is clean at -O2 because the compiler strength-reduces the divisions away --
+is confirmed.
+
+One correction to the original build_note. The five defines it lists are necessary but not
+sufficient: wc_Sha3 and wc_Shake are declared behind WOLFSSL_SHA3 in
+wolfssl/wolfcrypt/sha3.h and do not reach the translation unit without a settings header.
+A minimal user_settings.h plus -DWOLFSSL_USER_SETTINGS completes it. The original run must
+have supplied that some other way; the note did not record it.

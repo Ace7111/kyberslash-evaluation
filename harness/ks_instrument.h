@@ -36,14 +36,15 @@ extern uint64_t ks2_calls;
  * termination, the iterative divider retiring roughly one quotient bit per cycle
  * after a fixed setup cost, so latency grows with the bit-length of the quotient.
  *
- * PROVENANCE: these constants are taken from secondary descriptions attributing
- * them to the Cortex-M4 Technical Reference Manual (ARM DDI 0439). The primary
- * timing table was NOT consulted directly. Treat the exact figures as unverified
- * and check them against the TRM before citing them as ARM's own. What the study
- * relies on is the SHAPE of the model -- monotonic in quotient width, saturating --
- * not the precise constants, and the sensitivity analysis in
- * scripts/model_sensitivity.py exists to show which conclusions survive varying
- * them.
+ * PROVENANCE: the 2 and 12 bounds are ARM's own. Table 3-1 of the Cortex-M4
+ * Technical Reference Manual (ARM DDI 0439C, "Cortex-M4 instruction set summary")
+ * gives SDIV and UDIV as "2 to 12" cycles, and they are the ONLY entries in that
+ * table given as a range -- every other instruction has a fixed cycle count.
+ *
+ * What ARM does not specify is how latency varies BETWEEN those bounds. The linear
+ * one-cycle-per-quotient-bit interpolation is this study's assumption, not ARM's,
+ * which is why scripts/model_sensitivity.py exists: it reports which conclusions
+ * survive varying it.
  *
  *   quotient_bits ~= bitlen(numerator) - bitlen(denominator)
  *                  = clz(denominator) - clz(numerator)
