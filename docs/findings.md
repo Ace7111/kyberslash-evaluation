@@ -260,11 +260,16 @@ sbfx  w11, w11, #0, #1     ; sign-extend bit 0 -> mask
 and   w11, w11, w10        ; mask & 1665
 ```
 
-CVE-2024-37880 itself names only Clang through 18.x; the **x86 ISA** and the Clang v15–18
-range come from the clangover proof of concept, which reports them as "at least" the
-affected set. This is a bounded negative on a
-architecture neither the CVE nor the proof of concept reports on; it neither confirms
+CVE-2024-37880 itself names only Clang through 18.x and does not establish an
+architectural boundary; the **x86 ISA** and the Clang v15–18 range come from the clangover
+proof of concept, which reports them as "at least" the affected set — a demonstrated lower
+bound, not a limit. Clangover was not reproduced on aarch64 with Apple Clang 17.0.0, an
+architecture neither the CVE nor the proof of concept reports on, so this neither confirms
 nor challenges it.
+
+x86-64 was used in this project only for the supplementary KyberSlash binary audit (F8).
+No controlled Clangover reproduction was attempted there: that would require the Clang
+v15–18 range the proof of concept reports, which was not available.
 Disassemblies archived in `results/disassembly/`.
 
 **Methodological note:** had the branch count been reported without inspecting each
@@ -326,10 +331,15 @@ This is the result RQ2 actually asks for. The compiler-sensitivity finding in F1
 important, but it is a statement about a *2023 pre-patch* revision, not about what a user
 compiling the reference implementation today would get.
 
-**What is still untested:** RQ2 says "compiler *version* or optimisation level". Only one
-version of each compiler was used (GCC 16.1.0, Apple Clang 17.0.0), so the
-optimisation-level half is answered and the version half is not. CVE-2024-37880 names
-Clang v15–18 on x86 as reported by the proof of concept, none of which was available here.
+**What is still untested:** RQ2 says "compiler *version* or optimisation level". Four
+compiler releases were used in total — GCC 16.1.0 and Apple Clang 17.0.0 on aarch64, GCC
+13.3.0 and Clang 18.1.3 on x86-64 (see
+`results/logs/x86_64_ci_toolchain_20260802T155008Z.txt`) — but one release of each compiler
+per architecture. Because compiler release and architecture changed together between the
+two, the two effects are confounded and no isolated compiler-version effect can be
+inferred. The optimisation-level half of RQ2 is answered; the version half is not. Testing
+it under control would require several compiler releases on one fixed architecture. The
+Clang v15–18 range the proof of concept reports was not available here.
 
 ---
 
@@ -356,20 +366,33 @@ to be clean, it would have passed while measuring nothing at all.
 
 | Revision | Compiler | -O0 | -O2 | -Os |
 | --- | --- | --- | --- | --- |
-| vulnerable | GCC | – | – | **VULN (3)** |
+| vulnerable | GCC | n/t | – | **VULN (3)** |
 | patched | GCC / Clang | – | – | – |
 | current HEAD | GCC / Clang | – | – | – |
+
+`–` = built and clean; `n/t` = not tested. The CI matrix carries the vulnerable revision
+only under GCC at `-O2` and `-Os`, as a positive control rather than a survey, giving
+2 + 6 + 6 = 14 cells.
 
 The KyberSlash FAQ records that on Intel and AMD, `gcc -Os` produces division instructions
 while `gcc -O3` produces multiplications. That is reproduced exactly: on x86-64 the
 vulnerable revision emits three secret-dependent divisions at `-Os` and none at `-O2`.
 
-**Why this matters beyond confirmation.** The aarch64 results (F1) showed GCC emitting the
-division at both `-Os` and `-Oz`, and Clang at `-Oz` and `-O0` but not `-Os`. The x86-64
-results show GCC at `-Os` but not `-O2`. The mechanism is therefore reproducible across two
-architectures, but *which* configurations trigger it is architecture-specific. A build
-policy validated on one target does not transfer to another — which strengthens the RQ2
-conclusion rather than merely repeating it.
+**What this does and does not establish.** The mechanism is reproducible on a second
+architecture: identical source produces the vulnerable instruction on both aarch64 and
+x86-64.
+
+On the overlapping settings the two architectures *agree*. Only two GCC configurations were
+run on both — `-O2` and `-Os` — and both give the same verdict on each: `-Os` emits three
+secret-dependent divisions, `-O2` is clean. This is agreement on the overlap, not evidence
+of divergence.
+
+No claim of a complete cross-architecture comparison is made, and none is available from
+this data. The x86-64 matrix is narrower than the aarch64 one: two of six GCC optimisation
+levels for the vulnerable revision, and no Clang at all. The aarch64-only configurations
+(`-Oz` under GCC, `-O0` and `-Oz` under Clang) have no x86-64 counterpart, so whether they
+would behave the same way is untested. The confirmation therefore holds for the overlapping
+tested settings and no further.
 
 Archived: `results/processed/build_matrix_x86_64_ci.json` (14 cells).
 
@@ -503,7 +526,6 @@ deterministic and sweeping ten keys showed the opposition holds for only 4 of 10
 corrected finding is stronger — aggregation understates the leak by a key-dependent amount,
 up to 11.6× — but the original claim was not supported by the evidence behind it.
 
-
 **D6 — every x86-64 audit reported clean.** objdump's line layout differs between
 toolchains: LLVM (macOS) puts the address and instruction bytes together in field 0, so
 the mnemonic is field 1; GNU (Linux) puts the address in field 0 and the bytes in field 1,
@@ -514,6 +536,7 @@ likely deployment, would have received a clean verdict for vulnerable code. Caug
 CI positive control on its first run; no local test could have found it, because all local
 testing was on aarch64. Fixed by matching the line's structure rather than a field index,
 with four regression cases pinning both layouts.
+
 ---
 
 ## Reproducibility of the leakage figures
@@ -531,16 +554,43 @@ This is correct for a measurement harness and wrong anywhere else: never link
 Between-key variation is characterised separately by `scripts/seed_sweep.py` (F3), and
 proved to be the dominant source of variation in the KyberSlash2 estimate.
 
+## Completed since this file was first written
+
+Recorded here so the open items below are not read as still outstanding.
+
+- **Divider-model sensitivity** — done (F3b), archived in
+  `results/processed/model_sensitivity.json`.
+- **x86-64 binary audit** — done (F8) via the CI workflow, archived in
+  `results/processed/build_matrix_x86_64_ci.json` (14 cells).
+- **liboqs** — evaluated (F6b); vendors mlkem-native, so not independent evidence.
+- **wolfSSL** — evaluated (F9); clean as shipped, 48 secret-dependent divisions under
+  `CONV_WITH_DIV` at `-Os`.
+- **mlkem-native per-cell sweep** — corrected after D7 and archived in
+  `results/processed/build_matrix_mlkem_native.json` (12 cells).
+
 ## Open items
 
-- **x86-64 Linux baseline** — highest value. Would allow `div`/`idiv` (operand-dependent
-  on many cores) to be measured rather than modelled, and is the platform CVE-2024-37880
-  actually concerns, enabling a proper Clangover test.
-- Sensitivity analysis over the divider model constants.
-- Independent repetitions of the leakage screen across sessions and days.
-- Broader corpus: liboqs, OpenSSL, AWS-LC, wolfSSL, libcrux — recording provenance so
-  wrappers are not counted as independent.
-- Architecture-specific backends (AVX2, NEON); only portable C and Go were audited.
-- Dynamic secret-flow analysis (TIMECOP-style) to establish secret dependency on executed
-  paths independently of binary audit and statistical screening.
-- Hardware reproduction on Cortex-A7 / Cortex-M4 for key recovery.
+Genuinely outstanding. Nothing completed above appears here.
+
+- **Complete code-size characterisation.** Host decapsulation timing is measured, but the
+  per-cell `.text`/`.rodata` comparison is not done. Mitigation cost is therefore only half
+  characterised; this does not affect the mechanism-removal result.
+- **Controlled x86-64 Clangover reproduction.** x86-64 has been used for the KyberSlash
+  binary audit (F8), but no Clangover reproduction was attempted on it. Doing so needs the
+  Clang v15–18 range the proof of concept reports.
+- **Measured rather than modelled divider latency.** Dedicated x86-64 hardware would allow
+  `div`/`idiv`, operand-dependent on many cores, to be measured directly. Shared CI runners
+  are unsuitable for instruction-latency measurement.
+- **Controlled compiler-version comparison.** Several compiler releases on one fixed
+  architecture. The present design varies release and architecture together, so the two are
+  confounded (F7).
+- **Independent repetitions of the leakage screen** across sessions and days. The ten-key
+  sweep varies the key, not the measurement session.
+- **Broader corpus** — OpenSSL, AWS-LC, libcrux and Botan remain unevaluated, recording
+  provenance so wrappers are not counted as independent.
+- **Architecture-specific backends** (AVX2, NEON); only portable C and Go were audited, and
+  wolfSSL only at object level.
+- **Dynamic secret-flow analysis** (TIMECOP-style) to establish secret dependency on
+  executed paths independently of binary audit and statistical screening.
+- **Hardware reproduction** on Cortex-A7 / Cortex-M4 for key recovery. No key-recovery
+  result is claimed anywhere in this project.

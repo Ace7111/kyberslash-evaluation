@@ -9,19 +9,32 @@ variable-latency division — the KyberSlash mechanism.
 
 ## Status
 
-Six findings established (F1–F6 in `docs/findings.md`), covering all three research
-questions:
+Nine findings established (F1–F9 in `docs/findings.md`), covering all three research
+questions, alongside seven instrument defects (D1–D7) recorded in the same file:
 
 - Vulnerable revision emits secret-dependent division in 4 of 12 build configurations;
   patched revision in 0 of 12. GCC and Clang disagree about which optimisation levels are
   unsafe.
-- mlkem-native v1.2.0 (FIPS 203) clean in 12/12 with zero divisions of any kind (RQ1).
-- CIRCL (Go) clean, via mitigations technically distinct from the reference patch (RQ3).
+- mlkem-native v1.2.0 (FIPS 203) has zero secret-dependent divisions in 12 of 12
+  configurations (RQ1). Four of those cells contain incidental divisions, in Keccak,
+  rejection sampling and the test driver; per-function attribution is what separates them.
+- CIRCL (Go) and wolfSSL (C) are both clean as shipped, by techniques distinct from the
+  reference patch and from each other (RQ3). wolfSSL's documented `CONV_WITH_DIV` option
+  at `-Os` restores 48 secret-dependent divisions (F9).
+- liboqs is clean but vendors mlkem-native, so it is not independent evidence. Four
+  independent codebases were evaluated: pq-crystals, mlkem-native, CIRCL and wolfSSL.
 - Apple M1's divider is constant-latency, so the mechanism can be present with no
   observable host-level signal.
-- The two KyberSlash variants leak in *opposite* directions and partially cancel when
-  aggregated — measure them separately.
-- Clangover not reproduced on aarch64; a bounded negative, since the CVE specifies x86.
+- KyberSlash2's leakage *direction* depends on the key — negative in 4 of 10 keys tested —
+  so aggregating the two variants understates KyberSlash1 by a key-dependent amount, up to
+  11.6×. Measure them separately.
+- The mechanism reproduces on x86-64 as well as aarch64 (F8). The overlapping GCC settings
+  agree: `-Os` emits on both, `-O2` is clean on both.
+- Clangover was not reproduced on aarch64; a bounded negative. CVE-2024-37880 identifies
+  affected LLVM Clang versions and does not establish an architectural boundary; the
+  published proof of concept reports reproduction on at least the x86 ISA. x86-64 was used
+  here only for the supplementary KyberSlash binary audit — no controlled Clangover
+  reproduction was attempted on it.
 
 ## Quick start
 
@@ -53,16 +66,19 @@ python3 scripts/inspect_binary.py results/builds/<cell>/test_kyber
 | `scripts/seed_sweep.py` | Repeats the leakage screen across independent keys |
 | `scripts/model_sensitivity.py` | Rebuilds under six divider models and re-measures |
 | `scripts/make_figure_5_1.py` | Generates Figure 5.1 from the archived sweep |
+| `scripts/audit_rq1_rq3.py` | Per-cell build and audit for the mlkem-native matrix |
+| `scripts/render_figures.sh`, `svg_inline_labels.py` | Mermaid rendering with a text-presence guard |
+| `scripts/make_presentation_figures.py` | Two presentation-only charts from `results/processed/` |
 | `scripts/udiv_latency.c`, `udiv_ecore.c` | Host divider characterisation |
 | `harness/` | Divider model and fixed-vs-random timing harness |
-| `tests/test_classify.py` | Regression tests for the division classifier |
+| `tests/test_classify.py` | 31 classifier cases and 4 disassembly-parsing cases |
 | `.github/workflows/` | CI binary audit, with the vulnerable revision as a positive control |
 | `results/raw/` | Original observations with SHA-256 checksums |
 | `results/processed/` | Per-cell manifests and analyses as JSON |
-| `results/figures/` | Figure 5.1 |
+| `results/figures/` | Dissertation figures 2.1, 2.2, 4.1 and 5.1, plus two talk-only charts |
 | `results/disassembly/` | Archived disassembly for the Clangover check |
-| `results/logs/` | System manifests |
-| `docs/findings.md` | Experimental findings F1–F7 and the instrument defects |
+| `results/logs/` | System manifests; x86-64 CI toolchain provenance; wolfSSL procedure validation |
+| `docs/findings.md` | Experimental findings F1–F9 and instrument defects D1–D7 |
 | `docs/reproduction_guide.md` | Clean host to published tables |
 | `LICENSE`, `CITATION.cff` | MIT, with third-party notes; citation metadata |
 

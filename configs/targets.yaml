@@ -1,7 +1,17 @@
 # Pinned experimental corpus. Commits frozen 2026-07-31.
 # "current" must never mean a moving branch; every entry carries a full hash.
+#
+# One entry postdates the freeze and is recorded as such rather than backdated:
+# rq1_rq3_targets.wolfssl pins a 2026-08-01 commit, because wolfSSL was added to the
+# corpus on 2026-08-02, after the freeze, as a second independent implementation for RQ3.
+# The freeze date below governs every other entry.
 
 freeze_date: 2026-07-31
+freeze_exceptions:
+  - target: rq1_rq3_targets.wolfssl
+    commit_date: 2026-08-01
+    added: 2026-08-02
+    reason: second independent RQ3 implementation, added after the original freeze
 
 targets:
   kyber-vulnerable:
@@ -59,30 +69,60 @@ targets:
   kyber-clangover-fixed:
     project: pq-crystals/kyber
     repository: https://github.com/pq-crystals/kyber.git
-    commit: 0264efacf18dd665d2066f21df3a3290b52ba240
+    commit: 9b8d30698a3e7449aeb34e62339d4176f11e3c6c
     commit_date: 2024-06-03
     subject: "Fixed secret-dependent branch in poly_frommsg introduced by recent versions of clang"
     patch_state: kyberslash1+2+clangover-fixed
     role: RQ2 target (Clangover-class compiler-induced regression, CVE-2024-37880)
+    commit_note: >
+      This entry previously recorded 0264efacf18dd665d2066f21df3a3290b52ba240. That was a
+      documentation inconsistency, not an experimental one: build_matrix.py reads
+      configs/commits.json, which has always pinned 9b8d306, and the archived disassembly
+      is results/disassembly/poly_frommsg_9b8d306_clang17_O2_aarch64.txt. The experiment
+      used 9b8d306 throughout; only this file disagreed.
+
+      Both commits are genuine. The same Clangover fix was applied twice on 2024-06-03,
+      ten minutes apart, with identical subject lines but different parents: 0264efa
+      (08:50, parent 11d00ff) and 9b8d306 (09:00, parent b628ba7). Both are on main and
+      round3; 0264efa is additionally on standard. Both introduce the cmov_int16 call, and
+      their ref/poly.c differs only incidentally -- int32_t versus int16_t for a local, a
+      blank line, and comment whitespace.
+
+      9b8d306 is the correct target for two reasons: CVE-2024-37880 names it, and its
+      parent b628ba7 is exactly the tree the clangover proof of concept reports against,
+      making it the fix applied directly to the demonstrated-vulnerable state.
     ml_kem_status: legacy Kyber (pre-FIPS 203)
     provenance: independent reference implementation
     build_dir: ref
 
-# Planned additions once the positive control is stable. Do not expand before then.
+# Additions that were planned when the positive control was being stabilised. Four of the
+# five were subsequently evaluated and now appear under rq1_rq3_targets above with their
+# pinned commits; they are listed here as completed rather than deleted, so the sequence in
+# which the corpus grew stays legible. Only libcrux remains unevaluated.
 planned:
   - project: pq-code-package/mlkem-native
     role: contemporary high-assurance FIPS 203 baseline (RQ1)
     priority: essential
+    status: evaluated — see rq1_rq3_targets.mlkem-native and F4
   - project: open-quantum-safe/liboqs
     role: integration framework; check whether result is inherited from mlkem-native
     priority: essential
     caution: not independent evidence if it vendors mlkem-native
+    status: >
+      evaluated — the caution was borne out. liboqs vendors mlkem-native, so it is a
+      separate project but not independent cryptographic evidence. See F6b.
   - project: cloudflare/circl
     role: independent Go implementation (RQ3)
     priority: high
+    status: evaluated — see rq1_rq3_targets.circl and F5
+  - project: wolfSSL/wolfssl
+    role: second independent C implementation, embedded/TLS context (RQ3)
+    priority: high
+    status: evaluated — see rq1_rq3_targets.wolfssl and F9
   - project: cryspen/libcrux
     role: independent Rust implementation with formal-assurance claims (RQ3)
     priority: medium
+    status: not evaluated — remains an open item
 
 # Instruction classes treated as variable-latency on the measurement host.
 # aarch64 has no integer DIV in the classic x86 sense; udiv/sdiv are the targets.
