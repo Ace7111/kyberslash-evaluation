@@ -151,13 +151,26 @@ python3 scripts/seed_sweep.py /tmp/ks_instr_vuln/timing_harness --samples 20000 
 Call counts should read `ks1_calls=256`, `ks2_calls=1024`. Anything else means a division
 site was missed.
 
-Patched: zero on both modelled columns (no runtime division remains) and t ≈ −0.55 on
-`host_ns`.
+Patched: exactly zero on all three modelled columns, because no runtime division remains
+and the instrumented wrapper is never called. The archived patched run records `host_ns` at
++6.80 ns, t = 0.27, d = 0.003 — not detected, which is the expected outcome on a
+constant-latency divider.
 
-**Same seed, same numbers.** The harness supplies its own deterministic `randombytes()`,
-so the keypair and fixed ciphertext are derived from the seed. A rerun with the same seed
-reproduces these figures exactly; verify the archived datasets with
-`shasum -a 256 -c results/raw/SHA256SUMS`.
+**Same seed, same inputs — but only the modelled columns reproduce numerically.** The
+harness supplies its own deterministic `randombytes()`, so the keypair, the fixed ciphertext
+and the class assignment are all derived from the seed. What follows from that differs by
+column:
+
+- **The modelled columns reproduce exactly.** `ks1_cycles`, `ks2_cycles` and
+  `modelled_cycles` are computed from the executed operands by the divider model, with no
+  hardware term, so a rerun at the same seed returns identical values.
+- **`host_ns` does not.** It is a physical measurement taken on a general-purpose host
+  under whatever load that host is carrying, so a rerun reproduces its *distribution* and
+  its qualitative verdict — not the exact difference, t or d quoted above. Read the
+  archived `host_ns` figures as the values recorded in that dataset, not as a target a
+  fresh run is expected to hit.
+
+Verify the archived datasets themselves with `shasum -a 256 -c results/raw/SHA256SUMS`.
 
 **Different seed, different key — and KyberSlash2 may change sign.** Across keys,
 `ks1_cycles` is reliably positive with |d| between 8 and 13, while `ks2_cycles` ranges

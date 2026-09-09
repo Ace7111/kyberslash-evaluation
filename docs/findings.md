@@ -65,7 +65,8 @@ variable dividers (AMD Zen 2, SiFive U74).
 The operands reaching the division are secret-dependent regardless of host divider speed.
 The harness therefore records a modelled Cortex-M4 divider cost *and* real host time per
 decapsulation, counting the two variants separately. Key generation is deterministic from
-the seed, so these figures reproduce exactly.
+the seed, so the modelled columns below reproduce exactly on a rerun; `host_ns` is a
+physical measurement and reproduces in distribution rather than as an identical value.
 
 **Canonical run — vulnerable `a621b8d`, 40,000 samples, GCC 16.1.0 `-O2`, ML-KEM-768,
 seed 20260801:**
