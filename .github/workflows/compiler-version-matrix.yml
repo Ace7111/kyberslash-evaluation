@@ -6,9 +6,16 @@
 # only on aarch64; no controlled reproduction was attempted on x86-64, the ISA the published
 # proof of concept reports.
 #
-# The design fixes the architecture at x86-64 and varies only the Clang release, across the
+# The design fixes the architecture per cell and varies only the Clang release, across the
 # v15-18 range the proof of concept names, at the optimisation settings it reports. Source
-# revisions are pinned. Branch counts are NOT treated as findings: each build is screened for a
+# revisions are pinned.
+#
+# Three revisions are built, not two. RQ2 asks about the *current* reference implementation, and
+# current HEAD da52c4d is not merely a copy of the post-fix revision: poly_frommsg is
+# byte-identical, but cmov_int16 in verify.c gained an __asm__("" : "+r"(b)) barrier that
+# 9b8d306 does not carry. Upstream's own comment explains it is there for consumers who copy the
+# code or change how it is built. Testing only 9b8d306 would characterise the historical fix and
+# leave the implementation the question actually names untested. Branch counts are NOT treated as findings: each build is screened for a
 # genuinely secret-dependent branch, and the disassembly is archived so every classification
 # can be checked by hand.
 #
@@ -50,7 +57,7 @@ jobs:
       fail-fast: false
       matrix:
         clang: ['15', '16', '17', '18']
-        revision: [prefix, postfix]
+        revision: [prefix, postfix, current]
         target: [x86_64, aarch64]
     steps:
       - uses: actions/checkout@v4
@@ -88,11 +95,11 @@ jobs:
         if: steps.cc.outputs.available == 'true'
         run: |
           git clone -q https://github.com/pq-crystals/kyber.git kyber
-          if [ "${{ matrix.revision }}" = "prefix" ]; then
-            REV=272125f6acc8e8b6850fd68ceb901a660ff48196
-          else
-            REV=9b8d30698a3e7449aeb34e62339d4176f11e3c6c
-          fi
+          case "${{ matrix.revision }}" in
+            prefix)  REV=272125f6acc8e8b6850fd68ceb901a660ff48196 ;;
+            postfix) REV=9b8d30698a3e7449aeb34e62339d4176f11e3c6c ;;
+            current) REV=da52c4d60a73d745cabdf70829eb1e6a64ccce2f ;;
+          esac
           git -C kyber checkout -q "$REV"
           echo "REV=$REV" >> "$GITHUB_ENV"
           git -C kyber rev-parse HEAD
