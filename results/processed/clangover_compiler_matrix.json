@@ -1,0 +1,2957 @@
+{
+ "experiment": "controlled compiler-version and architecture matrix for the Clangover class",
+ "method": "poly_frommsg is screened for a conditional branch whose flags derive from memory addressed through the secret message pointer, or from a register tainted by such a load. Branch counts are not treated as findings. The screen carries its own positive control (tests/test_branches.py) and reproduces the manual classification in Section 5.5 on the archived aarch64 disassemblies.",
+ "controls": {
+  "architecture": "fixed per cell; aarch64 reached by cross-compiling with the same clang binary",
+  "source_revision": "pinned",
+  "parameter_set": "ML-KEM-512 (KYBER_K=2)",
+  "varied": [
+   "clang release",
+   "optimisation flags",
+   "target architecture"
+  ]
+ },
+ "clang_releases": [
+  "15.0.7",
+  "16.0.6",
+  "17.0.6",
+  "18.1.3"
+ ],
+ "target_architectures": [
+  "aarch64",
+  "x86_64"
+ ],
+ "flag_settings": [
+  "-O1",
+  "-O2",
+  "-O2 -fno-vectorize",
+  "-O3",
+  "-O3 -fno-vectorize",
+  "-Os"
+ ],
+ "cell_count": 96,
+ "cells": [
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "aarch64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "8318848ced066bc0ceade815a15ac99f2404c33ece730b8d0965b4d6d2916fcd",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang15_aarch64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "aarch64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "aa656ed1eb83e0b47d4c9cf107b3842c7feda30002b59c6f5d07d33700d73769",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang15_aarch64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "aarch64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "8c5a12b09bc5b209b0a1ba56d5e7bb182bd3ef6ced254de379deb68de782330a",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang15_aarch64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "aarch64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "43ce4bacbc275441def52695a20a13c87e0224545574ed622a9cf822d88bc42b",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang15_aarch64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "aarch64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "8c5a12b09bc5b209b0a1ba56d5e7bb182bd3ef6ced254de379deb68de782330a",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang15_aarch64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "aarch64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "7f5fb3b543064e025d27ab75fed033f2668e76f6251e70bac720a2717bc694c8",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang15_aarch64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "x86_64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "cbd00005f88deea58ad0b4fb4654fb6147f8e81560a445e87ac6111911dfbf5c",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang15_x86_64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "x86_64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "b5d6fb3d73c4414e4421d793bb658fce67b730f174b9ca950108dcc6d199bd44",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang15_x86_64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "x86_64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "cbbb6cf88a66402773aba09656ff95c45b76ff2bb1e1827a45a902d9b50a66ff",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang15_x86_64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "x86_64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "bc89308f7a4658e79d757686c44813cb6ffc25ccd41d7085713754af4debfce5",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang15_x86_64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "x86_64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "cbbb6cf88a66402773aba09656ff95c45b76ff2bb1e1827a45a902d9b50a66ff",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang15_x86_64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "x86_64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "589d9e121f4df56ca9699bffb0cb3b9e8739ca9da1dd0429a6979678cc1f88f2",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang15_x86_64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "29aa306bbe25af7f679d8523c1f7320eea9b07ed417113ecbaff1ee27b0d86a3",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang16_aarch64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "a23530e7ec3704219e4624aa714a3ba2fbc31d887c1bf6c75bff8b8dd408496a",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang16_aarch64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "6eae7e7d6e2124805366282229cc8771709337a6a9e163bd036a9f42ec67301a",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang16_aarch64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "3e6adf538d50a7ff25ea91081e612982c239de11417f12ced5411f62710c18b0",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang16_aarch64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "6eae7e7d6e2124805366282229cc8771709337a6a9e163bd036a9f42ec67301a",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang16_aarch64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "aarch64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "f3309f9945573f17a9b51b342f78172b2a48846a17a78b1e35db377db8af6ab6",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang16_aarch64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "a5f29918de8d0bb37a5bfdf789f060a3e773514cab8eb12339391c76370ae06e",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang16_x86_64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "44362a985f9a7feb50efd6c2833549ac50ef1d4eaeb0bbe3ff1e76999c61c45d",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang16_x86_64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "d4761474c9dd47cc9d6a97adcaad8a7d626d43dc6e122ffbd796b285ae3e4a46",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang16_x86_64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "c0a702ef06f12bec9af4b92e2a7c07af9763353461462c8e7ec85770a1e865ca",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang16_x86_64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "d4761474c9dd47cc9d6a97adcaad8a7d626d43dc6e122ffbd796b285ae3e4a46",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang16_x86_64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "x86_64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "a066df0bcc329928f35aba65fffe602270c845ee26c436f766097281b909efb1",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang16_x86_64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "5f82d9029f367306ff629af09bd5ecc0d1d24694bf1fd867d12e25f4b8bf30fc",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang17_aarch64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "28c3e31cfad676f902e7285e00d53e11c82c191af1facb94434b35d987ead0b0",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang17_aarch64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "d4fa5b48e311350ee4ad992a68146b683d54554ceebebf125ec917e273f412bf",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang17_aarch64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "ccb47c0e2f1120d95278e59cd6a373fe85d0709689f86a41508880fcacb78383",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang17_aarch64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "d4fa5b48e311350ee4ad992a68146b683d54554ceebebf125ec917e273f412bf",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang17_aarch64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "aarch64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "c1d724d780bfc4391ce0ce21fb6bd606af98a62466f038b64826fa092d369e9a",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang17_aarch64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "640df283d68950437bafe2b526e0dbb7c08a0c8b8336afc6c6ba5edfeee09d4f",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang17_x86_64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "fc9dc764249837345ea23464c5f2a011340fa4bce1f3d92e526014e0f319786f",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang17_x86_64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "198601f514a8e30f305ccea08b2e1be7d2ecec9ecb0dbe0cecc9c331b7bc084a",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang17_x86_64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "1b975c4489bb9551f19528de8074a40bc352ac738929893ec133d93045f3ba50",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang17_x86_64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "198601f514a8e30f305ccea08b2e1be7d2ecec9ecb0dbe0cecc9c331b7bc084a",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang17_x86_64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "x86_64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "cffb3573a2ce10d572b3109ad84980624bcd8f6a1efd1e87f16c65b876c963c3",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang17_x86_64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "aarch64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "e3a2e2f3fc01a987c15b73a47ff445645fd94509ecc8f211e9b65fe6e69d30d4",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang18_aarch64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "aarch64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "db4c092a9b526a22a4c5d70957c0f07f25b5f92bde1e625f900c6dc8aa258abb",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang18_aarch64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "aarch64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "ad1970e26fcb3ed14151649f329c4e7159d7b8ea22350f8dcf4e5ff96359df02",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang18_aarch64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "aarch64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "ccb582d072bd78e131bf96cee154e1492f11e7c6c9c5d63167f9fbe0d8f2c9db",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang18_aarch64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "aarch64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "ad1970e26fcb3ed14151649f329c4e7159d7b8ea22350f8dcf4e5ff96359df02",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang18_aarch64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "aarch64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "8475800e6e2634ced68da8faaabc75f940d3437eabca945a2a0e6aa995ab7f9b",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang18_aarch64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "x86_64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "f659f832913dad8fffbc56887e64a112c4d3787ab6bd737ef99baf355200ee0e",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang18_x86_64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "x86_64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "8577e52f2477805f3e1cca3f19694910d57ecd9dab3bd1afb256361771cd093e",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang18_x86_64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "x86_64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "8a3bc246bcfa511c48a33eaecc4ca293e083895ac7a0e1713f9ddd84e783ee68",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang18_x86_64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "x86_64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "7d16e0c0428ec60bc0e10158c4613391f59846b7b7185757cb9c469c1f62851e",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang18_x86_64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "x86_64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "8a3bc246bcfa511c48a33eaecc4ca293e083895ac7a0e1713f9ddd84e783ee68",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang18_x86_64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "postfix",
+   "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "x86_64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "797459edbba9c78326fec7c6ca7b81bd430bbb96e199fe64732ae32102fc5b32",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "postfix_clang18_x86_64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "aarch64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "da047f155dce8c1821bfa3b4f4e80facf9e8e7ac5578f61790f0d2f9dadc5366",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang15_aarch64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "aarch64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "b31a332c9a5b4b7b814d12c4c621a1734c89ebd670168539a3a3c89288ceb1d3",
+   "conditional_branches": 3,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang15_aarch64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "aarch64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "4068298e12fdb4f602afe22a4a76216e02ffed62719e77549b633f45ce0c3933",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang15_aarch64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "aarch64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "a9f5444be5b668d70bd8c7412f3bab5783be872536dec235b2e3b7ca73e85301",
+   "conditional_branches": 3,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang15_aarch64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "aarch64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "4068298e12fdb4f602afe22a4a76216e02ffed62719e77549b633f45ce0c3933",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang15_aarch64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "aarch64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "d013260c23ff058b8cda58d6c36e7e4b29b3708d3d0d62d75144ec3ee72a2471",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang15_aarch64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "x86_64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "0ee8adb9025c03f6e0dd9e1bf0b2a41b3e28f2d32f2ac91f8801397869020c95",
+   "conditional_branches": 3,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang15_x86_64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "x86_64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "ca6817ed761b452434e49784e78f3bf408abffa59b1ba7a04eeb57cfe2ed1b7d",
+   "conditional_branches": 11,
+   "secret_dependent_branches": 8,
+   "verdict": "SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang15_x86_64_O2.dis",
+   "secret_dependent_detail": [
+    {
+     "addr": "afd",
+     "insn": "je b04 <pqcrystals_kyber512_ref_poly_frommsg+0x54>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x1,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b11",
+     "insn": "je b18 <pqcrystals_kyber512_ref_poly_frommsg+0x68>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b25",
+     "insn": "je b2c <pqcrystals_kyber512_ref_poly_frommsg+0x7c>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b39",
+     "insn": "je b40 <pqcrystals_kyber512_ref_poly_frommsg+0x90>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b4d",
+     "insn": "je b54 <pqcrystals_kyber512_ref_poly_frommsg+0xa4>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b61",
+     "insn": "je b68 <pqcrystals_kyber512_ref_poly_frommsg+0xb8>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b75",
+     "insn": "je b7c <pqcrystals_kyber512_ref_poly_frommsg+0xcc>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b89",
+     "insn": "jns ae0 <pqcrystals_kyber512_ref_poly_frommsg+0x30>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    }
+   ]
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "x86_64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "d51ec78f4df9ae01fa0b1218f9e9061ff70ff8833f21100878559dbfc7f33fd6",
+   "conditional_branches": 9,
+   "secret_dependent_branches": 8,
+   "verdict": "SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang15_x86_64_O2fnovectorize.dis",
+   "secret_dependent_detail": [
+    {
+     "addr": "24d",
+     "insn": "je 254 <pqcrystals_kyber512_ref_poly_frommsg+0x34>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x1,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "261",
+     "insn": "je 268 <pqcrystals_kyber512_ref_poly_frommsg+0x48>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "275",
+     "insn": "je 27c <pqcrystals_kyber512_ref_poly_frommsg+0x5c>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "289",
+     "insn": "je 290 <pqcrystals_kyber512_ref_poly_frommsg+0x70>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "29d",
+     "insn": "je 2a4 <pqcrystals_kyber512_ref_poly_frommsg+0x84>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2b1",
+     "insn": "je 2b8 <pqcrystals_kyber512_ref_poly_frommsg+0x98>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2c5",
+     "insn": "je 2cc <pqcrystals_kyber512_ref_poly_frommsg+0xac>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2d9",
+     "insn": "jns 230 <pqcrystals_kyber512_ref_poly_frommsg+0x10>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    }
+   ]
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "x86_64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "23e9b71f384c51516e2ac18b23d0e09f3a1bd09071a0dac0a5b6c0c188166b98",
+   "conditional_branches": 18,
+   "secret_dependent_branches": 15,
+   "verdict": "SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang15_x86_64_O3.dis",
+   "secret_dependent_detail": [
+    {
+     "addr": "afd",
+     "insn": "je bb0 <pqcrystals_kyber512_ref_poly_frommsg+0x100>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x1,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b15",
+     "insn": "jne bc3 <pqcrystals_kyber512_ref_poly_frommsg+0x113>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b28",
+     "insn": "je bdb <pqcrystals_kyber512_ref_poly_frommsg+0x12b>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b40",
+     "insn": "jne bee <pqcrystals_kyber512_ref_poly_frommsg+0x13e>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b53",
+     "insn": "je c06 <pqcrystals_kyber512_ref_poly_frommsg+0x156>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b6b",
+     "insn": "jne c19 <pqcrystals_kyber512_ref_poly_frommsg+0x169>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b7e",
+     "insn": "je c31 <pqcrystals_kyber512_ref_poly_frommsg+0x181>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b96",
+     "insn": "jns ae0 <pqcrystals_kyber512_ref_poly_frommsg+0x30>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "bbd",
+     "insn": "je b1b <pqcrystals_kyber512_ref_poly_frommsg+0x6b>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "bd5",
+     "insn": "jne b2e <pqcrystals_kyber512_ref_poly_frommsg+0x7e>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "be8",
+     "insn": "je b46 <pqcrystals_kyber512_ref_poly_frommsg+0x96>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "c00",
+     "insn": "jne b59 <pqcrystals_kyber512_ref_poly_frommsg+0xa9>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "c13",
+     "insn": "je b71 <pqcrystals_kyber512_ref_poly_frommsg+0xc1>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "c2b",
+     "insn": "jne b84 <pqcrystals_kyber512_ref_poly_frommsg+0xd4>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "c3e",
+     "insn": "jns ae0 <pqcrystals_kyber512_ref_poly_frommsg+0x30>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    }
+   ]
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "x86_64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "2d4dfefd440448d234c6778fe02e6694baa2b7ac81a61ba59bb662f26a2031c9",
+   "conditional_branches": 16,
+   "secret_dependent_branches": 15,
+   "verdict": "SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang15_x86_64_O3fnovectorize.dis",
+   "secret_dependent_detail": [
+    {
+     "addr": "24d",
+     "insn": "jne 2e0 <pqcrystals_kyber512_ref_poly_frommsg+0xc0>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x1,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "260",
+     "insn": "jne 2f8 <pqcrystals_kyber512_ref_poly_frommsg+0xd8>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "273",
+     "insn": "jne 310 <pqcrystals_kyber512_ref_poly_frommsg+0xf0>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "286",
+     "insn": "jne 328 <pqcrystals_kyber512_ref_poly_frommsg+0x108>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "299",
+     "insn": "jne 340 <pqcrystals_kyber512_ref_poly_frommsg+0x120>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2ac",
+     "insn": "jne 358 <pqcrystals_kyber512_ref_poly_frommsg+0x138>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2bf",
+     "insn": "jne 370 <pqcrystals_kyber512_ref_poly_frommsg+0x150>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2d2",
+     "insn": "jns 230 <pqcrystals_kyber512_ref_poly_frommsg+0x10>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2f2",
+     "insn": "je 266 <pqcrystals_kyber512_ref_poly_frommsg+0x46>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "30a",
+     "insn": "je 279 <pqcrystals_kyber512_ref_poly_frommsg+0x59>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "322",
+     "insn": "je 28c <pqcrystals_kyber512_ref_poly_frommsg+0x6c>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "33a",
+     "insn": "je 29f <pqcrystals_kyber512_ref_poly_frommsg+0x7f>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "352",
+     "insn": "je 2b2 <pqcrystals_kyber512_ref_poly_frommsg+0x92>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "36a",
+     "insn": "je 2c5 <pqcrystals_kyber512_ref_poly_frommsg+0xa5>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "382",
+     "insn": "jns 230 <pqcrystals_kyber512_ref_poly_frommsg+0x10>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    }
+   ]
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "x86_64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "fdf15297627739bcc3910a3cb3268d9fce17717140d15b2818e8eb5724d2644d",
+   "conditional_branches": 3,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang15_x86_64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "a09c68fe4e0611afc23a5d7114c5fc9201f049990de4ff444790a7f120b93f2e",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang16_aarch64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "33619d7119f6b215b92d32b874f5f584bb70d128c915856a62ebcacc9710d075",
+   "conditional_branches": 3,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang16_aarch64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "23c032957e52afb577507f90896d5147b42243d3e2c421bb4cc990a9313074de",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang16_aarch64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "7dd35a333bc3802fe5ad2e83bc437724bea30743a5fed29a3e3c83550a762228",
+   "conditional_branches": 3,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang16_aarch64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "23c032957e52afb577507f90896d5147b42243d3e2c421bb4cc990a9313074de",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang16_aarch64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "aarch64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "b356a0aec6043713b71d5ded5703451edb07f1e7774afd3a3d6229f911ca0190",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang16_aarch64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "2d78a604d856a25a1033a10208806e7eff156160dd45c65d33539a7c992f7d98",
+   "conditional_branches": 3,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang16_x86_64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "8ed63a7308fd723d1398eeabe4edb3a550278a4e4f1d6ab30e15dd59c4251ac7",
+   "conditional_branches": 12,
+   "secret_dependent_branches": 8,
+   "verdict": "SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang16_x86_64_O2.dis",
+   "secret_dependent_detail": [
+    {
+     "addr": "aed",
+     "insn": "je af4 <pqcrystals_kyber512_ref_poly_frommsg+0x54>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x1,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b01",
+     "insn": "je b08 <pqcrystals_kyber512_ref_poly_frommsg+0x68>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b15",
+     "insn": "je b1c <pqcrystals_kyber512_ref_poly_frommsg+0x7c>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b29",
+     "insn": "je b30 <pqcrystals_kyber512_ref_poly_frommsg+0x90>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b3d",
+     "insn": "je b44 <pqcrystals_kyber512_ref_poly_frommsg+0xa4>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b51",
+     "insn": "je b58 <pqcrystals_kyber512_ref_poly_frommsg+0xb8>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b65",
+     "insn": "je b6c <pqcrystals_kyber512_ref_poly_frommsg+0xcc>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b79",
+     "insn": "jns ad0 <pqcrystals_kyber512_ref_poly_frommsg+0x30>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    }
+   ]
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "6912202d03ced203cfb00381f1cda84f73123a6dca0fc97b190e4f6771b03c29",
+   "conditional_branches": 9,
+   "secret_dependent_branches": 8,
+   "verdict": "SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang16_x86_64_O2fnovectorize.dis",
+   "secret_dependent_detail": [
+    {
+     "addr": "24d",
+     "insn": "je 254 <pqcrystals_kyber512_ref_poly_frommsg+0x34>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x1,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "261",
+     "insn": "je 268 <pqcrystals_kyber512_ref_poly_frommsg+0x48>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "275",
+     "insn": "je 27c <pqcrystals_kyber512_ref_poly_frommsg+0x5c>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "289",
+     "insn": "je 290 <pqcrystals_kyber512_ref_poly_frommsg+0x70>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "29d",
+     "insn": "je 2a4 <pqcrystals_kyber512_ref_poly_frommsg+0x84>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2b1",
+     "insn": "je 2b8 <pqcrystals_kyber512_ref_poly_frommsg+0x98>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2c5",
+     "insn": "je 2cc <pqcrystals_kyber512_ref_poly_frommsg+0xac>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2d9",
+     "insn": "jns 230 <pqcrystals_kyber512_ref_poly_frommsg+0x10>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    }
+   ]
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "3bd39bcbe4146d2354dc85ebfd962d2fb83e2310ef79cff6c2ea195300a496f5",
+   "conditional_branches": 18,
+   "secret_dependent_branches": 15,
+   "verdict": "SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang16_x86_64_O3.dis",
+   "secret_dependent_detail": [
+    {
+     "addr": "aed",
+     "insn": "je ba0 <pqcrystals_kyber512_ref_poly_frommsg+0x100>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x1,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b05",
+     "insn": "jne bb3 <pqcrystals_kyber512_ref_poly_frommsg+0x113>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b18",
+     "insn": "je bcb <pqcrystals_kyber512_ref_poly_frommsg+0x12b>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b30",
+     "insn": "jne bde <pqcrystals_kyber512_ref_poly_frommsg+0x13e>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b43",
+     "insn": "je bf6 <pqcrystals_kyber512_ref_poly_frommsg+0x156>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b5b",
+     "insn": "jne c09 <pqcrystals_kyber512_ref_poly_frommsg+0x169>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b6e",
+     "insn": "je c21 <pqcrystals_kyber512_ref_poly_frommsg+0x181>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b86",
+     "insn": "jns ad0 <pqcrystals_kyber512_ref_poly_frommsg+0x30>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "bad",
+     "insn": "je b0b <pqcrystals_kyber512_ref_poly_frommsg+0x6b>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "bc5",
+     "insn": "jne b1e <pqcrystals_kyber512_ref_poly_frommsg+0x7e>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "bd8",
+     "insn": "je b36 <pqcrystals_kyber512_ref_poly_frommsg+0x96>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "bf0",
+     "insn": "jne b49 <pqcrystals_kyber512_ref_poly_frommsg+0xa9>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "c03",
+     "insn": "je b61 <pqcrystals_kyber512_ref_poly_frommsg+0xc1>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "c1b",
+     "insn": "jne b74 <pqcrystals_kyber512_ref_poly_frommsg+0xd4>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "c2e",
+     "insn": "jns ad0 <pqcrystals_kyber512_ref_poly_frommsg+0x30>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    }
+   ]
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "1e382c2ae4dec2d5df656d66153c45d56d7dedd2460f7c8dcdbbcdf220c55cf6",
+   "conditional_branches": 16,
+   "secret_dependent_branches": 15,
+   "verdict": "SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang16_x86_64_O3fnovectorize.dis",
+   "secret_dependent_detail": [
+    {
+     "addr": "24d",
+     "insn": "jne 2e0 <pqcrystals_kyber512_ref_poly_frommsg+0xc0>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x1,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "260",
+     "insn": "jne 2f8 <pqcrystals_kyber512_ref_poly_frommsg+0xd8>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "273",
+     "insn": "jne 310 <pqcrystals_kyber512_ref_poly_frommsg+0xf0>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "286",
+     "insn": "jne 328 <pqcrystals_kyber512_ref_poly_frommsg+0x108>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "299",
+     "insn": "jne 340 <pqcrystals_kyber512_ref_poly_frommsg+0x120>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2ac",
+     "insn": "jne 358 <pqcrystals_kyber512_ref_poly_frommsg+0x138>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2bf",
+     "insn": "jne 370 <pqcrystals_kyber512_ref_poly_frommsg+0x150>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2d2",
+     "insn": "jns 230 <pqcrystals_kyber512_ref_poly_frommsg+0x10>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2f2",
+     "insn": "je 266 <pqcrystals_kyber512_ref_poly_frommsg+0x46>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "30a",
+     "insn": "je 279 <pqcrystals_kyber512_ref_poly_frommsg+0x59>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "322",
+     "insn": "je 28c <pqcrystals_kyber512_ref_poly_frommsg+0x6c>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "33a",
+     "insn": "je 29f <pqcrystals_kyber512_ref_poly_frommsg+0x7f>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "352",
+     "insn": "je 2b2 <pqcrystals_kyber512_ref_poly_frommsg+0x92>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "36a",
+     "insn": "je 2c5 <pqcrystals_kyber512_ref_poly_frommsg+0xa5>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "382",
+     "insn": "jns 230 <pqcrystals_kyber512_ref_poly_frommsg+0x10>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    }
+   ]
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "x86_64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "2153b69a5fb1bbebdd6d892f864c8b63b7e182ab36a851909f18968b8facc8a8",
+   "conditional_branches": 3,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang16_x86_64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "38339b8d718ebdd195b26a2ecf38f8f5d05ef9722a2f9be437f0b0d5cf7edf17",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang17_aarch64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "b4c91ba189864051d5f9b0921f07dd3fe18e027bb5ab23016418fef14b2862fd",
+   "conditional_branches": 3,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang17_aarch64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "cf15db874ff86fdd38926c9dfb3070bebac22e955ea51974963f24a8fce627d7",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang17_aarch64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "4e20788f616113b8941e6be0ef91610e3c18c24c0cbf0837fdb1a68da0ebaebf",
+   "conditional_branches": 3,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang17_aarch64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "cf15db874ff86fdd38926c9dfb3070bebac22e955ea51974963f24a8fce627d7",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang17_aarch64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "aarch64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "2aa96605ea5ee135feb9d7043df22b232bf523103d4432892dacd60274419a99",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang17_aarch64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "83a00ac62d2c9d87b963cc2f80fa32ee0755679fecac2d98eda1c0195b64b486",
+   "conditional_branches": 3,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang17_x86_64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "9790bf9a5220db705fb9094caa0bf9e61efc0e7368727e022db1605467bc31e6",
+   "conditional_branches": 12,
+   "secret_dependent_branches": 8,
+   "verdict": "SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang17_x86_64_O2.dis",
+   "secret_dependent_detail": [
+    {
+     "addr": "b0d",
+     "insn": "je b14 <pqcrystals_kyber512_ref_poly_frommsg+0x54>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x1,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b21",
+     "insn": "je b28 <pqcrystals_kyber512_ref_poly_frommsg+0x68>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b35",
+     "insn": "je b3c <pqcrystals_kyber512_ref_poly_frommsg+0x7c>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b49",
+     "insn": "je b50 <pqcrystals_kyber512_ref_poly_frommsg+0x90>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b5d",
+     "insn": "je b64 <pqcrystals_kyber512_ref_poly_frommsg+0xa4>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b71",
+     "insn": "je b78 <pqcrystals_kyber512_ref_poly_frommsg+0xb8>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b85",
+     "insn": "je b8c <pqcrystals_kyber512_ref_poly_frommsg+0xcc>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b99",
+     "insn": "jns af0 <pqcrystals_kyber512_ref_poly_frommsg+0x30>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    }
+   ]
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "04ab8d9c72e92de432ac67a11035929a7db0c846ae88a53ed83a3570d729c9c7",
+   "conditional_branches": 9,
+   "secret_dependent_branches": 8,
+   "verdict": "SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang17_x86_64_O2fnovectorize.dis",
+   "secret_dependent_detail": [
+    {
+     "addr": "24d",
+     "insn": "je 254 <pqcrystals_kyber512_ref_poly_frommsg+0x34>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x1,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "261",
+     "insn": "je 268 <pqcrystals_kyber512_ref_poly_frommsg+0x48>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "275",
+     "insn": "je 27c <pqcrystals_kyber512_ref_poly_frommsg+0x5c>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "289",
+     "insn": "je 290 <pqcrystals_kyber512_ref_poly_frommsg+0x70>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "29d",
+     "insn": "je 2a4 <pqcrystals_kyber512_ref_poly_frommsg+0x84>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2b1",
+     "insn": "je 2b8 <pqcrystals_kyber512_ref_poly_frommsg+0x98>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2c5",
+     "insn": "je 2cc <pqcrystals_kyber512_ref_poly_frommsg+0xac>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2d9",
+     "insn": "jns 230 <pqcrystals_kyber512_ref_poly_frommsg+0x10>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    }
+   ]
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "f2fc793a6097caca420d164b9e193257e35fc20ae7a0ff2e39ed939aeecfaf35",
+   "conditional_branches": 18,
+   "secret_dependent_branches": 15,
+   "verdict": "SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang17_x86_64_O3.dis",
+   "secret_dependent_detail": [
+    {
+     "addr": "b0d",
+     "insn": "je bc0 <pqcrystals_kyber512_ref_poly_frommsg+0x100>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x1,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b25",
+     "insn": "jne bd3 <pqcrystals_kyber512_ref_poly_frommsg+0x113>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b38",
+     "insn": "je beb <pqcrystals_kyber512_ref_poly_frommsg+0x12b>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b50",
+     "insn": "jne bfe <pqcrystals_kyber512_ref_poly_frommsg+0x13e>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b63",
+     "insn": "je c16 <pqcrystals_kyber512_ref_poly_frommsg+0x156>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b7b",
+     "insn": "jne c29 <pqcrystals_kyber512_ref_poly_frommsg+0x169>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b8e",
+     "insn": "je c41 <pqcrystals_kyber512_ref_poly_frommsg+0x181>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "ba6",
+     "insn": "jns af0 <pqcrystals_kyber512_ref_poly_frommsg+0x30>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "bcd",
+     "insn": "je b2b <pqcrystals_kyber512_ref_poly_frommsg+0x6b>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "be5",
+     "insn": "jne b3e <pqcrystals_kyber512_ref_poly_frommsg+0x7e>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "bf8",
+     "insn": "je b56 <pqcrystals_kyber512_ref_poly_frommsg+0x96>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "c10",
+     "insn": "jne b69 <pqcrystals_kyber512_ref_poly_frommsg+0xa9>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "c23",
+     "insn": "je b81 <pqcrystals_kyber512_ref_poly_frommsg+0xc1>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "c3b",
+     "insn": "jne b94 <pqcrystals_kyber512_ref_poly_frommsg+0xd4>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "c4e",
+     "insn": "jns af0 <pqcrystals_kyber512_ref_poly_frommsg+0x30>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    }
+   ]
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "984e0338491cbd1d240564354983092d9b13343a6c2c9170342bfb01e3b80584",
+   "conditional_branches": 16,
+   "secret_dependent_branches": 15,
+   "verdict": "SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang17_x86_64_O3fnovectorize.dis",
+   "secret_dependent_detail": [
+    {
+     "addr": "24d",
+     "insn": "jne 2e0 <pqcrystals_kyber512_ref_poly_frommsg+0xc0>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x1,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "260",
+     "insn": "jne 2f8 <pqcrystals_kyber512_ref_poly_frommsg+0xd8>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "273",
+     "insn": "jne 310 <pqcrystals_kyber512_ref_poly_frommsg+0xf0>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "286",
+     "insn": "jne 328 <pqcrystals_kyber512_ref_poly_frommsg+0x108>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "299",
+     "insn": "jne 340 <pqcrystals_kyber512_ref_poly_frommsg+0x120>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2ac",
+     "insn": "jne 358 <pqcrystals_kyber512_ref_poly_frommsg+0x138>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2bf",
+     "insn": "jne 370 <pqcrystals_kyber512_ref_poly_frommsg+0x150>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2d2",
+     "insn": "jns 230 <pqcrystals_kyber512_ref_poly_frommsg+0x10>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2f2",
+     "insn": "je 266 <pqcrystals_kyber512_ref_poly_frommsg+0x46>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "30a",
+     "insn": "je 279 <pqcrystals_kyber512_ref_poly_frommsg+0x59>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "322",
+     "insn": "je 28c <pqcrystals_kyber512_ref_poly_frommsg+0x6c>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "33a",
+     "insn": "je 29f <pqcrystals_kyber512_ref_poly_frommsg+0x7f>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "352",
+     "insn": "je 2b2 <pqcrystals_kyber512_ref_poly_frommsg+0x92>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "36a",
+     "insn": "je 2c5 <pqcrystals_kyber512_ref_poly_frommsg+0xa5>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "382",
+     "insn": "jns 230 <pqcrystals_kyber512_ref_poly_frommsg+0x10>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    }
+   ]
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "x86_64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "8585775d5d15df976df6ee38d8787e3311cb100b0504e7fff06118b242d35b51",
+   "conditional_branches": 3,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang17_x86_64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "aarch64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "cc9e3e9b07413cde7c9ca7db35596260a3adec9e8d2197d2b4e85d430b39e4ec",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang18_aarch64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "aarch64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "0e3978bc7915db7ca55f63d6a8d2e0128d4916ca5a0c56d7242bfa0b2eb93772",
+   "conditional_branches": 3,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang18_aarch64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "aarch64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "523502d55e35cd339be29435db3f3f9074c8ac912241580b5f4333d53ae4421b",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang18_aarch64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "aarch64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "72c086de51e2194321348c80c212fb4b8ada5c5ec8d19771f40f51fce1fac708",
+   "conditional_branches": 3,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang18_aarch64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "aarch64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "523502d55e35cd339be29435db3f3f9074c8ac912241580b5f4333d53ae4421b",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang18_aarch64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "aarch64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "bae6fe4987ad0866ad5ae12c72814aa43757f30b264306a8e76daee2610fb6ac",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang18_aarch64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "x86_64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "514fe3945647ffdcf921b80f93a2e2f692121e9b7e1e71f39db66780d45f4614",
+   "conditional_branches": 3,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang18_x86_64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "x86_64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "d8b586ca8060eb38d4f7348de115f550722532f7f38ae9b6691fc8e2ce74be21",
+   "conditional_branches": 12,
+   "secret_dependent_branches": 8,
+   "verdict": "SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang18_x86_64_O2.dis",
+   "secret_dependent_detail": [
+    {
+     "addr": "b2d",
+     "insn": "je b34 <pqcrystals_kyber512_ref_poly_frommsg+0x54>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x1,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b41",
+     "insn": "je b48 <pqcrystals_kyber512_ref_poly_frommsg+0x68>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b55",
+     "insn": "je b5c <pqcrystals_kyber512_ref_poly_frommsg+0x7c>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b69",
+     "insn": "je b70 <pqcrystals_kyber512_ref_poly_frommsg+0x90>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b7d",
+     "insn": "je b84 <pqcrystals_kyber512_ref_poly_frommsg+0xa4>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b91",
+     "insn": "je b98 <pqcrystals_kyber512_ref_poly_frommsg+0xb8>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "ba5",
+     "insn": "je bac <pqcrystals_kyber512_ref_poly_frommsg+0xcc>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "bb9",
+     "insn": "jns b10 <pqcrystals_kyber512_ref_poly_frommsg+0x30>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    }
+   ]
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "x86_64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "8b6aad015dcb20b762fdc510556db77f38f9c46fd115953adb5cb6ad66865047",
+   "conditional_branches": 9,
+   "secret_dependent_branches": 8,
+   "verdict": "SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang18_x86_64_O2fnovectorize.dis",
+   "secret_dependent_detail": [
+    {
+     "addr": "24d",
+     "insn": "je 254 <pqcrystals_kyber512_ref_poly_frommsg+0x34>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x1,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "261",
+     "insn": "je 268 <pqcrystals_kyber512_ref_poly_frommsg+0x48>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "275",
+     "insn": "je 27c <pqcrystals_kyber512_ref_poly_frommsg+0x5c>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "289",
+     "insn": "je 290 <pqcrystals_kyber512_ref_poly_frommsg+0x70>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "29d",
+     "insn": "je 2a4 <pqcrystals_kyber512_ref_poly_frommsg+0x84>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2b1",
+     "insn": "je 2b8 <pqcrystals_kyber512_ref_poly_frommsg+0x98>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2c5",
+     "insn": "je 2cc <pqcrystals_kyber512_ref_poly_frommsg+0xac>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2d9",
+     "insn": "jns 230 <pqcrystals_kyber512_ref_poly_frommsg+0x10>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    }
+   ]
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "x86_64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "8920d24ab38c65a073a7d5d3683f7dfee780102252aa7057fc873d72189ce9cd",
+   "conditional_branches": 18,
+   "secret_dependent_branches": 15,
+   "verdict": "SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang18_x86_64_O3.dis",
+   "secret_dependent_detail": [
+    {
+     "addr": "b2d",
+     "insn": "je be0 <pqcrystals_kyber512_ref_poly_frommsg+0x100>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x1,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b45",
+     "insn": "jne bf3 <pqcrystals_kyber512_ref_poly_frommsg+0x113>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b58",
+     "insn": "je c0b <pqcrystals_kyber512_ref_poly_frommsg+0x12b>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b70",
+     "insn": "jne c1e <pqcrystals_kyber512_ref_poly_frommsg+0x13e>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b83",
+     "insn": "je c36 <pqcrystals_kyber512_ref_poly_frommsg+0x156>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "b9b",
+     "insn": "jne c49 <pqcrystals_kyber512_ref_poly_frommsg+0x169>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "bae",
+     "insn": "je c61 <pqcrystals_kyber512_ref_poly_frommsg+0x181>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "bc6",
+     "insn": "jns b10 <pqcrystals_kyber512_ref_poly_frommsg+0x30>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "bed",
+     "insn": "je b4b <pqcrystals_kyber512_ref_poly_frommsg+0x6b>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "c05",
+     "insn": "jne b5e <pqcrystals_kyber512_ref_poly_frommsg+0x7e>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "c18",
+     "insn": "je b76 <pqcrystals_kyber512_ref_poly_frommsg+0x96>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "c30",
+     "insn": "jne b89 <pqcrystals_kyber512_ref_poly_frommsg+0xa9>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "c43",
+     "insn": "je ba1 <pqcrystals_kyber512_ref_poly_frommsg+0xc1>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "c5b",
+     "insn": "jne bb4 <pqcrystals_kyber512_ref_poly_frommsg+0xd4>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "c6e",
+     "insn": "jns b10 <pqcrystals_kyber512_ref_poly_frommsg+0x30>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    }
+   ]
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "x86_64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "646f3bfaa07d5af4e4a5878b16d171bb45a5a6ea671762007890cd5038ecf75d",
+   "conditional_branches": 16,
+   "secret_dependent_branches": 15,
+   "verdict": "SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang18_x86_64_O3fnovectorize.dis",
+   "secret_dependent_detail": [
+    {
+     "addr": "24d",
+     "insn": "jne 2e0 <pqcrystals_kyber512_ref_poly_frommsg+0xc0>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x1,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "260",
+     "insn": "jne 2f8 <pqcrystals_kyber512_ref_poly_frommsg+0xd8>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "273",
+     "insn": "jne 310 <pqcrystals_kyber512_ref_poly_frommsg+0xf0>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "286",
+     "insn": "jne 328 <pqcrystals_kyber512_ref_poly_frommsg+0x108>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "299",
+     "insn": "jne 340 <pqcrystals_kyber512_ref_poly_frommsg+0x120>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2ac",
+     "insn": "jne 358 <pqcrystals_kyber512_ref_poly_frommsg+0x138>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2bf",
+     "insn": "jne 370 <pqcrystals_kyber512_ref_poly_frommsg+0x150>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2d2",
+     "insn": "jns 230 <pqcrystals_kyber512_ref_poly_frommsg+0x10>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "2f2",
+     "insn": "je 266 <pqcrystals_kyber512_ref_poly_frommsg+0x46>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x2,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "30a",
+     "insn": "je 279 <pqcrystals_kyber512_ref_poly_frommsg+0x59>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x4,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "322",
+     "insn": "je 28c <pqcrystals_kyber512_ref_poly_frommsg+0x6c>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x8,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "33a",
+     "insn": "je 29f <pqcrystals_kyber512_ref_poly_frommsg+0x7f>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x10,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "352",
+     "insn": "je 2b2 <pqcrystals_kyber512_ref_poly_frommsg+0x92>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x20,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "36a",
+     "insn": "je 2c5 <pqcrystals_kyber512_ref_poly_frommsg+0xa5>",
+     "secret_dependent": true,
+     "reason": "flags from `testb $0x40,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    },
+    {
+     "addr": "382",
+     "insn": "jns 230 <pqcrystals_kyber512_ref_poly_frommsg+0x10>",
+     "secret_dependent": true,
+     "reason": "flags from `cmpb $0x0,(%rsi,%rax,1)` on memory addressed through the secret pointer"
+    }
+   ]
+  },
+  {
+   "revision": "prefix",
+   "revision_commit": "272125f6acc8e8b6850fd68ceb901a660ff48196",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "x86_64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "cc81778bc9d681777f153abc9c703a90fdaafc8f8d8104c04090fca9b4fe54b8",
+   "conditional_branches": 3,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "prefix_clang18_x86_64_Os.dis",
+   "secret_dependent_detail": []
+  }
+ ],
+ "release_invariance": {
+  "postfix|aarch64|-O1": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "postfix|aarch64|-O2": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "postfix|aarch64|-O2 -fno-vectorize": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "postfix|aarch64|-O3": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "postfix|aarch64|-O3 -fno-vectorize": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "postfix|aarch64|-Os": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "postfix|x86_64|-O1": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "postfix|x86_64|-O2": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "postfix|x86_64|-O2 -fno-vectorize": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "postfix|x86_64|-O3": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "postfix|x86_64|-O3 -fno-vectorize": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "postfix|x86_64|-Os": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "prefix|aarch64|-O1": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "prefix|aarch64|-O2": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "prefix|aarch64|-O2 -fno-vectorize": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "prefix|aarch64|-O3": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "prefix|aarch64|-O3 -fno-vectorize": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "prefix|aarch64|-Os": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "prefix|x86_64|-O1": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "prefix|x86_64|-O2": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    8
+   ]
+  },
+  "prefix|x86_64|-O2 -fno-vectorize": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    8
+   ]
+  },
+  "prefix|x86_64|-O3": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    15
+   ]
+  },
+  "prefix|x86_64|-O3 -fno-vectorize": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    15
+   ]
+  },
+  "prefix|x86_64|-Os": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  }
+ }
+}

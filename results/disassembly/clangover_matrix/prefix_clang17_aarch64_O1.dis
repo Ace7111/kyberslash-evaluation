@@ -1,0 +1,18 @@
+0000000000000184 <pqcrystals_kyber512_ref_poly_frommsg>:
+ 184:	aa1f03e8 	mov	x8, xzr
+ 188:	5280d029 	mov	w9, #0x681                 	// #1665
+ 18c:	aa1f03ea 	mov	x10, xzr
+ 190:	3868682b 	ldrb	w11, [x1, x8]
+ 194:	1aca256b 	lsr	w11, w11, w10
+ 198:	1300016b 	sbfx	w11, w11, #0, #1
+ 19c:	0a09016b 	and	w11, w11, w9
+ 1a0:	782a780b 	strh	w11, [x0, x10, lsl #1]
+ 1a4:	9100054a 	add	x10, x10, #0x1
+ 1a8:	f100215f 	cmp	x10, #0x8
+ 1ac:	54ffff21 	b.ne	190 <pqcrystals_kyber512_ref_poly_frommsg+0xc>  // b.any
+ 1b0:	91000508 	add	x8, x8, #0x1
+ 1b4:	91004000 	add	x0, x0, #0x10
+ 1b8:	f100811f 	cmp	x8, #0x20
+ 1bc:	54fffe81 	b.ne	18c <pqcrystals_kyber512_ref_poly_frommsg+0x8>  // b.any
+ 1c0:	d65f03c0 	ret
+

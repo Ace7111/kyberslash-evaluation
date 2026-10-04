@@ -1,0 +1,51 @@
+Math: 	Multi-Precision: Wolf(SP) word-size=64 bits=4096 sp_int.c
+------------------------------------------------------------------------------
+ wolfSSL version 5.9.2
+------------------------------------------------------------------------------
+macro    test passed!
+error    test passed!
+MEMORY   test passed!
+base64   test passed!
+asn      test passed!
+SHA      test passed!
+SHA-224  test passed!
+SHA-256  test passed!
+SHA-384  test passed!
+SHA-512  test passed!
+SHA-512/224  test passed!
+SHA-512/256  test passed!
+SHA-3    test passed!
+RANDOM   test passed!
+SHAKE128 test passed!
+SHAKE256 test passed!
+Hash     test passed!
+HMAC-SHA test passed!
+HMAC-SHA224 test passed!
+HMAC-SHA256 test passed!
+HMAC-SHA384 test passed!
+HMAC-SHA512 test passed!
+HMAC-SHA3   test passed!
+HMAC-KDF    test passed!
+PRF         test passed!
+TLSv1.3 KDF test passed!
+GMAC     test passed!
+Chacha   test passed!
+POLY1305 test passed!
+ChaCha20-Poly1305 AEAD test passed!
+AES      test passed!
+AES192   test passed!
+AES256   test passed!
+AES-CBC  test passed!
+AES-GCM  test passed!
+RSA      test passed!
+DH       test passed!
+PWDBASED test passed!
+ECC      test passed!
+MLKEM    test passed!
+logging  test passed!
+time     test passed!
+mutex    test passed!
+memcb    test passed!
+Test complete
+Exiting main with return code: 0
+exit_status=0 config=default opt=-Os

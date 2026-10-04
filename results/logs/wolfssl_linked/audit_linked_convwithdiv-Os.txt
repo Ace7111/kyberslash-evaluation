@@ -1,0 +1,271 @@
+{
+  "experiment_id": null,
+  "binary": "wolfcrypt/test/testwolfcrypt",
+  "binary_sha256": "85ec58fd508ff8abe3811180d370a774bbf726163eb19bfd717860a5b4854ae1",
+  "arch": "x86_64",
+  "mnemonics_searched": [
+    "div",
+    "idiv",
+    "divl",
+    "divq",
+    "idivl",
+    "idivq"
+  ],
+  "total_divisions": 99,
+  "secret_dependent_divisions": 48,
+  "verdict": "VULNERABLE",
+  "findings": [
+    {
+      "symbol": "mlkem_vec_compress_10",
+      "function": "mlkem_vec_compress_10",
+      "division_count": 16,
+      "classification": "vulnerable",
+      "kyberslash_variant": "KyberSlash2"
+    },
+    {
+      "symbol": "mlkem_vec_compress_11",
+      "function": "mlkem_vec_compress_11",
+      "division_count": 8,
+      "classification": "vulnerable",
+      "kyberslash_variant": "KyberSlash2"
+    },
+    {
+      "symbol": "mlkem_compress_4",
+      "function": "mlkem_compress_4",
+      "division_count": 8,
+      "classification": "vulnerable",
+      "kyberslash_variant": "KyberSlash2"
+    },
+    {
+      "symbol": "mlkem_compress_5",
+      "function": "mlkem_compress_5",
+      "division_count": 8,
+      "classification": "vulnerable",
+      "kyberslash_variant": "KyberSlash2"
+    },
+    {
+      "symbol": "mlkem_to_msg",
+      "function": "mlkem_to_msg",
+      "division_count": 8,
+      "classification": "vulnerable",
+      "kyberslash_variant": "KyberSlash1"
+    },
+    {
+      "symbol": "wc_test_render_error_message",
+      "function": "wc_test_render_error_message",
+      "division_count": 6,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "wc_PKCS12_PBKDF_ex",
+      "function": "wc_PKCS12_PBKDF_ex",
+      "division_count": 6,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "sp_div_d",
+      "function": "sp_div_d",
+      "division_count": 4,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "sp_mod_d",
+      "function": "sp_mod_d",
+      "division_count": 3,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "TimingPadVerify",
+      "function": "TimingPadVerify",
+      "division_count": 3,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "_sp_div_10",
+      "function": "sp_div_10",
+      "division_count": 2,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "AddSessionToClientCache",
+      "function": "AddSessionToClientCache",
+      "division_count": 2,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "AddSessionToCache",
+      "function": "AddSessionToCache",
+      "division_count": 2,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "chacha_large_msg_test",
+      "function": "chacha_large_msg_test",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "shake128_test",
+      "function": "shake128_test",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "shake256_test",
+      "function": "shake256_test",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "wc_HKDF_Expand_ex",
+      "function": "wc_HKDF_Expand_ex",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "wc_PRF",
+      "function": "wc_PRF",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "sp_div_primes",
+      "function": "sp_div_primes",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "_sp_div",
+      "function": "sp_div",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "sp_div",
+      "function": "sp_div",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "sp_mont_norm",
+      "function": "sp_mont_norm",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "sp_exptmod_ex",
+      "function": "sp_exptmod_ex",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "_sp_exptmod_nct",
+      "function": "sp_exptmod_nct",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "sp_todecimal",
+      "function": "sp_todecimal",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "Sha3Update",
+      "function": "Sha3Update",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "wc_DhAgree_Sync",
+      "function": "wc_DhAgree_Sync",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "DecodeObjectId",
+      "function": "DecodeObjectId",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "wc_Asn1_PrintAll",
+      "function": "wc_Asn1_PrintAll",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "DoBase64_Encode",
+      "function": "DoBase64_Encode",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "TlsSessionCacheGetAndLock",
+      "function": "TlsSessionCacheGetAndLock",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "HashSigner",
+      "function": "HashSigner",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "wolfSSL_GetSessionClient",
+      "function": "wolfSSL_GetSessionClient",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "TLSX_SNI_GetFromBuffer",
+      "function": "TLSX_SNI_GetFromBuffer",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "BuildMessage",
+      "function": "BuildMessage",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "DoProcessReplyEx",
+      "function": "DoProcessReplyEx",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    }
+  ]
+}

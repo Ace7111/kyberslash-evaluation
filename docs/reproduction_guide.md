@@ -242,6 +242,15 @@ compression symbols were inlined away, a null result would be meaningless.
 
 ## 6b. wolfSSL (RQ3, second independent implementation) (~2 min)
 
+**Linked-executable evidence now exists.** The original audit was object-level because
+autotools was unavailable on the measurement host. A CI job
+(`.github/workflows/compiler-version-matrix.yml`, job `wolfssl-linked`) now builds wolfSSL at
+the pinned commit with autotools, links `wolfcrypt/test/testwolfcrypt`, runs it, and audits the
+linked binary. All four conditions return exit status 0, and the audit reproduces the
+object-level figures exactly: 48 secret-dependent divisions under `CONV_WITH_DIV` at `-Os`,
+and none in the other three. The object-level procedure below remains valid and is retained,
+because it is what a reader without autotools can run.
+
 **Provenance of this section.** The original wolfSSL audit (2026-08-02, commit `1d333cf`)
 was performed by hand and no script was written for it at the time. What the original run
 recorded is the `build_note` in `configs/targets.yaml`: the file audited, the defines used,
@@ -366,6 +375,75 @@ earlier run. `render_figures.sh` therefore renders with `htmlLabels: false` and 
 rasterise an SVG containing no `<text>` element. `scripts/svg_inline_labels.py` is the
 recovery path for an SVG that was already rendered the wrong way and cannot be re-rendered:
 it lifts the label text out of each `<foreignObject>` and re-emits it as SVG text.
+
+## 10. Code-size comparison (~3 min)
+
+Section 3.12 separates security effectiveness from complete implementation-cost
+characterisation. This supplies the code-size half.
+
+```sh
+python3 scripts/measure_code_size.py --opt=-O2 --opt=-Os --opt=-Oz \
+  --json-out results/processed/code_size_aarch64_macho.json \
+  --raw-out  results/logs/code_size_aarch64_macho.txt
+```
+
+Note the `=` on `--opt`, for the same reason as `build_matrix.py --opt-levels`: without it
+argparse reads `-O2` as a flag.
+
+Both revisions are compiled with the same compiler, the same optimisation level and the same
+flag list; only the checked-out source differs. Two levels are reported and never mixed: the
+`poly.o` and `polyvec.o` objects, which are the translation units the patch changes, and the
+linked `test_kyber` executable, which also contains Keccak, the NTT and the test driver.
+
+Section names follow the platform. On ELF they are `.text` and `.rodata`; on Mach-O the
+directly equivalent sections are `(__TEXT,__text)` and `(__TEXT,__const)`, and the output
+records which it measured rather than renaming one to look like the other. Expect the `rodata`
+figure to read `(absent)` for the objects, which carry no read-only data section.
+
+On the aarch64 measurement host with GCC 16.1.0 the linked executable grows by 12 bytes of
+`__text` at `-Os` and `-Oz` and by nothing at `-O2`. The ELF figures from the CI job differ in
+sign at the size-oriented levels, which is why both are archived rather than one being
+generalised.
+
+## 11. Controlled compiler-version and architecture matrix (CI only)
+
+This is the experiment Section 5.5 previously recorded as outstanding. It cannot be run on the
+measurement host: that host is aarch64, carries one Clang release, and has no x86-64
+toolchain. It runs in CI, where both architectures and four Clang releases are available.
+
+```sh
+gh workflow run compiler-version-matrix.yml --ref main
+gh run download <run-id> --dir /tmp/cvm
+python3 scripts/consolidate_clangover.py /tmp/cvm \
+  --json-out results/processed/clangover_compiler_matrix.json
+```
+
+The matrix pins the pre-fix revision `272125f` and the post-fix revision `9b8d306`, builds
+`poly.c` at ML-KEM-512, and varies Clang 15, 16, 17 and 18 across the four settings the
+clangover proof of concept reports plus the vectorised forms of `-O2` and `-O3`. Each
+architecture is built on its own native runner, so release, revision, parameter set and flags
+are held fixed and only the target changes.
+
+**Branch counts are not findings.** `scripts/inspect_branches.py` screens `poly_frommsg` for a
+conditional branch whose flags derive from memory addressed through the secret message
+pointer, or from a register tainted by such a load. Section 5.5 is the reason: three branches
+in the pre-fix aarch64 build all proved benign on inspection.
+
+Run the screen's own controls before trusting any negative result:
+
+```sh
+python3 tests/test_branches.py
+# -> 22/22 branch-screen cases passed
+```
+
+Those cases include a positive control the optimiser cannot flatten into a conditional move, a
+negative control that is the branchless mask the patch intends, and the three archived
+aarch64 disassemblies whose manual classification in Section 5.5 the screen must reproduce.
+The screen does not track taint through memory, so at `-O0` a spilled secret is lost; every
+setting the proof of concept names is `-O1` or above, where values stay in registers.
+
+Disassembly is archived for every cell, because the screen is a screening tool and the
+disassembly is the evidence of record.
 
 ## Platform notes
 

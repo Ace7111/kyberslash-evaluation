@@ -1,0 +1,40 @@
+00000000000001b0 <pqcrystals_kyber512_ref_poly_frommsg>:
+ 1b0:	41 57                	push   %r15
+ 1b2:	41 56                	push   %r14
+ 1b4:	41 55                	push   %r13
+ 1b6:	41 54                	push   %r12
+ 1b8:	53                   	push   %rbx
+ 1b9:	48 89 f3             	mov    %rsi,%rbx
+ 1bc:	49 89 fe             	mov    %rdi,%r14
+ 1bf:	45 31 e4             	xor    %r12d,%r12d
+ 1c2:	66 66 66 66 66 2e 0f 	data16 data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+ 1c9:	1f 84 00 00 00 00 00 
+ 1d0:	4d 89 f7             	mov    %r14,%r15
+ 1d3:	45 31 ed             	xor    %r13d,%r13d
+ 1d6:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+ 1dd:	00 00 00 
+ 1e0:	66 41 c7 07 00 00    	movw   $0x0,(%r15)
+ 1e6:	42 0f b6 04 23       	movzbl (%rbx,%r12,1),%eax
+ 1eb:	31 d2                	xor    %edx,%edx
+ 1ed:	44 0f a3 e8          	bt     %r13d,%eax
+ 1f1:	0f 92 c2             	setb   %dl
+ 1f4:	4c 89 ff             	mov    %r15,%rdi
+ 1f7:	be 81 06 00 00       	mov    $0x681,%esi
+ 1fc:	e8 00 00 00 00       	call   201 <pqcrystals_kyber512_ref_poly_frommsg+0x51>
+ 201:	49 ff c5             	inc    %r13
+ 204:	49 83 c7 02          	add    $0x2,%r15
+ 208:	49 83 fd 08          	cmp    $0x8,%r13
+ 20c:	75 d2                	jne    1e0 <pqcrystals_kyber512_ref_poly_frommsg+0x30>
+ 20e:	49 ff c4             	inc    %r12
+ 211:	49 83 c6 10          	add    $0x10,%r14
+ 215:	49 83 fc 20          	cmp    $0x20,%r12
+ 219:	75 b5                	jne    1d0 <pqcrystals_kyber512_ref_poly_frommsg+0x20>
+ 21b:	5b                   	pop    %rbx
+ 21c:	41 5c                	pop    %r12
+ 21e:	41 5d                	pop    %r13
+ 220:	41 5e                	pop    %r14
+ 222:	41 5f                	pop    %r15
+ 224:	c3                   	ret
+ 225:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+ 22c:	00 00 00 00 
+

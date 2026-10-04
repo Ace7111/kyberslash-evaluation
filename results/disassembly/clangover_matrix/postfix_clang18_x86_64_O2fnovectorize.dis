@@ -1,0 +1,87 @@
+0000000000000220 <pqcrystals_kyber512_ref_poly_frommsg>:
+ 220:	41 57                	push   %r15
+ 222:	41 56                	push   %r14
+ 224:	53                   	push   %rbx
+ 225:	48 89 f3             	mov    %rsi,%rbx
+ 228:	49 89 fe             	mov    %rdi,%r14
+ 22b:	45 31 ff             	xor    %r15d,%r15d
+ 22e:	66 90                	xchg   %ax,%ax
+ 230:	4b 8d 3c 3e          	lea    (%r14,%r15,1),%rdi
+ 234:	66 43 c7 04 3e 00 00 	movw   $0x0,(%r14,%r15,1)
+ 23b:	0f b6 13             	movzbl (%rbx),%edx
+ 23e:	83 e2 01             	and    $0x1,%edx
+ 241:	be 81 06 00 00       	mov    $0x681,%esi
+ 246:	e8 00 00 00 00       	call   24b <pqcrystals_kyber512_ref_poly_frommsg+0x2b>
+ 24b:	4b 8d 3c 3e          	lea    (%r14,%r15,1),%rdi
+ 24f:	48 83 c7 02          	add    $0x2,%rdi
+ 253:	66 43 c7 44 3e 02 00 	movw   $0x0,0x2(%r14,%r15,1)
+ 25a:	00 
+ 25b:	0f b6 13             	movzbl (%rbx),%edx
+ 25e:	d1 ea                	shr    $1,%edx
+ 260:	83 e2 01             	and    $0x1,%edx
+ 263:	be 81 06 00 00       	mov    $0x681,%esi
+ 268:	e8 00 00 00 00       	call   26d <pqcrystals_kyber512_ref_poly_frommsg+0x4d>
+ 26d:	4b 8d 3c 3e          	lea    (%r14,%r15,1),%rdi
+ 271:	48 83 c7 04          	add    $0x4,%rdi
+ 275:	66 43 c7 44 3e 04 00 	movw   $0x0,0x4(%r14,%r15,1)
+ 27c:	00 
+ 27d:	0f b6 13             	movzbl (%rbx),%edx
+ 280:	c1 ea 02             	shr    $0x2,%edx
+ 283:	83 e2 01             	and    $0x1,%edx
+ 286:	be 81 06 00 00       	mov    $0x681,%esi
+ 28b:	e8 00 00 00 00       	call   290 <pqcrystals_kyber512_ref_poly_frommsg+0x70>
+ 290:	4b 8d 3c 3e          	lea    (%r14,%r15,1),%rdi
+ 294:	48 83 c7 06          	add    $0x6,%rdi
+ 298:	66 43 c7 44 3e 06 00 	movw   $0x0,0x6(%r14,%r15,1)
+ 29f:	00 
+ 2a0:	0f b6 13             	movzbl (%rbx),%edx
+ 2a3:	c1 ea 03             	shr    $0x3,%edx
+ 2a6:	83 e2 01             	and    $0x1,%edx
+ 2a9:	be 81 06 00 00       	mov    $0x681,%esi
+ 2ae:	e8 00 00 00 00       	call   2b3 <pqcrystals_kyber512_ref_poly_frommsg+0x93>
+ 2b3:	4b 8d 3c 3e          	lea    (%r14,%r15,1),%rdi
+ 2b7:	48 83 c7 08          	add    $0x8,%rdi
+ 2bb:	66 43 c7 44 3e 08 00 	movw   $0x0,0x8(%r14,%r15,1)
+ 2c2:	00 
+ 2c3:	0f b6 13             	movzbl (%rbx),%edx
+ 2c6:	c1 ea 04             	shr    $0x4,%edx
+ 2c9:	83 e2 01             	and    $0x1,%edx
+ 2cc:	be 81 06 00 00       	mov    $0x681,%esi
+ 2d1:	e8 00 00 00 00       	call   2d6 <pqcrystals_kyber512_ref_poly_frommsg+0xb6>
+ 2d6:	4b 8d 3c 3e          	lea    (%r14,%r15,1),%rdi
+ 2da:	48 83 c7 0a          	add    $0xa,%rdi
+ 2de:	66 43 c7 44 3e 0a 00 	movw   $0x0,0xa(%r14,%r15,1)
+ 2e5:	00 
+ 2e6:	0f b6 13             	movzbl (%rbx),%edx
+ 2e9:	c1 ea 05             	shr    $0x5,%edx
+ 2ec:	83 e2 01             	and    $0x1,%edx
+ 2ef:	be 81 06 00 00       	mov    $0x681,%esi
+ 2f4:	e8 00 00 00 00       	call   2f9 <pqcrystals_kyber512_ref_poly_frommsg+0xd9>
+ 2f9:	4b 8d 3c 3e          	lea    (%r14,%r15,1),%rdi
+ 2fd:	48 83 c7 0c          	add    $0xc,%rdi
+ 301:	66 43 c7 44 3e 0c 00 	movw   $0x0,0xc(%r14,%r15,1)
+ 308:	00 
+ 309:	0f b6 13             	movzbl (%rbx),%edx
+ 30c:	c1 ea 06             	shr    $0x6,%edx
+ 30f:	83 e2 01             	and    $0x1,%edx
+ 312:	be 81 06 00 00       	mov    $0x681,%esi
+ 317:	e8 00 00 00 00       	call   31c <pqcrystals_kyber512_ref_poly_frommsg+0xfc>
+ 31c:	4b 8d 3c 3e          	lea    (%r14,%r15,1),%rdi
+ 320:	48 83 c7 0e          	add    $0xe,%rdi
+ 324:	66 43 c7 44 3e 0e 00 	movw   $0x0,0xe(%r14,%r15,1)
+ 32b:	00 
+ 32c:	0f b6 13             	movzbl (%rbx),%edx
+ 32f:	c1 ea 07             	shr    $0x7,%edx
+ 332:	be 81 06 00 00       	mov    $0x681,%esi
+ 337:	e8 00 00 00 00       	call   33c <pqcrystals_kyber512_ref_poly_frommsg+0x11c>
+ 33c:	48 ff c3             	inc    %rbx
+ 33f:	49 83 c7 10          	add    $0x10,%r15
+ 343:	49 81 ff 00 02 00 00 	cmp    $0x200,%r15
+ 34a:	0f 85 e0 fe ff ff    	jne    230 <pqcrystals_kyber512_ref_poly_frommsg+0x10>
+ 350:	5b                   	pop    %rbx
+ 351:	41 5e                	pop    %r14
+ 353:	41 5f                	pop    %r15
+ 355:	c3                   	ret
+ 356:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+ 35d:	00 00 00 
+

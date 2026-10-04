@@ -1,0 +1,2 @@
+cc: gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+commit: 7a8aae3e40138d19c640ae5bc0bc4e8f2998c22d

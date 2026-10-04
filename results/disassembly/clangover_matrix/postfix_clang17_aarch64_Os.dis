@@ -1,0 +1,32 @@
+000000000000018c <pqcrystals_kyber512_ref_poly_frommsg>:
+ 18c:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
+ 190:	f9000bf7 	str	x23, [sp, #16]
+ 194:	a90257f6 	stp	x22, x21, [sp, #32]
+ 198:	a9034ff4 	stp	x20, x19, [sp, #48]
+ 19c:	910003fd 	mov	x29, sp
+ 1a0:	aa0103f3 	mov	x19, x1
+ 1a4:	aa0003f4 	mov	x20, x0
+ 1a8:	aa1f03f5 	mov	x21, xzr
+ 1ac:	aa1f03f6 	mov	x22, xzr
+ 1b0:	aa1403e0 	mov	x0, x20
+ 1b4:	aa1403f7 	mov	x23, x20
+ 1b8:	780026ff 	strh	wzr, [x23], #2
+ 1bc:	38756a68 	ldrb	w8, [x19, x21]
+ 1c0:	5280d021 	mov	w1, #0x681                 	// #1665
+ 1c4:	1ad62508 	lsr	w8, w8, w22
+ 1c8:	12000102 	and	w2, w8, #0x1
+ 1cc:	94000000 	bl	0 <pqcrystals_kyber512_ref_cmov_int16>
+ 1d0:	910006d6 	add	x22, x22, #0x1
+ 1d4:	aa1703e0 	mov	x0, x23
+ 1d8:	f10022df 	cmp	x22, #0x8
+ 1dc:	54fffee1 	b.ne	1b8 <pqcrystals_kyber512_ref_poly_frommsg+0x2c>  // b.any
+ 1e0:	910006b5 	add	x21, x21, #0x1
+ 1e4:	91004294 	add	x20, x20, #0x10
+ 1e8:	f10082bf 	cmp	x21, #0x20
+ 1ec:	54fffe01 	b.ne	1ac <pqcrystals_kyber512_ref_poly_frommsg+0x20>  // b.any
+ 1f0:	a9434ff4 	ldp	x20, x19, [sp, #48]
+ 1f4:	a94257f6 	ldp	x22, x21, [sp, #32]
+ 1f8:	f9400bf7 	ldr	x23, [sp, #16]
+ 1fc:	a8c47bfd 	ldp	x29, x30, [sp], #64
+ 200:	d65f03c0 	ret
+

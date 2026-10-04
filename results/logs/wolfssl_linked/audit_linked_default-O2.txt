@@ -1,0 +1,103 @@
+{
+  "experiment_id": null,
+  "binary": "wolfcrypt/test/testwolfcrypt",
+  "binary_sha256": "f6b700cf404241cf182d05118af3c7b2686bca68f3ddfa3a5d6192e162e95d7a",
+  "arch": "x86_64",
+  "mnemonics_searched": [
+    "div",
+    "idiv",
+    "divl",
+    "divq",
+    "idivl",
+    "idivq"
+  ],
+  "total_divisions": 25,
+  "secret_dependent_divisions": 0,
+  "verdict": "NO_SECRET_DEPENDENT_DIV",
+  "findings": [
+    {
+      "symbol": "wc_PKCS12_PBKDF_ex",
+      "function": "wc_PKCS12_PBKDF_ex",
+      "division_count": 6,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "sp_div_d",
+      "function": "sp_div_d",
+      "division_count": 5,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "sp_mod_d",
+      "function": "sp_mod_d",
+      "division_count": 3,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "BuildMessage",
+      "function": "BuildMessage",
+      "division_count": 2,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "DoProcessReplyEx",
+      "function": "DoProcessReplyEx",
+      "division_count": 2,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "wc_HKDF_Expand_ex",
+      "function": "wc_HKDF_Expand_ex",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "wc_PRF",
+      "function": "wc_PRF",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "_sp_div",
+      "function": "sp_div",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "sp_mont_norm",
+      "function": "sp_mont_norm",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "sp_prime_is_prime",
+      "function": "sp_prime_is_prime",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "sp_prime_is_prime_ex",
+      "function": "sp_prime_is_prime_ex",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    },
+    {
+      "symbol": "Sha3Update",
+      "function": "Sha3Update",
+      "division_count": 1,
+      "classification": "incidental",
+      "kyberslash_variant": null
+    }
+  ]
+}

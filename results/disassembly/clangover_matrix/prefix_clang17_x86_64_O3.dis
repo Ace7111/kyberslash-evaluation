@@ -1,0 +1,567 @@
+0000000000000ac0 <pqcrystals_kyber512_ref_poly_frommsg>:
+     ac0:	48 8d 46 20          	lea    0x20(%rsi),%rax
+     ac4:	48 39 f8             	cmp    %rdi,%rax
+     ac7:	0f 86 91 01 00 00    	jbe    c5e <pqcrystals_kyber512_ref_poly_frommsg+0x19e>
+     acd:	48 8d 87 00 02 00 00 	lea    0x200(%rdi),%rax
+     ad4:	48 39 f0             	cmp    %rsi,%rax
+     ad7:	0f 86 81 01 00 00    	jbe    c5e <pqcrystals_kyber512_ref_poly_frommsg+0x19e>
+     add:	48 83 c7 0e          	add    $0xe,%rdi
+     ae1:	31 c0                	xor    %eax,%eax
+     ae3:	eb 1f                	jmp    b04 <pqcrystals_kyber512_ref_poly_frommsg+0x44>
+     ae5:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+     aec:	00 00 00 00 
+     af0:	66 89 0f             	mov    %cx,(%rdi)
+     af3:	48 ff c0             	inc    %rax
+     af6:	48 83 c7 10          	add    $0x10,%rdi
+     afa:	48 83 f8 20          	cmp    $0x20,%rax
+     afe:	0f 84 0f 0a 00 00    	je     1513 <pqcrystals_kyber512_ref_poly_frommsg+0xa53>
+     b04:	f6 04 06 01          	testb  $0x1,(%rsi,%rax,1)
+     b08:	b9 00 00 00 00       	mov    $0x0,%ecx
+     b0d:	0f 84 ad 00 00 00    	je     bc0 <pqcrystals_kyber512_ref_poly_frommsg+0x100>
+     b13:	b9 81 06 00 00       	mov    $0x681,%ecx
+     b18:	66 89 4f f2          	mov    %cx,-0xe(%rdi)
+     b1c:	f6 04 06 02          	testb  $0x2,(%rsi,%rax,1)
+     b20:	b9 00 00 00 00       	mov    $0x0,%ecx
+     b25:	0f 85 a8 00 00 00    	jne    bd3 <pqcrystals_kyber512_ref_poly_frommsg+0x113>
+     b2b:	66 89 4f f4          	mov    %cx,-0xc(%rdi)
+     b2f:	f6 04 06 04          	testb  $0x4,(%rsi,%rax,1)
+     b33:	b9 00 00 00 00       	mov    $0x0,%ecx
+     b38:	0f 84 ad 00 00 00    	je     beb <pqcrystals_kyber512_ref_poly_frommsg+0x12b>
+     b3e:	b9 81 06 00 00       	mov    $0x681,%ecx
+     b43:	66 89 4f f6          	mov    %cx,-0xa(%rdi)
+     b47:	f6 04 06 08          	testb  $0x8,(%rsi,%rax,1)
+     b4b:	b9 00 00 00 00       	mov    $0x0,%ecx
+     b50:	0f 85 a8 00 00 00    	jne    bfe <pqcrystals_kyber512_ref_poly_frommsg+0x13e>
+     b56:	66 89 4f f8          	mov    %cx,-0x8(%rdi)
+     b5a:	f6 04 06 10          	testb  $0x10,(%rsi,%rax,1)
+     b5e:	b9 00 00 00 00       	mov    $0x0,%ecx
+     b63:	0f 84 ad 00 00 00    	je     c16 <pqcrystals_kyber512_ref_poly_frommsg+0x156>
+     b69:	b9 81 06 00 00       	mov    $0x681,%ecx
+     b6e:	66 89 4f fa          	mov    %cx,-0x6(%rdi)
+     b72:	f6 04 06 20          	testb  $0x20,(%rsi,%rax,1)
+     b76:	b9 00 00 00 00       	mov    $0x0,%ecx
+     b7b:	0f 85 a8 00 00 00    	jne    c29 <pqcrystals_kyber512_ref_poly_frommsg+0x169>
+     b81:	66 89 4f fc          	mov    %cx,-0x4(%rdi)
+     b85:	f6 04 06 40          	testb  $0x40,(%rsi,%rax,1)
+     b89:	b9 00 00 00 00       	mov    $0x0,%ecx
+     b8e:	0f 84 ad 00 00 00    	je     c41 <pqcrystals_kyber512_ref_poly_frommsg+0x181>
+     b94:	b9 81 06 00 00       	mov    $0x681,%ecx
+     b99:	66 89 4f fe          	mov    %cx,-0x2(%rdi)
+     b9d:	80 3c 06 00          	cmpb   $0x0,(%rsi,%rax,1)
+     ba1:	b9 00 00 00 00       	mov    $0x0,%ecx
+     ba6:	0f 89 44 ff ff ff    	jns    af0 <pqcrystals_kyber512_ref_poly_frommsg+0x30>
+     bac:	e9 a3 00 00 00       	jmp    c54 <pqcrystals_kyber512_ref_poly_frommsg+0x194>
+     bb1:	66 66 66 66 66 66 2e 	data16 data16 data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+     bb8:	0f 1f 84 00 00 00 00 
+     bbf:	00 
+     bc0:	66 89 4f f2          	mov    %cx,-0xe(%rdi)
+     bc4:	f6 04 06 02          	testb  $0x2,(%rsi,%rax,1)
+     bc8:	b9 00 00 00 00       	mov    $0x0,%ecx
+     bcd:	0f 84 58 ff ff ff    	je     b2b <pqcrystals_kyber512_ref_poly_frommsg+0x6b>
+     bd3:	b9 81 06 00 00       	mov    $0x681,%ecx
+     bd8:	66 89 4f f4          	mov    %cx,-0xc(%rdi)
+     bdc:	f6 04 06 04          	testb  $0x4,(%rsi,%rax,1)
+     be0:	b9 00 00 00 00       	mov    $0x0,%ecx
+     be5:	0f 85 53 ff ff ff    	jne    b3e <pqcrystals_kyber512_ref_poly_frommsg+0x7e>
+     beb:	66 89 4f f6          	mov    %cx,-0xa(%rdi)
+     bef:	f6 04 06 08          	testb  $0x8,(%rsi,%rax,1)
+     bf3:	b9 00 00 00 00       	mov    $0x0,%ecx
+     bf8:	0f 84 58 ff ff ff    	je     b56 <pqcrystals_kyber512_ref_poly_frommsg+0x96>
+     bfe:	b9 81 06 00 00       	mov    $0x681,%ecx
+     c03:	66 89 4f f8          	mov    %cx,-0x8(%rdi)
+     c07:	f6 04 06 10          	testb  $0x10,(%rsi,%rax,1)
+     c0b:	b9 00 00 00 00       	mov    $0x0,%ecx
+     c10:	0f 85 53 ff ff ff    	jne    b69 <pqcrystals_kyber512_ref_poly_frommsg+0xa9>
+     c16:	66 89 4f fa          	mov    %cx,-0x6(%rdi)
+     c1a:	f6 04 06 20          	testb  $0x20,(%rsi,%rax,1)
+     c1e:	b9 00 00 00 00       	mov    $0x0,%ecx
+     c23:	0f 84 58 ff ff ff    	je     b81 <pqcrystals_kyber512_ref_poly_frommsg+0xc1>
+     c29:	b9 81 06 00 00       	mov    $0x681,%ecx
+     c2e:	66 89 4f fc          	mov    %cx,-0x4(%rdi)
+     c32:	f6 04 06 40          	testb  $0x40,(%rsi,%rax,1)
+     c36:	b9 00 00 00 00       	mov    $0x0,%ecx
+     c3b:	0f 85 53 ff ff ff    	jne    b94 <pqcrystals_kyber512_ref_poly_frommsg+0xd4>
+     c41:	66 89 4f fe          	mov    %cx,-0x2(%rdi)
+     c45:	80 3c 06 00          	cmpb   $0x0,(%rsi,%rax,1)
+     c49:	b9 00 00 00 00       	mov    $0x0,%ecx
+     c4e:	0f 89 9c fe ff ff    	jns    af0 <pqcrystals_kyber512_ref_poly_frommsg+0x30>
+     c54:	b9 81 06 00 00       	mov    $0x681,%ecx
+     c59:	e9 92 fe ff ff       	jmp    af0 <pqcrystals_kyber512_ref_poly_frommsg+0x30>
+     c5e:	f3 0f 7e 06          	movq   (%rsi),%xmm0
+     c62:	66 0f 6f d0          	movdqa %xmm0,%xmm2
+     c66:	66 0f ef ed          	pxor   %xmm5,%xmm5
+     c6a:	66 0f 6f 3d 00 00 00 	movdqa 0x0(%rip),%xmm7        # c72 <pqcrystals_kyber512_ref_poly_frommsg+0x1b2>
+     c71:	00 
+     c72:	66 44 0f 6f f0       	movdqa %xmm0,%xmm14
+     c77:	66 0f 6f d8          	movdqa %xmm0,%xmm3
+     c7b:	66 0f 6f e0          	movdqa %xmm0,%xmm4
+     c7f:	66 44 0f 6f d0       	movdqa %xmm0,%xmm10
+     c84:	66 44 0f db 15 00 00 	pand   0x0(%rip),%xmm10        # c8d <pqcrystals_kyber512_ref_poly_frommsg+0x1cd>
+     c8b:	00 00 
+     c8d:	66 45 0f 60 d2       	punpcklbw %xmm10,%xmm10
+     c92:	66 44 0f 74 d5       	pcmpeqb %xmm5,%xmm10
+     c97:	66 44 0f df d7       	pandn  %xmm7,%xmm10
+     c9c:	66 44 0f 6f e0       	movdqa %xmm0,%xmm12
+     ca1:	66 44 0f db 25 00 00 	pand   0x0(%rip),%xmm12        # caa <pqcrystals_kyber512_ref_poly_frommsg+0x1ea>
+     ca8:	00 00 
+     caa:	66 45 0f 60 e4       	punpcklbw %xmm12,%xmm12
+     caf:	66 44 0f 74 e5       	pcmpeqb %xmm5,%xmm12
+     cb4:	66 44 0f df e7       	pandn  %xmm7,%xmm12
+     cb9:	66 44 0f 6f f8       	movdqa %xmm0,%xmm15
+     cbe:	66 44 0f db 3d 00 00 	pand   0x0(%rip),%xmm15        # cc7 <pqcrystals_kyber512_ref_poly_frommsg+0x207>
+     cc5:	00 00 
+     cc7:	66 45 0f 60 ff       	punpcklbw %xmm15,%xmm15
+     ccc:	66 44 0f 74 fd       	pcmpeqb %xmm5,%xmm15
+     cd1:	66 44 0f df ff       	pandn  %xmm7,%xmm15
+     cd6:	66 0f 60 c0          	punpcklbw %xmm0,%xmm0
+     cda:	66 0f 76 c9          	pcmpeqd %xmm1,%xmm1
+     cde:	66 0f 64 c1          	pcmpgtb %xmm1,%xmm0
+     ce2:	66 0f df c7          	pandn  %xmm7,%xmm0
+     ce6:	66 41 0f 6f f7       	movdqa %xmm15,%xmm6
+     ceb:	66 0f 61 f0          	punpcklwd %xmm0,%xmm6
+     cef:	66 45 0f 6f ea       	movdqa %xmm10,%xmm13
+     cf4:	66 45 0f 61 ec       	punpcklwd %xmm12,%xmm13
+     cf9:	66 0f 70 ce 00       	pshufd $0x0,%xmm6,%xmm1
+     cfe:	66 45 0f 70 cd 00    	pshufd $0x0,%xmm13,%xmm9
+     d04:	66 44 0f 6a c9       	punpckhdq %xmm1,%xmm9
+     d09:	66 0f db 15 00 00 00 	pand   0x0(%rip),%xmm2        # d11 <pqcrystals_kyber512_ref_poly_frommsg+0x251>
+     d10:	00 
+     d11:	66 0f 60 d2          	punpcklbw %xmm2,%xmm2
+     d15:	66 0f 74 d5          	pcmpeqb %xmm5,%xmm2
+     d19:	66 0f df d7          	pandn  %xmm7,%xmm2
+     d1d:	66 44 0f db 35 00 00 	pand   0x0(%rip),%xmm14        # d26 <pqcrystals_kyber512_ref_poly_frommsg+0x266>
+     d24:	00 00 
+     d26:	66 45 0f 60 f6       	punpcklbw %xmm14,%xmm14
+     d2b:	66 44 0f 74 f5       	pcmpeqb %xmm5,%xmm14
+     d30:	66 44 0f df f7       	pandn  %xmm7,%xmm14
+     d35:	66 0f db 1d 00 00 00 	pand   0x0(%rip),%xmm3        # d3d <pqcrystals_kyber512_ref_poly_frommsg+0x27d>
+     d3c:	00 
+     d3d:	66 0f 60 db          	punpcklbw %xmm3,%xmm3
+     d41:	66 0f 74 dd          	pcmpeqb %xmm5,%xmm3
+     d45:	66 0f df df          	pandn  %xmm7,%xmm3
+     d49:	66 0f db 25 00 00 00 	pand   0x0(%rip),%xmm4        # d51 <pqcrystals_kyber512_ref_poly_frommsg+0x291>
+     d50:	00 
+     d51:	66 0f 60 e4          	punpcklbw %xmm4,%xmm4
+     d55:	66 0f 74 e5          	pcmpeqb %xmm5,%xmm4
+     d59:	66 0f df e7          	pandn  %xmm7,%xmm4
+     d5d:	66 44 0f 6f db       	movdqa %xmm3,%xmm11
+     d62:	66 44 0f 61 dc       	punpcklwd %xmm4,%xmm11
+     d67:	66 0f 6f ca          	movdqa %xmm2,%xmm1
+     d6b:	66 41 0f 61 ce       	punpcklwd %xmm14,%xmm1
+     d70:	66 0f 6f e9          	movdqa %xmm1,%xmm5
+     d74:	66 41 0f 62 eb       	punpckldq %xmm11,%xmm5
+     d79:	f2 44 0f 10 cd       	movsd  %xmm5,%xmm9
+     d7e:	66 41 0f 70 eb 55    	pshufd $0x55,%xmm11,%xmm5
+     d84:	66 44 0f 70 c1 55    	pshufd $0x55,%xmm1,%xmm8
+     d8a:	66 44 0f 62 c5       	punpckldq %xmm5,%xmm8
+     d8f:	66 41 0f 6f ed       	movdqa %xmm13,%xmm5
+     d94:	66 0f 62 ee          	punpckldq %xmm6,%xmm5
+     d98:	44 0f c6 c5 e4       	shufps $0xe4,%xmm5,%xmm8
+     d9d:	66 0f 70 ee aa       	pshufd $0xaa,%xmm6,%xmm5
+     da2:	66 41 0f 70 fd aa    	pshufd $0xaa,%xmm13,%xmm7
+     da8:	66 0f 6a fd          	punpckhdq %xmm5,%xmm7
+     dac:	66 0f 70 e9 ff       	pshufd $0xff,%xmm1,%xmm5
+     db1:	66 41 0f 6a cb       	punpckhdq %xmm11,%xmm1
+     db6:	f2 0f 10 f9          	movsd  %xmm1,%xmm7
+     dba:	66 44 0f 6a ee       	punpckhdq %xmm6,%xmm13
+     dbf:	66 41 0f 70 cb ff    	pshufd $0xff,%xmm11,%xmm1
+     dc5:	66 0f 62 e9          	punpckldq %xmm1,%xmm5
+     dc9:	41 0f c6 ed e4       	shufps $0xe4,%xmm13,%xmm5
+     dce:	66 0f 69 dc          	punpckhwd %xmm4,%xmm3
+     dd2:	66 41 0f 69 d6       	punpckhwd %xmm14,%xmm2
+     dd7:	66 44 0f 69 f8       	punpckhwd %xmm0,%xmm15
+     ddc:	66 45 0f 69 d4       	punpckhwd %xmm12,%xmm10
+     de1:	66 41 0f 70 c7 00    	pshufd $0x0,%xmm15,%xmm0
+     de7:	66 41 0f 70 ca 00    	pshufd $0x0,%xmm10,%xmm1
+     ded:	66 0f 6a c8          	punpckhdq %xmm0,%xmm1
+     df1:	66 0f 6f c2          	movdqa %xmm2,%xmm0
+     df5:	66 0f 62 c3          	punpckldq %xmm3,%xmm0
+     df9:	f2 0f 10 c8          	movsd  %xmm0,%xmm1
+     dfd:	66 0f 70 c3 55       	pshufd $0x55,%xmm3,%xmm0
+     e02:	66 0f 70 e2 55       	pshufd $0x55,%xmm2,%xmm4
+     e07:	66 0f 62 e0          	punpckldq %xmm0,%xmm4
+     e0b:	66 41 0f 6f c2       	movdqa %xmm10,%xmm0
+     e10:	66 41 0f 62 c7       	punpckldq %xmm15,%xmm0
+     e15:	0f c6 e0 e4          	shufps $0xe4,%xmm0,%xmm4
+     e19:	66 41 0f 70 c7 aa    	pshufd $0xaa,%xmm15,%xmm0
+     e1f:	66 41 0f 70 f2 aa    	pshufd $0xaa,%xmm10,%xmm6
+     e25:	66 0f 6a f0          	punpckhdq %xmm0,%xmm6
+     e29:	66 0f 70 c2 ff       	pshufd $0xff,%xmm2,%xmm0
+     e2e:	66 0f 6a d3          	punpckhdq %xmm3,%xmm2
+     e32:	f2 0f 10 f2          	movsd  %xmm2,%xmm6
+     e36:	66 45 0f 6a d7       	punpckhdq %xmm15,%xmm10
+     e3b:	66 0f 70 d3 ff       	pshufd $0xff,%xmm3,%xmm2
+     e40:	66 0f 62 c2          	punpckldq %xmm2,%xmm0
+     e44:	41 0f c6 c2 e4       	shufps $0xe4,%xmm10,%xmm0
+     e49:	0f 11 47 70          	movups %xmm0,0x70(%rdi)
+     e4d:	66 0f 11 77 60       	movupd %xmm6,0x60(%rdi)
+     e52:	0f 11 67 50          	movups %xmm4,0x50(%rdi)
+     e56:	66 0f 11 4f 40       	movupd %xmm1,0x40(%rdi)
+     e5b:	0f 11 6f 30          	movups %xmm5,0x30(%rdi)
+     e5f:	66 0f 11 7f 20       	movupd %xmm7,0x20(%rdi)
+     e64:	44 0f 11 47 10       	movups %xmm8,0x10(%rdi)
+     e69:	66 44 0f 11 0f       	movupd %xmm9,(%rdi)
+     e6e:	f3 44 0f 7e 5e 08    	movq   0x8(%rsi),%xmm11
+     e74:	66 45 0f 6f d3       	movdqa %xmm11,%xmm10
+     e79:	66 45 0f 6f e3       	movdqa %xmm11,%xmm12
+     e7e:	66 41 0f 6f c3       	movdqa %xmm11,%xmm0
+     e83:	66 44 0f 6f 0d 00 00 	movdqa 0x0(%rip),%xmm9        # e8c <pqcrystals_kyber512_ref_poly_frommsg+0x3cc>
+     e8a:	00 00 
+     e8c:	66 41 0f db c1       	pand   %xmm9,%xmm0
+     e91:	66 0f 60 c0          	punpcklbw %xmm0,%xmm0
+     e95:	66 0f 57 c9          	xorpd  %xmm1,%xmm1
+     e99:	66 0f 74 c1          	pcmpeqb %xmm1,%xmm0
+     e9d:	66 0f 6f 3d 00 00 00 	movdqa 0x0(%rip),%xmm7        # ea5 <pqcrystals_kyber512_ref_poly_frommsg+0x3e5>
+     ea4:	00 
+     ea5:	66 0f df c7          	pandn  %xmm7,%xmm0
+     ea9:	66 41 0f 6f eb       	movdqa %xmm11,%xmm5
+     eae:	66 0f 6f 15 00 00 00 	movdqa 0x0(%rip),%xmm2        # eb6 <pqcrystals_kyber512_ref_poly_frommsg+0x3f6>
+     eb5:	00 
+     eb6:	66 0f db ea          	pand   %xmm2,%xmm5
+     eba:	66 0f 60 ed          	punpcklbw %xmm5,%xmm5
+     ebe:	66 0f 74 e9          	pcmpeqb %xmm1,%xmm5
+     ec2:	66 0f df ef          	pandn  %xmm7,%xmm5
+     ec6:	66 45 0f 6f f3       	movdqa %xmm11,%xmm14
+     ecb:	66 0f 6f 15 00 00 00 	movdqa 0x0(%rip),%xmm2        # ed3 <pqcrystals_kyber512_ref_poly_frommsg+0x413>
+     ed2:	00 
+     ed3:	66 44 0f db f2       	pand   %xmm2,%xmm14
+     ed8:	66 45 0f 60 f6       	punpcklbw %xmm14,%xmm14
+     edd:	66 44 0f 74 f1       	pcmpeqb %xmm1,%xmm14
+     ee2:	66 45 0f ef ff       	pxor   %xmm15,%xmm15
+     ee7:	66 44 0f df f7       	pandn  %xmm7,%xmm14
+     eec:	66 41 0f 6f db       	movdqa %xmm11,%xmm3
+     ef1:	66 41 0f 6f cb       	movdqa %xmm11,%xmm1
+     ef6:	66 45 0f 60 db       	punpcklbw %xmm11,%xmm11
+     efb:	66 44 0f 64 1d 00 00 	pcmpgtb 0x0(%rip),%xmm11        # f04 <pqcrystals_kyber512_ref_poly_frommsg+0x444>
+     f02:	00 00 
+     f04:	66 44 0f df df       	pandn  %xmm7,%xmm11
+     f09:	66 45 0f 6f ee       	movdqa %xmm14,%xmm13
+     f0e:	66 45 0f 61 eb       	punpcklwd %xmm11,%xmm13
+     f13:	66 0f 6f d0          	movdqa %xmm0,%xmm2
+     f17:	66 0f 61 d5          	punpcklwd %xmm5,%xmm2
+     f1b:	66 41 0f 70 e5 aa    	pshufd $0xaa,%xmm13,%xmm4
+     f21:	66 0f 70 f2 aa       	pshufd $0xaa,%xmm2,%xmm6
+     f26:	66 0f 6a f4          	punpckhdq %xmm4,%xmm6
+     f2a:	66 44 0f 6f 05 00 00 	movdqa 0x0(%rip),%xmm8        # f33 <pqcrystals_kyber512_ref_poly_frommsg+0x473>
+     f31:	00 00 
+     f33:	66 45 0f db d0       	pand   %xmm8,%xmm10
+     f38:	66 45 0f 60 d2       	punpcklbw %xmm10,%xmm10
+     f3d:	66 45 0f 74 d7       	pcmpeqb %xmm15,%xmm10
+     f42:	66 44 0f df d7       	pandn  %xmm7,%xmm10
+     f47:	66 44 0f db 25 00 00 	pand   0x0(%rip),%xmm12        # f50 <pqcrystals_kyber512_ref_poly_frommsg+0x490>
+     f4e:	00 00 
+     f50:	66 45 0f 60 e4       	punpcklbw %xmm12,%xmm12
+     f55:	66 45 0f 74 e7       	pcmpeqb %xmm15,%xmm12
+     f5a:	66 44 0f df e7       	pandn  %xmm7,%xmm12
+     f5f:	66 0f db 1d 00 00 00 	pand   0x0(%rip),%xmm3        # f67 <pqcrystals_kyber512_ref_poly_frommsg+0x4a7>
+     f66:	00 
+     f67:	66 0f 60 db          	punpcklbw %xmm3,%xmm3
+     f6b:	66 41 0f 74 df       	pcmpeqb %xmm15,%xmm3
+     f70:	66 0f df df          	pandn  %xmm7,%xmm3
+     f74:	66 0f db 0d 00 00 00 	pand   0x0(%rip),%xmm1        # f7c <pqcrystals_kyber512_ref_poly_frommsg+0x4bc>
+     f7b:	00 
+     f7c:	66 0f 60 c9          	punpcklbw %xmm1,%xmm1
+     f80:	66 41 0f 74 cf       	pcmpeqb %xmm15,%xmm1
+     f85:	66 0f df cf          	pandn  %xmm7,%xmm1
+     f89:	66 44 0f 6f fb       	movdqa %xmm3,%xmm15
+     f8e:	66 44 0f 61 f9       	punpcklwd %xmm1,%xmm15
+     f93:	66 41 0f 6f e2       	movdqa %xmm10,%xmm4
+     f98:	66 41 0f 61 e4       	punpcklwd %xmm12,%xmm4
+     f9d:	66 0f 6f fc          	movdqa %xmm4,%xmm7
+     fa1:	66 41 0f 6a ff       	punpckhdq %xmm15,%xmm7
+     fa6:	f2 0f 10 f7          	movsd  %xmm7,%xmm6
+     faa:	66 45 0f 69 f3       	punpckhwd %xmm11,%xmm14
+     faf:	66 0f 69 c5          	punpckhwd %xmm5,%xmm0
+     fb3:	66 0f 69 d9          	punpckhwd %xmm1,%xmm3
+     fb7:	66 45 0f 69 d4       	punpckhwd %xmm12,%xmm10
+     fbc:	66 0f 70 cb 55       	pshufd $0x55,%xmm3,%xmm1
+     fc1:	66 45 0f 70 da 55    	pshufd $0x55,%xmm10,%xmm11
+     fc7:	66 44 0f 62 d9       	punpckldq %xmm1,%xmm11
+     fcc:	66 0f 6f c8          	movdqa %xmm0,%xmm1
+     fd0:	66 41 0f 62 ce       	punpckldq %xmm14,%xmm1
+     fd5:	44 0f c6 d9 e4       	shufps $0xe4,%xmm1,%xmm11
+     fda:	66 41 0f 70 ce 00    	pshufd $0x0,%xmm14,%xmm1
+     fe0:	66 44 0f 70 e0 00    	pshufd $0x0,%xmm0,%xmm12
+     fe6:	66 44 0f 6a e1       	punpckhdq %xmm1,%xmm12
+     feb:	66 41 0f 6f ca       	movdqa %xmm10,%xmm1
+     ff0:	66 0f 62 cb          	punpckldq %xmm3,%xmm1
+     ff4:	f2 44 0f 10 e1       	movsd  %xmm1,%xmm12
+     ff9:	66 0f 70 cb ff       	pshufd $0xff,%xmm3,%xmm1
+     ffe:	66 41 0f 70 ea ff    	pshufd $0xff,%xmm10,%xmm5
+    1004:	66 0f 62 e9          	punpckldq %xmm1,%xmm5
+    1008:	66 0f 70 c8 aa       	pshufd $0xaa,%xmm0,%xmm1
+    100d:	66 41 0f 6a c6       	punpckhdq %xmm14,%xmm0
+    1012:	0f c6 e8 e4          	shufps $0xe4,%xmm0,%xmm5
+    1016:	66 44 0f 6a d3       	punpckhdq %xmm3,%xmm10
+    101b:	66 41 0f 70 c6 aa    	pshufd $0xaa,%xmm14,%xmm0
+    1021:	66 0f 6a c8          	punpckhdq %xmm0,%xmm1
+    1025:	f2 41 0f 10 ca       	movsd  %xmm10,%xmm1
+    102a:	66 41 0f 70 c7 55    	pshufd $0x55,%xmm15,%xmm0
+    1030:	66 0f 70 dc 55       	pshufd $0x55,%xmm4,%xmm3
+    1035:	66 0f 62 d8          	punpckldq %xmm0,%xmm3
+    1039:	66 0f 6f c2          	movdqa %xmm2,%xmm0
+    103d:	66 41 0f 62 c5       	punpckldq %xmm13,%xmm0
+    1042:	0f c6 d8 e4          	shufps $0xe4,%xmm0,%xmm3
+    1046:	66 41 0f 70 c5 00    	pshufd $0x0,%xmm13,%xmm0
+    104c:	66 0f 70 fa 00       	pshufd $0x0,%xmm2,%xmm7
+    1051:	66 0f 6a f8          	punpckhdq %xmm0,%xmm7
+    1055:	66 0f 70 c4 ff       	pshufd $0xff,%xmm4,%xmm0
+    105a:	66 41 0f 62 e7       	punpckldq %xmm15,%xmm4
+    105f:	f2 0f 10 fc          	movsd  %xmm4,%xmm7
+    1063:	66 41 0f 6a d5       	punpckhdq %xmm13,%xmm2
+    1068:	66 41 0f 70 e7 ff    	pshufd $0xff,%xmm15,%xmm4
+    106e:	66 0f 62 c4          	punpckldq %xmm4,%xmm0
+    1072:	0f c6 c2 e4          	shufps $0xe4,%xmm2,%xmm0
+    1076:	0f 11 87 b0 00 00 00 	movups %xmm0,0xb0(%rdi)
+    107d:	66 0f 11 bf 80 00 00 	movupd %xmm7,0x80(%rdi)
+    1084:	00 
+    1085:	0f 11 9f 90 00 00 00 	movups %xmm3,0x90(%rdi)
+    108c:	66 0f 11 8f e0 00 00 	movupd %xmm1,0xe0(%rdi)
+    1093:	00 
+    1094:	0f 11 af f0 00 00 00 	movups %xmm5,0xf0(%rdi)
+    109b:	66 44 0f 11 a7 c0 00 	movupd %xmm12,0xc0(%rdi)
+    10a2:	00 00 
+    10a4:	44 0f 11 9f d0 00 00 	movups %xmm11,0xd0(%rdi)
+    10ab:	00 
+    10ac:	66 0f 11 b7 a0 00 00 	movupd %xmm6,0xa0(%rdi)
+    10b3:	00 
+    10b4:	f3 44 0f 7e 5e 10    	movq   0x10(%rsi),%xmm11
+    10ba:	66 45 0f 6f d3       	movdqa %xmm11,%xmm10
+    10bf:	66 45 0f 6f e3       	movdqa %xmm11,%xmm12
+    10c4:	66 41 0f 6f c3       	movdqa %xmm11,%xmm0
+    10c9:	66 41 0f db c1       	pand   %xmm9,%xmm0
+    10ce:	66 0f 60 c0          	punpcklbw %xmm0,%xmm0
+    10d2:	66 0f 57 ff          	xorpd  %xmm7,%xmm7
+    10d6:	66 0f 74 c7          	pcmpeqb %xmm7,%xmm0
+    10da:	66 44 0f 6f 0d 00 00 	movdqa 0x0(%rip),%xmm9        # 10e3 <pqcrystals_kyber512_ref_poly_frommsg+0x623>
+    10e1:	00 00 
+    10e3:	66 41 0f df c1       	pandn  %xmm9,%xmm0
+    10e8:	66 41 0f 6f eb       	movdqa %xmm11,%xmm5
+    10ed:	66 0f db 2d 00 00 00 	pand   0x0(%rip),%xmm5        # 10f5 <pqcrystals_kyber512_ref_poly_frommsg+0x635>
+    10f4:	00 
+    10f5:	66 0f 60 ed          	punpcklbw %xmm5,%xmm5
+    10f9:	66 0f 74 ef          	pcmpeqb %xmm7,%xmm5
+    10fd:	66 41 0f df e9       	pandn  %xmm9,%xmm5
+    1102:	66 45 0f 6f f3       	movdqa %xmm11,%xmm14
+    1107:	66 44 0f db 35 00 00 	pand   0x0(%rip),%xmm14        # 1110 <pqcrystals_kyber512_ref_poly_frommsg+0x650>
+    110e:	00 00 
+    1110:	66 45 0f 60 f6       	punpcklbw %xmm14,%xmm14
+    1115:	66 44 0f 74 f7       	pcmpeqb %xmm7,%xmm14
+    111a:	66 45 0f df f1       	pandn  %xmm9,%xmm14
+    111f:	66 41 0f 6f db       	movdqa %xmm11,%xmm3
+    1124:	66 41 0f 6f f3       	movdqa %xmm11,%xmm6
+    1129:	66 45 0f 60 db       	punpcklbw %xmm11,%xmm11
+    112e:	66 44 0f 64 1d 00 00 	pcmpgtb 0x0(%rip),%xmm11        # 1137 <pqcrystals_kyber512_ref_poly_frommsg+0x677>
+    1135:	00 00 
+    1137:	66 45 0f df d9       	pandn  %xmm9,%xmm11
+    113c:	66 45 0f 6f ee       	movdqa %xmm14,%xmm13
+    1141:	66 45 0f 61 eb       	punpcklwd %xmm11,%xmm13
+    1146:	66 0f 6f d0          	movdqa %xmm0,%xmm2
+    114a:	66 0f 61 d5          	punpcklwd %xmm5,%xmm2
+    114e:	66 41 0f 70 e5 aa    	pshufd $0xaa,%xmm13,%xmm4
+    1154:	66 0f 70 ca aa       	pshufd $0xaa,%xmm2,%xmm1
+    1159:	66 0f 6a cc          	punpckhdq %xmm4,%xmm1
+    115d:	66 45 0f db d0       	pand   %xmm8,%xmm10
+    1162:	66 45 0f 60 d2       	punpcklbw %xmm10,%xmm10
+    1167:	66 44 0f 74 d7       	pcmpeqb %xmm7,%xmm10
+    116c:	66 45 0f df d1       	pandn  %xmm9,%xmm10
+    1171:	66 0f 6f 25 00 00 00 	movdqa 0x0(%rip),%xmm4        # 1179 <pqcrystals_kyber512_ref_poly_frommsg+0x6b9>
+    1178:	00 
+    1179:	66 44 0f db e4       	pand   %xmm4,%xmm12
+    117e:	66 45 0f 60 e4       	punpcklbw %xmm12,%xmm12
+    1183:	66 44 0f 74 e7       	pcmpeqb %xmm7,%xmm12
+    1188:	66 45 0f df e1       	pandn  %xmm9,%xmm12
+    118d:	66 0f 6f 25 00 00 00 	movdqa 0x0(%rip),%xmm4        # 1195 <pqcrystals_kyber512_ref_poly_frommsg+0x6d5>
+    1194:	00 
+    1195:	66 0f db dc          	pand   %xmm4,%xmm3
+    1199:	66 0f 60 db          	punpcklbw %xmm3,%xmm3
+    119d:	66 0f 74 df          	pcmpeqb %xmm7,%xmm3
+    11a1:	66 41 0f df d9       	pandn  %xmm9,%xmm3
+    11a6:	66 44 0f 6f 05 00 00 	movdqa 0x0(%rip),%xmm8        # 11af <pqcrystals_kyber512_ref_poly_frommsg+0x6ef>
+    11ad:	00 00 
+    11af:	66 41 0f db f0       	pand   %xmm8,%xmm6
+    11b4:	66 0f 60 f6          	punpcklbw %xmm6,%xmm6
+    11b8:	66 0f 74 f7          	pcmpeqb %xmm7,%xmm6
+    11bc:	66 41 0f df f1       	pandn  %xmm9,%xmm6
+    11c1:	66 44 0f 6f fb       	movdqa %xmm3,%xmm15
+    11c6:	66 44 0f 61 fe       	punpcklwd %xmm6,%xmm15
+    11cb:	66 41 0f 6f e2       	movdqa %xmm10,%xmm4
+    11d0:	66 41 0f 61 e4       	punpcklwd %xmm12,%xmm4
+    11d5:	66 0f 6f fc          	movdqa %xmm4,%xmm7
+    11d9:	66 41 0f 6a ff       	punpckhdq %xmm15,%xmm7
+    11de:	f2 0f 10 cf          	movsd  %xmm7,%xmm1
+    11e2:	66 45 0f 69 f3       	punpckhwd %xmm11,%xmm14
+    11e7:	66 0f 69 c5          	punpckhwd %xmm5,%xmm0
+    11eb:	66 0f 69 de          	punpckhwd %xmm6,%xmm3
+    11ef:	66 45 0f 69 d4       	punpckhwd %xmm12,%xmm10
+    11f4:	66 0f 70 eb 55       	pshufd $0x55,%xmm3,%xmm5
+    11f9:	66 45 0f 70 da 55    	pshufd $0x55,%xmm10,%xmm11
+    11ff:	66 44 0f 62 dd       	punpckldq %xmm5,%xmm11
+    1204:	66 0f 6f e8          	movdqa %xmm0,%xmm5
+    1208:	66 41 0f 62 ee       	punpckldq %xmm14,%xmm5
+    120d:	44 0f c6 dd e4       	shufps $0xe4,%xmm5,%xmm11
+    1212:	66 41 0f 70 ee 00    	pshufd $0x0,%xmm14,%xmm5
+    1218:	66 44 0f 70 e0 00    	pshufd $0x0,%xmm0,%xmm12
+    121e:	66 44 0f 6a e5       	punpckhdq %xmm5,%xmm12
+    1223:	66 41 0f 6f ea       	movdqa %xmm10,%xmm5
+    1228:	66 0f 62 eb          	punpckldq %xmm3,%xmm5
+    122c:	f2 44 0f 10 e5       	movsd  %xmm5,%xmm12
+    1231:	66 0f 70 f3 ff       	pshufd $0xff,%xmm3,%xmm6
+    1236:	66 41 0f 70 ea ff    	pshufd $0xff,%xmm10,%xmm5
+    123c:	66 0f 62 ee          	punpckldq %xmm6,%xmm5
+    1240:	66 0f 70 f0 aa       	pshufd $0xaa,%xmm0,%xmm6
+    1245:	66 41 0f 6a c6       	punpckhdq %xmm14,%xmm0
+    124a:	0f c6 e8 e4          	shufps $0xe4,%xmm0,%xmm5
+    124e:	66 44 0f 6a d3       	punpckhdq %xmm3,%xmm10
+    1253:	66 41 0f 70 c6 aa    	pshufd $0xaa,%xmm14,%xmm0
+    1259:	66 0f 6a f0          	punpckhdq %xmm0,%xmm6
+    125d:	f2 41 0f 10 f2       	movsd  %xmm10,%xmm6
+    1262:	66 41 0f 70 c7 55    	pshufd $0x55,%xmm15,%xmm0
+    1268:	66 0f 70 dc 55       	pshufd $0x55,%xmm4,%xmm3
+    126d:	66 0f 62 d8          	punpckldq %xmm0,%xmm3
+    1271:	66 0f 6f c2          	movdqa %xmm2,%xmm0
+    1275:	66 41 0f 62 c5       	punpckldq %xmm13,%xmm0
+    127a:	0f c6 d8 e4          	shufps $0xe4,%xmm0,%xmm3
+    127e:	66 41 0f 70 c5 00    	pshufd $0x0,%xmm13,%xmm0
+    1284:	66 0f 70 fa 00       	pshufd $0x0,%xmm2,%xmm7
+    1289:	66 0f 6a f8          	punpckhdq %xmm0,%xmm7
+    128d:	66 0f 70 c4 ff       	pshufd $0xff,%xmm4,%xmm0
+    1292:	66 41 0f 62 e7       	punpckldq %xmm15,%xmm4
+    1297:	f2 0f 10 fc          	movsd  %xmm4,%xmm7
+    129b:	66 41 0f 6a d5       	punpckhdq %xmm13,%xmm2
+    12a0:	66 41 0f 70 e7 ff    	pshufd $0xff,%xmm15,%xmm4
+    12a6:	66 0f 62 c4          	punpckldq %xmm4,%xmm0
+    12aa:	0f c6 c2 e4          	shufps $0xe4,%xmm2,%xmm0
+    12ae:	0f 11 87 30 01 00 00 	movups %xmm0,0x130(%rdi)
+    12b5:	66 0f 11 bf 00 01 00 	movupd %xmm7,0x100(%rdi)
+    12bc:	00 
+    12bd:	0f 11 9f 10 01 00 00 	movups %xmm3,0x110(%rdi)
+    12c4:	66 0f 11 b7 60 01 00 	movupd %xmm6,0x160(%rdi)
+    12cb:	00 
+    12cc:	0f 11 af 70 01 00 00 	movups %xmm5,0x170(%rdi)
+    12d3:	66 44 0f 11 a7 40 01 	movupd %xmm12,0x140(%rdi)
+    12da:	00 00 
+    12dc:	44 0f 11 9f 50 01 00 	movups %xmm11,0x150(%rdi)
+    12e3:	00 
+    12e4:	66 0f 11 8f 20 01 00 	movupd %xmm1,0x120(%rdi)
+    12eb:	00 
+    12ec:	f3 0f 7e 46 18       	movq   0x18(%rsi),%xmm0
+    12f1:	66 44 0f 6f 25 00 00 	movdqa 0x0(%rip),%xmm12        # 12fa <pqcrystals_kyber512_ref_poly_frommsg+0x83a>
+    12f8:	00 00 
+    12fa:	66 44 0f db e0       	pand   %xmm0,%xmm12
+    12ff:	66 45 0f 60 e4       	punpcklbw %xmm12,%xmm12
+    1304:	66 0f 57 c9          	xorpd  %xmm1,%xmm1
+    1308:	66 44 0f 74 e1       	pcmpeqb %xmm1,%xmm12
+    130d:	66 45 0f df e1       	pandn  %xmm9,%xmm12
+    1312:	66 0f 6f 35 00 00 00 	movdqa 0x0(%rip),%xmm6        # 131a <pqcrystals_kyber512_ref_poly_frommsg+0x85a>
+    1319:	00 
+    131a:	66 0f db f0          	pand   %xmm0,%xmm6
+    131e:	66 0f 60 f6          	punpcklbw %xmm6,%xmm6
+    1322:	66 0f 74 f1          	pcmpeqb %xmm1,%xmm6
+    1326:	66 41 0f df f1       	pandn  %xmm9,%xmm6
+    132b:	66 44 0f 6f 2d 00 00 	movdqa 0x0(%rip),%xmm13        # 1334 <pqcrystals_kyber512_ref_poly_frommsg+0x874>
+    1332:	00 00 
+    1334:	66 44 0f db e8       	pand   %xmm0,%xmm13
+    1339:	66 45 0f 60 ed       	punpcklbw %xmm13,%xmm13
+    133e:	66 44 0f 74 e9       	pcmpeqb %xmm1,%xmm13
+    1343:	66 45 0f df e9       	pandn  %xmm9,%xmm13
+    1348:	66 44 0f db c0       	pand   %xmm0,%xmm8
+    134d:	66 45 0f 60 c0       	punpcklbw %xmm8,%xmm8
+    1352:	66 44 0f 74 c1       	pcmpeqb %xmm1,%xmm8
+    1357:	66 45 0f df c1       	pandn  %xmm9,%xmm8
+    135c:	66 45 0f 6f f0       	movdqa %xmm8,%xmm14
+    1361:	66 0f 6f 3d 00 00 00 	movdqa 0x0(%rip),%xmm7        # 1369 <pqcrystals_kyber512_ref_poly_frommsg+0x8a9>
+    1368:	00 
+    1369:	66 0f db f8          	pand   %xmm0,%xmm7
+    136d:	66 0f 60 ff          	punpcklbw %xmm7,%xmm7
+    1371:	66 0f 74 f9          	pcmpeqb %xmm1,%xmm7
+    1375:	66 41 0f df f9       	pandn  %xmm9,%xmm7
+    137a:	66 0f 6f 2d 00 00 00 	movdqa 0x0(%rip),%xmm5        # 1382 <pqcrystals_kyber512_ref_poly_frommsg+0x8c2>
+    1381:	00 
+    1382:	66 0f db e8          	pand   %xmm0,%xmm5
+    1386:	66 0f 60 ed          	punpcklbw %xmm5,%xmm5
+    138a:	66 0f 74 e9          	pcmpeqb %xmm1,%xmm5
+    138e:	66 41 0f df e9       	pandn  %xmm9,%xmm5
+    1393:	66 44 0f 6f 05 00 00 	movdqa 0x0(%rip),%xmm8        # 139c <pqcrystals_kyber512_ref_poly_frommsg+0x8dc>
+    139a:	00 00 
+    139c:	66 44 0f db c0       	pand   %xmm0,%xmm8
+    13a1:	66 45 0f 60 c0       	punpcklbw %xmm8,%xmm8
+    13a6:	66 44 0f 74 c1       	pcmpeqb %xmm1,%xmm8
+    13ab:	66 45 0f df c1       	pandn  %xmm9,%xmm8
+    13b0:	66 0f 60 c0          	punpcklbw %xmm0,%xmm0
+    13b4:	66 0f 64 05 00 00 00 	pcmpgtb 0x0(%rip),%xmm0        # 13bc <pqcrystals_kyber512_ref_poly_frommsg+0x8fc>
+    13bb:	00 
+    13bc:	66 41 0f df c1       	pandn  %xmm9,%xmm0
+    13c1:	66 41 0f 6f e5       	movdqa %xmm13,%xmm4
+    13c6:	66 41 0f 61 e6       	punpcklwd %xmm14,%xmm4
+    13cb:	66 41 0f 6f d4       	movdqa %xmm12,%xmm2
+    13d0:	66 0f 61 d6          	punpcklwd %xmm6,%xmm2
+    13d4:	66 45 0f 6f d8       	movdqa %xmm8,%xmm11
+    13d9:	66 44 0f 61 d8       	punpcklwd %xmm0,%xmm11
+    13de:	66 41 0f 70 db aa    	pshufd $0xaa,%xmm11,%xmm3
+    13e4:	66 44 0f 6f d7       	movdqa %xmm7,%xmm10
+    13e9:	66 44 0f 61 d5       	punpcklwd %xmm5,%xmm10
+    13ee:	66 41 0f 70 ca aa    	pshufd $0xaa,%xmm10,%xmm1
+    13f4:	66 0f 6a cb          	punpckhdq %xmm3,%xmm1
+    13f8:	66 0f 6f da          	movdqa %xmm2,%xmm3
+    13fc:	66 0f 6a dc          	punpckhdq %xmm4,%xmm3
+    1400:	f2 0f 10 cb          	movsd  %xmm3,%xmm1
+    1404:	66 44 0f 69 c0       	punpckhwd %xmm0,%xmm8
+    1409:	66 0f 69 fd          	punpckhwd %xmm5,%xmm7
+    140d:	66 0f 6f df          	movdqa %xmm7,%xmm3
+    1411:	66 41 0f 62 d8       	punpckldq %xmm8,%xmm3
+    1416:	66 45 0f 69 ee       	punpckhwd %xmm14,%xmm13
+    141b:	66 41 0f 70 ed 55    	pshufd $0x55,%xmm13,%xmm5
+    1421:	66 44 0f 69 e6       	punpckhwd %xmm6,%xmm12
+    1426:	66 41 0f 70 c4 55    	pshufd $0x55,%xmm12,%xmm0
+    142c:	66 0f 62 c5          	punpckldq %xmm5,%xmm0
+    1430:	0f c6 c3 e4          	shufps $0xe4,%xmm3,%xmm0
+    1434:	66 41 0f 6f ec       	movdqa %xmm12,%xmm5
+    1439:	66 41 0f 62 ed       	punpckldq %xmm13,%xmm5
+    143e:	66 41 0f 70 f0 00    	pshufd $0x0,%xmm8,%xmm6
+    1444:	66 0f 70 df 00       	pshufd $0x0,%xmm7,%xmm3
+    1449:	66 0f 6a de          	punpckhdq %xmm6,%xmm3
+    144d:	f2 0f 10 dd          	movsd  %xmm5,%xmm3
+    1451:	66 41 0f 70 f5 ff    	pshufd $0xff,%xmm13,%xmm6
+    1457:	66 41 0f 70 ec ff    	pshufd $0xff,%xmm12,%xmm5
+    145d:	66 0f 62 ee          	punpckldq %xmm6,%xmm5
+    1461:	66 0f 70 f7 aa       	pshufd $0xaa,%xmm7,%xmm6
+    1466:	66 41 0f 6a f8       	punpckhdq %xmm8,%xmm7
+    146b:	0f c6 ef e4          	shufps $0xe4,%xmm7,%xmm5
+    146f:	66 45 0f 6a e5       	punpckhdq %xmm13,%xmm12
+    1474:	66 41 0f 70 f8 aa    	pshufd $0xaa,%xmm8,%xmm7
+    147a:	66 0f 6a f7          	punpckhdq %xmm7,%xmm6
+    147e:	f2 41 0f 10 f4       	movsd  %xmm12,%xmm6
+    1483:	66 41 0f 6f fa       	movdqa %xmm10,%xmm7
+    1488:	66 41 0f 62 fb       	punpckldq %xmm11,%xmm7
+    148d:	66 44 0f 70 c4 55    	pshufd $0x55,%xmm4,%xmm8
+    1493:	66 44 0f 70 ca 55    	pshufd $0x55,%xmm2,%xmm9
+    1499:	66 45 0f 62 c8       	punpckldq %xmm8,%xmm9
+    149e:	44 0f c6 cf e4       	shufps $0xe4,%xmm7,%xmm9
+    14a3:	66 41 0f 70 fb 00    	pshufd $0x0,%xmm11,%xmm7
+    14a9:	66 45 0f 70 c2 00    	pshufd $0x0,%xmm10,%xmm8
+    14af:	66 44 0f 6a c7       	punpckhdq %xmm7,%xmm8
+    14b4:	66 0f 70 fa ff       	pshufd $0xff,%xmm2,%xmm7
+    14b9:	66 0f 62 d4          	punpckldq %xmm4,%xmm2
+    14bd:	f2 44 0f 10 c2       	movsd  %xmm2,%xmm8
+    14c2:	66 45 0f 6a d3       	punpckhdq %xmm11,%xmm10
+    14c7:	66 0f 70 d4 ff       	pshufd $0xff,%xmm4,%xmm2
+    14cc:	66 0f 62 fa          	punpckldq %xmm2,%xmm7
+    14d0:	41 0f c6 fa e4       	shufps $0xe4,%xmm10,%xmm7
+    14d5:	0f 11 bf b0 01 00 00 	movups %xmm7,0x1b0(%rdi)
+    14dc:	66 44 0f 11 87 80 01 	movupd %xmm8,0x180(%rdi)
+    14e3:	00 00 
+    14e5:	44 0f 11 8f 90 01 00 	movups %xmm9,0x190(%rdi)
+    14ec:	00 
+    14ed:	66 0f 11 b7 e0 01 00 	movupd %xmm6,0x1e0(%rdi)
+    14f4:	00 
+    14f5:	0f 11 af f0 01 00 00 	movups %xmm5,0x1f0(%rdi)
+    14fc:	66 0f 11 9f c0 01 00 	movupd %xmm3,0x1c0(%rdi)
+    1503:	00 
+    1504:	0f 11 87 d0 01 00 00 	movups %xmm0,0x1d0(%rdi)
+    150b:	66 0f 11 8f a0 01 00 	movupd %xmm1,0x1a0(%rdi)
+    1512:	00 
+    1513:	c3                   	ret
+    1514:	66 66 66 2e 0f 1f 84 	data16 data16 cs nopw 0x0(%rax,%rax,1)
+    151b:	00 00 00 00 00 
+

@@ -1,0 +1,699 @@
+
+==============================================================================
+vulnerable -O2
+==============================================================================
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c kem.c -o /tmp/cs_vulnerable_O2_i4z6u46a/kem.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c indcpa.c -o /tmp/cs_vulnerable_O2_i4z6u46a/indcpa.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c polyvec.c -o /tmp/cs_vulnerable_O2_i4z6u46a/polyvec.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c poly.c -o /tmp/cs_vulnerable_O2_i4z6u46a/poly.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c ntt.c -o /tmp/cs_vulnerable_O2_i4z6u46a/ntt.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c cbd.c -o /tmp/cs_vulnerable_O2_i4z6u46a/cbd.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c reduce.c -o /tmp/cs_vulnerable_O2_i4z6u46a/reduce.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c verify.c -o /tmp/cs_vulnerable_O2_i4z6u46a/verify.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c fips202.c -o /tmp/cs_vulnerable_O2_i4z6u46a/fips202.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c symmetric-shake.c -o /tmp/cs_vulnerable_O2_i4z6u46a/symmetric-shake.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c randombytes.c -o /tmp/cs_vulnerable_O2_i4z6u46a/randombytes.o
+rc=0
+
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 /tmp/cs_vulnerable_O2_i4z6u46a/kem.o /tmp/cs_vulnerable_O2_i4z6u46a/indcpa.o /tmp/cs_vulnerable_O2_i4z6u46a/polyvec.o /tmp/cs_vulnerable_O2_i4z6u46a/poly.o /tmp/cs_vulnerable_O2_i4z6u46a/ntt.o /tmp/cs_vulnerable_O2_i4z6u46a/cbd.o /tmp/cs_vulnerable_O2_i4z6u46a/reduce.o /tmp/cs_vulnerable_O2_i4z6u46a/verify.o /tmp/cs_vulnerable_O2_i4z6u46a/fips202.o /tmp/cs_vulnerable_O2_i4z6u46a/symmetric-shake.o /tmp/cs_vulnerable_O2_i4z6u46a/randombytes.o test_kyber.c -o /tmp/cs_vulnerable_O2_i4z6u46a/test_kyber
+rc=0
+
+
+--- size: vulnerable -O2 poly.c ---
+/tmp/cs_vulnerable_O2_i4z6u46a/poly.o  :
+section              size   addr
+.text                1423      0
+.data                   0      0
+.bss                    0      0
+.comment               46      0
+.note.GNU-stack         0      0
+.note.gnu.property     32      0
+.eh_frame             504      0
+Total                2005
+
+
+
+
+--- size: vulnerable -O2 polyvec.c ---
+/tmp/cs_vulnerable_O2_i4z6u46a/polyvec.o  :
+section              size   addr
+.text                1223      0
+.data                   0      0
+.bss                    0      0
+.rodata.cst8           16      0
+.comment               46      0
+.note.GNU-stack         0      0
+.note.gnu.property     32      0
+.eh_frame             400      0
+Total                1717
+
+
+
+
+--- size: vulnerable -O2 test_kyber (linked) ---
+/tmp/cs_vulnerable_O2_i4z6u46a/test_kyber  :
+section               size    addr
+.interp                 28     792
+.note.gnu.property      48     824
+.note.gnu.build-id      36     872
+.note.ABI-tag           32     908
+.gnu.hash               36     944
+.dynsym                288     984
+.dynstr                224    1272
+.gnu.version            24    1496
+.gnu.version_r          80    1520
+.rela.dyn              192    1600
+.rela.plt              144    1792
+.init                   27    4096
+.plt                   112    4128
+.plt.got                16    4240
+.plt.sec                96    4256
+.text                12561    4352
+.fini                   13   16916
+.rodata                617   20480
+.eh_frame_hdr          604   21100
+.eh_frame             3112   21704
+.init_array              8   32144
+.fini_array              8   32152
+.dynamic               496   32160
+.got                   112   32656
+.data                   16   32768
+.bss                     8   32784
+.comment                45       0
+Total                18983
+
+
+
+
+==============================================================================
+patched -O2
+==============================================================================
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c kem.c -o /tmp/cs_patched_O2_l8juo2wp/kem.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c indcpa.c -o /tmp/cs_patched_O2_l8juo2wp/indcpa.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c polyvec.c -o /tmp/cs_patched_O2_l8juo2wp/polyvec.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c poly.c -o /tmp/cs_patched_O2_l8juo2wp/poly.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c ntt.c -o /tmp/cs_patched_O2_l8juo2wp/ntt.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c cbd.c -o /tmp/cs_patched_O2_l8juo2wp/cbd.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c reduce.c -o /tmp/cs_patched_O2_l8juo2wp/reduce.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c verify.c -o /tmp/cs_patched_O2_l8juo2wp/verify.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c fips202.c -o /tmp/cs_patched_O2_l8juo2wp/fips202.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c symmetric-shake.c -o /tmp/cs_patched_O2_l8juo2wp/symmetric-shake.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c randombytes.c -o /tmp/cs_patched_O2_l8juo2wp/randombytes.o
+rc=0
+
+$ gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 /tmp/cs_patched_O2_l8juo2wp/kem.o /tmp/cs_patched_O2_l8juo2wp/indcpa.o /tmp/cs_patched_O2_l8juo2wp/polyvec.o /tmp/cs_patched_O2_l8juo2wp/poly.o /tmp/cs_patched_O2_l8juo2wp/ntt.o /tmp/cs_patched_O2_l8juo2wp/cbd.o /tmp/cs_patched_O2_l8juo2wp/reduce.o /tmp/cs_patched_O2_l8juo2wp/verify.o /tmp/cs_patched_O2_l8juo2wp/fips202.o /tmp/cs_patched_O2_l8juo2wp/symmetric-shake.o /tmp/cs_patched_O2_l8juo2wp/randombytes.o test_kyber.c -o /tmp/cs_patched_O2_l8juo2wp/test_kyber
+rc=0
+
+
+--- size: patched -O2 poly.c ---
+/tmp/cs_patched_O2_l8juo2wp/poly.o  :
+section              size   addr
+.text                1647      0
+.data                   0      0
+.bss                    0      0
+.rodata.cst8           24      0
+.comment               46      0
+.note.GNU-stack         0      0
+.note.gnu.property     32      0
+.eh_frame             496      0
+Total                2245
+
+
+
+
+--- size: patched -O2 polyvec.c ---
+/tmp/cs_patched_O2_l8juo2wp/polyvec.o  :
+section              size   addr
+.text                1207      0
+.data                   0      0
+.bss                    0      0
+.rodata.cst8           16      0
+.comment               46      0
+.note.GNU-stack         0      0
+.note.gnu.property     32      0
+.eh_frame             400      0
+Total                1701
+
+
+
+
+--- size: patched -O2 test_kyber (linked) ---
+/tmp/cs_patched_O2_l8juo2wp/test_kyber  :
+section               size    addr
+.interp                 28     792
+.note.gnu.property      48     824
+.note.gnu.build-id      36     872
+.note.ABI-tag           32     908
+.gnu.hash               36     944
+.dynsym                288     984
+.dynstr                224    1272
+.gnu.version            24    1496
+.gnu.version_r          80    1520
+.rela.dyn              192    1600
+.rela.plt              144    1792
+.init                   27    4096
+.plt                   112    4128
+.plt.got                16    4240
+.plt.sec                96    4256
+.text                12753    4352
+.fini                   13   17108
+.rodata                649   20480
+.eh_frame_hdr          604   21132
+.eh_frame             3104   21736
+.init_array              8   32144
+.fini_array              8   32152
+.dynamic               496   32160
+.got                   112   32656
+.data                   16   32768
+.bss                     8   32784
+.comment                45       0
+Total                19199
+
+
+
+
+==============================================================================
+vulnerable -Os
+==============================================================================
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c kem.c -o /tmp/cs_vulnerable_Os_7by45oue/kem.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c indcpa.c -o /tmp/cs_vulnerable_Os_7by45oue/indcpa.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c polyvec.c -o /tmp/cs_vulnerable_Os_7by45oue/polyvec.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c poly.c -o /tmp/cs_vulnerable_Os_7by45oue/poly.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c ntt.c -o /tmp/cs_vulnerable_Os_7by45oue/ntt.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c cbd.c -o /tmp/cs_vulnerable_Os_7by45oue/cbd.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c reduce.c -o /tmp/cs_vulnerable_Os_7by45oue/reduce.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c verify.c -o /tmp/cs_vulnerable_Os_7by45oue/verify.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c fips202.c -o /tmp/cs_vulnerable_Os_7by45oue/fips202.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c symmetric-shake.c -o /tmp/cs_vulnerable_Os_7by45oue/symmetric-shake.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c randombytes.c -o /tmp/cs_vulnerable_Os_7by45oue/randombytes.o
+rc=0
+
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 /tmp/cs_vulnerable_Os_7by45oue/kem.o /tmp/cs_vulnerable_Os_7by45oue/indcpa.o /tmp/cs_vulnerable_Os_7by45oue/polyvec.o /tmp/cs_vulnerable_Os_7by45oue/poly.o /tmp/cs_vulnerable_Os_7by45oue/ntt.o /tmp/cs_vulnerable_Os_7by45oue/cbd.o /tmp/cs_vulnerable_Os_7by45oue/reduce.o /tmp/cs_vulnerable_Os_7by45oue/verify.o /tmp/cs_vulnerable_Os_7by45oue/fips202.o /tmp/cs_vulnerable_Os_7by45oue/symmetric-shake.o /tmp/cs_vulnerable_Os_7by45oue/randombytes.o test_kyber.c -o /tmp/cs_vulnerable_Os_7by45oue/test_kyber
+rc=0
+
+
+--- size: vulnerable -Os poly.c ---
+/tmp/cs_vulnerable_Os_7by45oue/poly.o  :
+section              size   addr
+.text                1069      0
+.data                   0      0
+.bss                    0      0
+.comment               46      0
+.note.GNU-stack         0      0
+.note.gnu.property     32      0
+.eh_frame             480      0
+Total                1627
+
+
+
+
+--- size: vulnerable -Os polyvec.c ---
+/tmp/cs_vulnerable_Os_7by45oue/polyvec.o  :
+section              size   addr
+.text                 967      0
+.data                   0      0
+.bss                    0      0
+.comment               46      0
+.note.GNU-stack         0      0
+.note.gnu.property     32      0
+.eh_frame             368      0
+Total                1413
+
+
+
+
+--- size: vulnerable -Os test_kyber (linked) ---
+/tmp/cs_vulnerable_Os_7by45oue/test_kyber  :
+section               size    addr
+.interp                 28     792
+.note.gnu.property      48     824
+.note.gnu.build-id      36     872
+.note.ABI-tag           32     908
+.gnu.hash               36     944
+.dynsym                312     984
+.dynstr                231    1296
+.gnu.version            26    1528
+.gnu.version_r          80    1560
+.rela.dyn              192    1640
+.rela.plt              168    1832
+.init                   27    4096
+.plt                   128    4128
+.plt.got                16    4256
+.plt.sec               112    4272
+.text                10317    4384
+.fini                   13   14704
+.rodata                617   16384
+.eh_frame_hdr          612   17004
+.eh_frame             2996   17616
+.init_array              8   28040
+.fini_array              8   28048
+.dynamic               496   28056
+.got                   120   28552
+.data                   16   28672
+.bss                     8   28688
+.comment                45       0
+Total                16728
+
+
+
+
+==============================================================================
+patched -Os
+==============================================================================
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c kem.c -o /tmp/cs_patched_Os_tuetc43g/kem.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c indcpa.c -o /tmp/cs_patched_Os_tuetc43g/indcpa.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c polyvec.c -o /tmp/cs_patched_Os_tuetc43g/polyvec.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c poly.c -o /tmp/cs_patched_Os_tuetc43g/poly.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c ntt.c -o /tmp/cs_patched_Os_tuetc43g/ntt.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c cbd.c -o /tmp/cs_patched_Os_tuetc43g/cbd.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c reduce.c -o /tmp/cs_patched_Os_tuetc43g/reduce.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c verify.c -o /tmp/cs_patched_Os_tuetc43g/verify.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c fips202.c -o /tmp/cs_patched_Os_tuetc43g/fips202.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c symmetric-shake.c -o /tmp/cs_patched_Os_tuetc43g/symmetric-shake.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c randombytes.c -o /tmp/cs_patched_Os_tuetc43g/randombytes.o
+rc=0
+
+$ gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 /tmp/cs_patched_Os_tuetc43g/kem.o /tmp/cs_patched_Os_tuetc43g/indcpa.o /tmp/cs_patched_Os_tuetc43g/polyvec.o /tmp/cs_patched_Os_tuetc43g/poly.o /tmp/cs_patched_Os_tuetc43g/ntt.o /tmp/cs_patched_Os_tuetc43g/cbd.o /tmp/cs_patched_Os_tuetc43g/reduce.o /tmp/cs_patched_Os_tuetc43g/verify.o /tmp/cs_patched_Os_tuetc43g/fips202.o /tmp/cs_patched_Os_tuetc43g/symmetric-shake.o /tmp/cs_patched_Os_tuetc43g/randombytes.o test_kyber.c -o /tmp/cs_patched_Os_tuetc43g/test_kyber
+rc=0
+
+
+--- size: patched -Os poly.c ---
+/tmp/cs_patched_Os_tuetc43g/poly.o  :
+section              size   addr
+.text                1052      0
+.data                   0      0
+.bss                    0      0
+.comment               46      0
+.note.GNU-stack         0      0
+.note.gnu.property     32      0
+.eh_frame             480      0
+Total                1610
+
+
+
+
+--- size: patched -Os polyvec.c ---
+/tmp/cs_patched_Os_tuetc43g/polyvec.o  :
+section              size   addr
+.text                 979      0
+.data                   0      0
+.bss                    0      0
+.comment               46      0
+.note.GNU-stack         0      0
+.note.gnu.property     32      0
+.eh_frame             360      0
+Total                1417
+
+
+
+
+--- size: patched -Os test_kyber (linked) ---
+/tmp/cs_patched_Os_tuetc43g/test_kyber  :
+section               size    addr
+.interp                 28     792
+.note.gnu.property      48     824
+.note.gnu.build-id      36     872
+.note.ABI-tag           32     908
+.gnu.hash               36     944
+.dynsym                312     984
+.dynstr                231    1296
+.gnu.version            26    1528
+.gnu.version_r          80    1560
+.rela.dyn              192    1640
+.rela.plt              168    1832
+.init                   27    4096
+.plt                   128    4128
+.plt.got                16    4256
+.plt.sec               112    4272
+.text                10296    4384
+.fini                   13   14680
+.rodata                617   16384
+.eh_frame_hdr          612   17004
+.eh_frame             2988   17616
+.init_array              8   28040
+.fini_array              8   28048
+.dynamic               496   28056
+.got                   120   28552
+.data                   16   28672
+.bss                     8   28688
+.comment                45       0
+Total                16699
+
+
+
+
+==============================================================================
+vulnerable -Oz
+==============================================================================
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c kem.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/kem.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c indcpa.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/indcpa.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c polyvec.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/polyvec.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c poly.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/poly.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c ntt.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/ntt.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c cbd.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/cbd.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c reduce.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/reduce.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c verify.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/verify.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c fips202.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/fips202.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c symmetric-shake.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/symmetric-shake.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c randombytes.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/randombytes.o
+rc=0
+
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 /tmp/cs_vulnerable_Oz_y1f56t5d/kem.o /tmp/cs_vulnerable_Oz_y1f56t5d/indcpa.o /tmp/cs_vulnerable_Oz_y1f56t5d/polyvec.o /tmp/cs_vulnerable_Oz_y1f56t5d/poly.o /tmp/cs_vulnerable_Oz_y1f56t5d/ntt.o /tmp/cs_vulnerable_Oz_y1f56t5d/cbd.o /tmp/cs_vulnerable_Oz_y1f56t5d/reduce.o /tmp/cs_vulnerable_Oz_y1f56t5d/verify.o /tmp/cs_vulnerable_Oz_y1f56t5d/fips202.o /tmp/cs_vulnerable_Oz_y1f56t5d/symmetric-shake.o /tmp/cs_vulnerable_Oz_y1f56t5d/randombytes.o test_kyber.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/test_kyber
+rc=0
+
+
+--- size: vulnerable -Oz poly.c ---
+/tmp/cs_vulnerable_Oz_y1f56t5d/poly.o  :
+section              size   addr
+.text                1069      0
+.data                   0      0
+.bss                    0      0
+.comment               46      0
+.note.GNU-stack         0      0
+.note.gnu.property     32      0
+.eh_frame             480      0
+Total                1627
+
+
+
+
+--- size: vulnerable -Oz polyvec.c ---
+/tmp/cs_vulnerable_Oz_y1f56t5d/polyvec.o  :
+section              size   addr
+.text                 967      0
+.data                   0      0
+.bss                    0      0
+.comment               46      0
+.note.GNU-stack         0      0
+.note.gnu.property     32      0
+.eh_frame             368      0
+Total                1413
+
+
+
+
+--- size: vulnerable -Oz test_kyber (linked) ---
+/tmp/cs_vulnerable_Oz_y1f56t5d/test_kyber  :
+section               size    addr
+.interp                 28     792
+.note.gnu.property      48     824
+.note.gnu.build-id      36     872
+.note.ABI-tag           32     908
+.gnu.hash               36     944
+.dynsym                312     984
+.dynstr                231    1296
+.gnu.version            26    1528
+.gnu.version_r          80    1560
+.rela.dyn              192    1640
+.rela.plt              168    1832
+.init                   27    4096
+.plt                   128    4128
+.plt.got                16    4256
+.plt.sec               112    4272
+.text                10178    4384
+.fini                   13   14564
+.rodata                617   16384
+.eh_frame_hdr          612   17004
+.eh_frame             2996   17616
+.init_array              8   28040
+.fini_array              8   28048
+.dynamic               496   28056
+.got                   120   28552
+.data                   16   28672
+.bss                     8   28688
+.comment                45       0
+Total                16589
+
+
+
+
+==============================================================================
+patched -Oz
+==============================================================================
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c kem.c -o /tmp/cs_patched_Oz_fyuqdk01/kem.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c indcpa.c -o /tmp/cs_patched_Oz_fyuqdk01/indcpa.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c polyvec.c -o /tmp/cs_patched_Oz_fyuqdk01/polyvec.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c poly.c -o /tmp/cs_patched_Oz_fyuqdk01/poly.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c ntt.c -o /tmp/cs_patched_Oz_fyuqdk01/ntt.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c cbd.c -o /tmp/cs_patched_Oz_fyuqdk01/cbd.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c reduce.c -o /tmp/cs_patched_Oz_fyuqdk01/reduce.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c verify.c -o /tmp/cs_patched_Oz_fyuqdk01/verify.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c fips202.c -o /tmp/cs_patched_Oz_fyuqdk01/fips202.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c symmetric-shake.c -o /tmp/cs_patched_Oz_fyuqdk01/symmetric-shake.o
+rc=0
+
+$ cd /home/runner/work/kyberslash-evaluation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c randombytes.c -o /tmp/cs_patched_Oz_fyuqdk01/randombytes.o
+rc=0
+
+$ gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 /tmp/cs_patched_Oz_fyuqdk01/kem.o /tmp/cs_patched_Oz_fyuqdk01/indcpa.o /tmp/cs_patched_Oz_fyuqdk01/polyvec.o /tmp/cs_patched_Oz_fyuqdk01/poly.o /tmp/cs_patched_Oz_fyuqdk01/ntt.o /tmp/cs_patched_Oz_fyuqdk01/cbd.o /tmp/cs_patched_Oz_fyuqdk01/reduce.o /tmp/cs_patched_Oz_fyuqdk01/verify.o /tmp/cs_patched_Oz_fyuqdk01/fips202.o /tmp/cs_patched_Oz_fyuqdk01/symmetric-shake.o /tmp/cs_patched_Oz_fyuqdk01/randombytes.o test_kyber.c -o /tmp/cs_patched_Oz_fyuqdk01/test_kyber
+rc=0
+
+
+--- size: patched -Oz poly.c ---
+/tmp/cs_patched_Oz_fyuqdk01/poly.o  :
+section              size   addr
+.text                1052      0
+.data                   0      0
+.bss                    0      0
+.comment               46      0
+.note.GNU-stack         0      0
+.note.gnu.property     32      0
+.eh_frame             480      0
+Total                1610
+
+
+
+
+--- size: patched -Oz polyvec.c ---
+/tmp/cs_patched_Oz_fyuqdk01/polyvec.o  :
+section              size   addr
+.text                 979      0
+.data                   0      0
+.bss                    0      0
+.comment               46      0
+.note.GNU-stack         0      0
+.note.gnu.property     32      0
+.eh_frame             360      0
+Total                1417
+
+
+
+
+--- size: patched -Oz test_kyber (linked) ---
+/tmp/cs_patched_Oz_fyuqdk01/test_kyber  :
+section               size    addr
+.interp                 28     792
+.note.gnu.property      48     824
+.note.gnu.build-id      36     872
+.note.ABI-tag           32     908
+.gnu.hash               36     944
+.dynsym                312     984
+.dynstr                231    1296
+.gnu.version            26    1528
+.gnu.version_r          80    1560
+.rela.dyn              192    1640
+.rela.plt              168    1832
+.init                   27    4096
+.plt                   128    4128
+.plt.got                16    4256
+.plt.sec               112    4272
+.text                10173    4384
+.fini                   13   14560
+.rodata                617   16384
+.eh_frame_hdr          612   17004
+.eh_frame             2988   17616
+.init_array              8   28040
+.fini_array              8   28048
+.dynamic               496   28056
+.got                   120   28552
+.data                   16   28672
+.bss                     8   28688
+.comment                45       0
+Total                16576
+
+
+

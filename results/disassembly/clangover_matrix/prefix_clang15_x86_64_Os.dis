@@ -1,0 +1,18 @@
+00000000000001bb <pqcrystals_kyber512_ref_poly_frommsg>:
+ 1bb:	45 31 c0             	xor    %r8d,%r8d
+ 1be:	31 c9                	xor    %ecx,%ecx
+ 1c0:	42 0f b6 04 06       	movzbl (%rsi,%r8,1),%eax
+ 1c5:	31 d2                	xor    %edx,%edx
+ 1c7:	0f a3 c8             	bt     %ecx,%eax
+ 1ca:	73 05                	jae    1d1 <pqcrystals_kyber512_ref_poly_frommsg+0x16>
+ 1cc:	ba 81 06 00 00       	mov    $0x681,%edx
+ 1d1:	66 89 14 4f          	mov    %dx,(%rdi,%rcx,2)
+ 1d5:	48 ff c1             	inc    %rcx
+ 1d8:	48 83 f9 08          	cmp    $0x8,%rcx
+ 1dc:	75 e2                	jne    1c0 <pqcrystals_kyber512_ref_poly_frommsg+0x5>
+ 1de:	49 ff c0             	inc    %r8
+ 1e1:	48 83 c7 10          	add    $0x10,%rdi
+ 1e5:	49 83 f8 20          	cmp    $0x20,%r8
+ 1e9:	75 d3                	jne    1be <pqcrystals_kyber512_ref_poly_frommsg+0x3>
+ 1eb:	c3                   	ret
+

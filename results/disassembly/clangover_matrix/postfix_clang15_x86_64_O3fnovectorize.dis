@@ -1,0 +1,86 @@
+0000000000000220 <pqcrystals_kyber512_ref_poly_frommsg>:
+ 220:	41 57                	push   %r15
+ 222:	41 56                	push   %r14
+ 224:	53                   	push   %rbx
+ 225:	49 89 f6             	mov    %rsi,%r14
+ 228:	49 89 ff             	mov    %rdi,%r15
+ 22b:	31 db                	xor    %ebx,%ebx
+ 22d:	0f 1f 00             	nopl   (%rax)
+ 230:	49 8d 3c 1f          	lea    (%r15,%rbx,1),%rdi
+ 234:	66 41 c7 04 1f 00 00 	movw   $0x0,(%r15,%rbx,1)
+ 23b:	41 0f b6 16          	movzbl (%r14),%edx
+ 23f:	83 e2 01             	and    $0x1,%edx
+ 242:	be 81 06 00 00       	mov    $0x681,%esi
+ 247:	e8 00 00 00 00       	call   24c <pqcrystals_kyber512_ref_poly_frommsg+0x2c>
+ 24c:	49 8d 3c 1f          	lea    (%r15,%rbx,1),%rdi
+ 250:	48 83 c7 02          	add    $0x2,%rdi
+ 254:	66 41 c7 44 1f 02 00 	movw   $0x0,0x2(%r15,%rbx,1)
+ 25b:	00 
+ 25c:	41 0f b6 16          	movzbl (%r14),%edx
+ 260:	d1 ea                	shr    $1,%edx
+ 262:	83 e2 01             	and    $0x1,%edx
+ 265:	be 81 06 00 00       	mov    $0x681,%esi
+ 26a:	e8 00 00 00 00       	call   26f <pqcrystals_kyber512_ref_poly_frommsg+0x4f>
+ 26f:	49 8d 3c 1f          	lea    (%r15,%rbx,1),%rdi
+ 273:	48 83 c7 04          	add    $0x4,%rdi
+ 277:	66 41 c7 44 1f 04 00 	movw   $0x0,0x4(%r15,%rbx,1)
+ 27e:	00 
+ 27f:	41 0f b6 16          	movzbl (%r14),%edx
+ 283:	c1 ea 02             	shr    $0x2,%edx
+ 286:	83 e2 01             	and    $0x1,%edx
+ 289:	be 81 06 00 00       	mov    $0x681,%esi
+ 28e:	e8 00 00 00 00       	call   293 <pqcrystals_kyber512_ref_poly_frommsg+0x73>
+ 293:	49 8d 3c 1f          	lea    (%r15,%rbx,1),%rdi
+ 297:	48 83 c7 06          	add    $0x6,%rdi
+ 29b:	66 41 c7 44 1f 06 00 	movw   $0x0,0x6(%r15,%rbx,1)
+ 2a2:	00 
+ 2a3:	41 0f b6 16          	movzbl (%r14),%edx
+ 2a7:	c1 ea 03             	shr    $0x3,%edx
+ 2aa:	83 e2 01             	and    $0x1,%edx
+ 2ad:	be 81 06 00 00       	mov    $0x681,%esi
+ 2b2:	e8 00 00 00 00       	call   2b7 <pqcrystals_kyber512_ref_poly_frommsg+0x97>
+ 2b7:	49 8d 3c 1f          	lea    (%r15,%rbx,1),%rdi
+ 2bb:	48 83 c7 08          	add    $0x8,%rdi
+ 2bf:	66 41 c7 44 1f 08 00 	movw   $0x0,0x8(%r15,%rbx,1)
+ 2c6:	00 
+ 2c7:	41 0f b6 16          	movzbl (%r14),%edx
+ 2cb:	c1 ea 04             	shr    $0x4,%edx
+ 2ce:	83 e2 01             	and    $0x1,%edx
+ 2d1:	be 81 06 00 00       	mov    $0x681,%esi
+ 2d6:	e8 00 00 00 00       	call   2db <pqcrystals_kyber512_ref_poly_frommsg+0xbb>
+ 2db:	49 8d 3c 1f          	lea    (%r15,%rbx,1),%rdi
+ 2df:	48 83 c7 0a          	add    $0xa,%rdi
+ 2e3:	66 41 c7 44 1f 0a 00 	movw   $0x0,0xa(%r15,%rbx,1)
+ 2ea:	00 
+ 2eb:	41 0f b6 16          	movzbl (%r14),%edx
+ 2ef:	c1 ea 05             	shr    $0x5,%edx
+ 2f2:	83 e2 01             	and    $0x1,%edx
+ 2f5:	be 81 06 00 00       	mov    $0x681,%esi
+ 2fa:	e8 00 00 00 00       	call   2ff <pqcrystals_kyber512_ref_poly_frommsg+0xdf>
+ 2ff:	49 8d 3c 1f          	lea    (%r15,%rbx,1),%rdi
+ 303:	48 83 c7 0c          	add    $0xc,%rdi
+ 307:	66 41 c7 44 1f 0c 00 	movw   $0x0,0xc(%r15,%rbx,1)
+ 30e:	00 
+ 30f:	41 0f b6 16          	movzbl (%r14),%edx
+ 313:	c1 ea 06             	shr    $0x6,%edx
+ 316:	83 e2 01             	and    $0x1,%edx
+ 319:	be 81 06 00 00       	mov    $0x681,%esi
+ 31e:	e8 00 00 00 00       	call   323 <pqcrystals_kyber512_ref_poly_frommsg+0x103>
+ 323:	49 8d 3c 1f          	lea    (%r15,%rbx,1),%rdi
+ 327:	48 83 c7 0e          	add    $0xe,%rdi
+ 32b:	66 41 c7 44 1f 0e 00 	movw   $0x0,0xe(%r15,%rbx,1)
+ 332:	00 
+ 333:	41 0f b6 16          	movzbl (%r14),%edx
+ 337:	c1 ea 07             	shr    $0x7,%edx
+ 33a:	be 81 06 00 00       	mov    $0x681,%esi
+ 33f:	e8 00 00 00 00       	call   344 <pqcrystals_kyber512_ref_poly_frommsg+0x124>
+ 344:	49 ff c6             	inc    %r14
+ 347:	48 83 c3 10          	add    $0x10,%rbx
+ 34b:	48 81 fb 00 02 00 00 	cmp    $0x200,%rbx
+ 352:	0f 85 d8 fe ff ff    	jne    230 <pqcrystals_kyber512_ref_poly_frommsg+0x10>
+ 358:	5b                   	pop    %rbx
+ 359:	41 5e                	pop    %r14
+ 35b:	41 5f                	pop    %r15
+ 35d:	c3                   	ret
+ 35e:	66 90                	xchg   %ax,%ax
+

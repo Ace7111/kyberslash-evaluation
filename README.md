@@ -9,8 +9,8 @@ variable-latency division — the KyberSlash mechanism.
 
 ## Status
 
-Nine findings established (F1–F9 in `docs/findings.md`), covering all three research
-questions, alongside seven instrument defects (D1–D7) recorded in the same file:
+Twelve findings established (F1–F12 in `docs/findings.md`), covering all three research
+questions, alongside eight instrument defects (D1–D8) recorded in the same file:
 
 - Vulnerable revision emits secret-dependent division in 4 of 12 build configurations;
   patched revision in 0 of 12. GCC and Clang disagree about which optimisation levels are
@@ -30,11 +30,16 @@ questions, alongside seven instrument defects (D1–D7) recorded in the same fil
   11.6×. Measure them separately.
 - The mechanism reproduces on x86-64 as well as aarch64 (F8). The overlapping GCC settings
   agree: `-Os` emits on both, `-O2` is clean on both.
-- Clangover was not reproduced on aarch64; a bounded negative. CVE-2024-37880 identifies
-  affected LLVM Clang versions and does not establish an architectural boundary; the
-  published proof of concept reports reproduction on at least the x86 ISA. x86-64 was used
-  here only for the supplementary KyberSlash binary audit — no controlled Clangover
-  reproduction was attempted on it.
+- Clangover reproduced on x86-64 and **not** on aarch64, across a 96-cell controlled matrix
+  holding compiler release, revision, parameter set and flags fixed (F11). The verdict is
+  invariant across Clang 15.0.7, 16.0.6, 17.0.6 and 18.1.3: the optimisation setting and the
+  architecture decide it, not the release. On the pre-fix revision at x86-64 `-O2` the eight
+  flagged branches are one per bit of the message byte. Branch counts are not treated as
+  findings — the count varies across releases while the secret-dependent count does not.
+- No material code-size cost from the patch under the tested conditions (F10): at most +192
+  bytes of `.text` in a 12.5 KB executable, and marginally smaller at `-Os`/`-Oz` on x86-64.
+- wolfSSL's result confirmed at linked-executable level with a passing functional test (F12).
+  The 48 secret-dependent divisions under `CONV_WITH_DIV` at `-Os` are unchanged.
 
 ## Quick start
 
@@ -66,19 +71,23 @@ python3 scripts/inspect_binary.py results/builds/<cell>/test_kyber
 | `scripts/seed_sweep.py` | Repeats the leakage screen across independent keys |
 | `scripts/model_sensitivity.py` | Rebuilds under six divider models and re-measures |
 | `scripts/make_figure_5_1.py` | Generates Figure 5.1 from the archived sweep |
+| `scripts/measure_code_size.py` | `.text`/`.rodata` comparison, object and executable kept distinct |
+| `scripts/inspect_branches.py` | Screens a function for *secret-dependent* branches, with its own positive control |
+| `scripts/consolidate_clangover.py` | Collapses the compiler-version matrix into one record |
 | `scripts/audit_rq1_rq3.py` | Per-cell build and audit for the mlkem-native matrix |
 | `scripts/render_figures.sh`, `svg_inline_labels.py` | Mermaid rendering with a text-presence guard |
 | `scripts/make_presentation_figures.py` | Two presentation-only charts from `results/processed/` |
 | `scripts/udiv_latency.c`, `udiv_ecore.c` | Host divider characterisation |
 | `harness/` | Divider model and fixed-vs-random timing harness |
 | `tests/test_classify.py` | 31 classifier cases and 4 disassembly-parsing cases |
-| `.github/workflows/` | CI binary audit, with the vulnerable revision as a positive control |
+| `tests/test_branches.py` | 22 branch-screen cases: positive/negative controls, §5.5 ground truth, parser regressions |
+| `.github/workflows/` | CI binary audit with a positive control, plus the controlled compiler-version and architecture matrix |
 | `results/raw/` | Original observations with SHA-256 checksums |
 | `results/processed/` | Per-cell manifests and analyses as JSON |
 | `results/figures/` | Dissertation figures 2.1, 2.2, 4.1 and 5.1, plus two talk-only charts |
 | `results/disassembly/` | Archived disassembly for the Clangover check |
 | `results/logs/` | System manifests; x86-64 CI toolchain provenance; wolfSSL procedure validation |
-| `docs/findings.md` | Experimental findings F1–F9 and instrument defects D1–D7 |
+| `docs/findings.md` | Experimental findings F1–F12 and instrument defects D1–D8 |
 | `docs/reproduction_guide.md` | Clean host to published tables |
 | `LICENSE`, `CITATION.cff` | MIT, with third-party notes; citation metadata |
 

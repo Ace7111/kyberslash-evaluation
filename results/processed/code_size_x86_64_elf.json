@@ -1,0 +1,458 @@
+{
+ "question": "Does removal of the KyberSlash division mechanism impose a material code-size cost under the tested build conditions?",
+ "scope_note": "Bounded to the revisions, compiler, optimisation levels and platform recorded here. Not a general code-size claim.",
+ "host": {
+  "platform": "linux",
+  "machine": "x86_64",
+  "release": "6.17.0-1022-azure",
+  "object_format": "ELF"
+ },
+ "toolchain": {
+  "cc": "gcc",
+  "cc_version": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "size_tool": "GNU size (GNU Binutils for Ubuntu) 2.42"
+ },
+ "revisions": {
+  "vulnerable": {
+   "worktree": "kyber-vulnerable",
+   "commit": "a621b8dde405cc507cbcfc5f794570a4f98d69cc"
+  },
+  "patched": {
+   "worktree": "kyber-patched",
+   "commit": "272125f6acc8e8b6850fd68ceb901a660ff48196"
+  }
+ },
+ "cells": [
+  {
+   "optimisation": "-O2",
+   "revision": "vulnerable",
+   "build_ok": true,
+   "commands": [
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c kem.c -o /tmp/cs_vulnerable_O2_i4z6u46a/kem.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c indcpa.c -o /tmp/cs_vulnerable_O2_i4z6u46a/indcpa.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c polyvec.c -o /tmp/cs_vulnerable_O2_i4z6u46a/polyvec.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c poly.c -o /tmp/cs_vulnerable_O2_i4z6u46a/poly.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c ntt.c -o /tmp/cs_vulnerable_O2_i4z6u46a/ntt.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c cbd.c -o /tmp/cs_vulnerable_O2_i4z6u46a/cbd.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c reduce.c -o /tmp/cs_vulnerable_O2_i4z6u46a/reduce.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c verify.c -o /tmp/cs_vulnerable_O2_i4z6u46a/verify.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c fips202.c -o /tmp/cs_vulnerable_O2_i4z6u46a/fips202.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c symmetric-shake.c -o /tmp/cs_vulnerable_O2_i4z6u46a/symmetric-shake.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c randombytes.c -o /tmp/cs_vulnerable_O2_i4z6u46a/randombytes.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 /tmp/cs_vulnerable_O2_i4z6u46a/kem.o /tmp/cs_vulnerable_O2_i4z6u46a/indcpa.o /tmp/cs_vulnerable_O2_i4z6u46a/polyvec.o /tmp/cs_vulnerable_O2_i4z6u46a/poly.o /tmp/cs_vulnerable_O2_i4z6u46a/ntt.o /tmp/cs_vulnerable_O2_i4z6u46a/cbd.o /tmp/cs_vulnerable_O2_i4z6u46a/reduce.o /tmp/cs_vulnerable_O2_i4z6u46a/verify.o /tmp/cs_vulnerable_O2_i4z6u46a/fips202.o /tmp/cs_vulnerable_O2_i4z6u46a/symmetric-shake.o /tmp/cs_vulnerable_O2_i4z6u46a/randombytes.o test_kyber.c -o /tmp/cs_vulnerable_O2_i4z6u46a/test_kyber"
+   ],
+   "objects": {
+    "poly.c": {
+     "path_measured": "poly.o",
+     "sha256": "77ded857c00845324eb54b4f0bf27107ae130942b49ad4443afd0d3d4d16a080",
+     "text_section": ".text",
+     "text_bytes": 1423,
+     "rodata_section": "(absent)",
+     "rodata_bytes": 0
+    },
+    "polyvec.c": {
+     "path_measured": "polyvec.o",
+     "sha256": "6848640f6e7f95afae51ff9aba27cd583ddad136b2388e57e39b6b9858aac2d9",
+     "text_section": ".text",
+     "text_bytes": 1223,
+     "rodata_section": "(absent)",
+     "rodata_bytes": 0
+    }
+   },
+   "executable": {
+    "path_measured": "test_kyber",
+    "sha256": "66776d595bb3d9ff0d3b1037095b37c1168b7941b94e5decc1a8f194e5afa3c6",
+    "text_section": ".text",
+    "text_bytes": 12561,
+    "rodata_section": ".rodata",
+    "rodata_bytes": 617
+   }
+  },
+  {
+   "optimisation": "-O2",
+   "revision": "patched",
+   "build_ok": true,
+   "commands": [
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c kem.c -o /tmp/cs_patched_O2_l8juo2wp/kem.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c indcpa.c -o /tmp/cs_patched_O2_l8juo2wp/indcpa.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c polyvec.c -o /tmp/cs_patched_O2_l8juo2wp/polyvec.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c poly.c -o /tmp/cs_patched_O2_l8juo2wp/poly.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c ntt.c -o /tmp/cs_patched_O2_l8juo2wp/ntt.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c cbd.c -o /tmp/cs_patched_O2_l8juo2wp/cbd.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c reduce.c -o /tmp/cs_patched_O2_l8juo2wp/reduce.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c verify.c -o /tmp/cs_patched_O2_l8juo2wp/verify.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c fips202.c -o /tmp/cs_patched_O2_l8juo2wp/fips202.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c symmetric-shake.c -o /tmp/cs_patched_O2_l8juo2wp/symmetric-shake.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c randombytes.c -o /tmp/cs_patched_O2_l8juo2wp/randombytes.o",
+    "gcc -w -O2 -fomit-frame-pointer -DKYBER_K=3 /tmp/cs_patched_O2_l8juo2wp/kem.o /tmp/cs_patched_O2_l8juo2wp/indcpa.o /tmp/cs_patched_O2_l8juo2wp/polyvec.o /tmp/cs_patched_O2_l8juo2wp/poly.o /tmp/cs_patched_O2_l8juo2wp/ntt.o /tmp/cs_patched_O2_l8juo2wp/cbd.o /tmp/cs_patched_O2_l8juo2wp/reduce.o /tmp/cs_patched_O2_l8juo2wp/verify.o /tmp/cs_patched_O2_l8juo2wp/fips202.o /tmp/cs_patched_O2_l8juo2wp/symmetric-shake.o /tmp/cs_patched_O2_l8juo2wp/randombytes.o test_kyber.c -o /tmp/cs_patched_O2_l8juo2wp/test_kyber"
+   ],
+   "objects": {
+    "poly.c": {
+     "path_measured": "poly.o",
+     "sha256": "ee99d186cbfd573ac312800cada308ab0a42f5c381acc92158c78e1154c17170",
+     "text_section": ".text",
+     "text_bytes": 1647,
+     "rodata_section": "(absent)",
+     "rodata_bytes": 0
+    },
+    "polyvec.c": {
+     "path_measured": "polyvec.o",
+     "sha256": "42634fcaf5c29ec06e52286cbf3092a34e95543cc5c6a54430a03a5a7f0b9e17",
+     "text_section": ".text",
+     "text_bytes": 1207,
+     "rodata_section": "(absent)",
+     "rodata_bytes": 0
+    }
+   },
+   "executable": {
+    "path_measured": "test_kyber",
+    "sha256": "fc923a49adc1303680ff55e8bcf0d2cfab031c0949397bada1d21485fcbbb112",
+    "text_section": ".text",
+    "text_bytes": 12753,
+    "rodata_section": ".rodata",
+    "rodata_bytes": 649
+   }
+  },
+  {
+   "optimisation": "-Os",
+   "revision": "vulnerable",
+   "build_ok": true,
+   "commands": [
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c kem.c -o /tmp/cs_vulnerable_Os_7by45oue/kem.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c indcpa.c -o /tmp/cs_vulnerable_Os_7by45oue/indcpa.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c polyvec.c -o /tmp/cs_vulnerable_Os_7by45oue/polyvec.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c poly.c -o /tmp/cs_vulnerable_Os_7by45oue/poly.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c ntt.c -o /tmp/cs_vulnerable_Os_7by45oue/ntt.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c cbd.c -o /tmp/cs_vulnerable_Os_7by45oue/cbd.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c reduce.c -o /tmp/cs_vulnerable_Os_7by45oue/reduce.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c verify.c -o /tmp/cs_vulnerable_Os_7by45oue/verify.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c fips202.c -o /tmp/cs_vulnerable_Os_7by45oue/fips202.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c symmetric-shake.c -o /tmp/cs_vulnerable_Os_7by45oue/symmetric-shake.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c randombytes.c -o /tmp/cs_vulnerable_Os_7by45oue/randombytes.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 /tmp/cs_vulnerable_Os_7by45oue/kem.o /tmp/cs_vulnerable_Os_7by45oue/indcpa.o /tmp/cs_vulnerable_Os_7by45oue/polyvec.o /tmp/cs_vulnerable_Os_7by45oue/poly.o /tmp/cs_vulnerable_Os_7by45oue/ntt.o /tmp/cs_vulnerable_Os_7by45oue/cbd.o /tmp/cs_vulnerable_Os_7by45oue/reduce.o /tmp/cs_vulnerable_Os_7by45oue/verify.o /tmp/cs_vulnerable_Os_7by45oue/fips202.o /tmp/cs_vulnerable_Os_7by45oue/symmetric-shake.o /tmp/cs_vulnerable_Os_7by45oue/randombytes.o test_kyber.c -o /tmp/cs_vulnerable_Os_7by45oue/test_kyber"
+   ],
+   "objects": {
+    "poly.c": {
+     "path_measured": "poly.o",
+     "sha256": "804e6782b57f99d8433fb0e24353217d14644165a569bb3e871711d60f39f4e8",
+     "text_section": ".text",
+     "text_bytes": 1069,
+     "rodata_section": "(absent)",
+     "rodata_bytes": 0
+    },
+    "polyvec.c": {
+     "path_measured": "polyvec.o",
+     "sha256": "54aae1b2a026cd38a2f6c5a69c247cd1b2646c779dcdd54728c01297765ba3aa",
+     "text_section": ".text",
+     "text_bytes": 967,
+     "rodata_section": "(absent)",
+     "rodata_bytes": 0
+    }
+   },
+   "executable": {
+    "path_measured": "test_kyber",
+    "sha256": "9318212b392af7ee514e7b2285a5f86d41562959a01b835e701b9084277a0acf",
+    "text_section": ".text",
+    "text_bytes": 10317,
+    "rodata_section": ".rodata",
+    "rodata_bytes": 617
+   }
+  },
+  {
+   "optimisation": "-Os",
+   "revision": "patched",
+   "build_ok": true,
+   "commands": [
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c kem.c -o /tmp/cs_patched_Os_tuetc43g/kem.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c indcpa.c -o /tmp/cs_patched_Os_tuetc43g/indcpa.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c polyvec.c -o /tmp/cs_patched_Os_tuetc43g/polyvec.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c poly.c -o /tmp/cs_patched_Os_tuetc43g/poly.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c ntt.c -o /tmp/cs_patched_Os_tuetc43g/ntt.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c cbd.c -o /tmp/cs_patched_Os_tuetc43g/cbd.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c reduce.c -o /tmp/cs_patched_Os_tuetc43g/reduce.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c verify.c -o /tmp/cs_patched_Os_tuetc43g/verify.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c fips202.c -o /tmp/cs_patched_Os_tuetc43g/fips202.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c symmetric-shake.c -o /tmp/cs_patched_Os_tuetc43g/symmetric-shake.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 -c randombytes.c -o /tmp/cs_patched_Os_tuetc43g/randombytes.o",
+    "gcc -w -Os -fomit-frame-pointer -DKYBER_K=3 /tmp/cs_patched_Os_tuetc43g/kem.o /tmp/cs_patched_Os_tuetc43g/indcpa.o /tmp/cs_patched_Os_tuetc43g/polyvec.o /tmp/cs_patched_Os_tuetc43g/poly.o /tmp/cs_patched_Os_tuetc43g/ntt.o /tmp/cs_patched_Os_tuetc43g/cbd.o /tmp/cs_patched_Os_tuetc43g/reduce.o /tmp/cs_patched_Os_tuetc43g/verify.o /tmp/cs_patched_Os_tuetc43g/fips202.o /tmp/cs_patched_Os_tuetc43g/symmetric-shake.o /tmp/cs_patched_Os_tuetc43g/randombytes.o test_kyber.c -o /tmp/cs_patched_Os_tuetc43g/test_kyber"
+   ],
+   "objects": {
+    "poly.c": {
+     "path_measured": "poly.o",
+     "sha256": "38bb764e2339d60aed7e7d787fcd1d44bed6f7c72f92901f8b151c0aaa51e211",
+     "text_section": ".text",
+     "text_bytes": 1052,
+     "rodata_section": "(absent)",
+     "rodata_bytes": 0
+    },
+    "polyvec.c": {
+     "path_measured": "polyvec.o",
+     "sha256": "91d4ade6e5cced6be41b954ac09efb272db66ada6e27367e1fc7ec7247c2b93c",
+     "text_section": ".text",
+     "text_bytes": 979,
+     "rodata_section": "(absent)",
+     "rodata_bytes": 0
+    }
+   },
+   "executable": {
+    "path_measured": "test_kyber",
+    "sha256": "e1fe0a78801e24072d62acd6acb7ef4e246f25eb9ca9e94a4ccb1ab5c82a7403",
+    "text_section": ".text",
+    "text_bytes": 10296,
+    "rodata_section": ".rodata",
+    "rodata_bytes": 617
+   }
+  },
+  {
+   "optimisation": "-Oz",
+   "revision": "vulnerable",
+   "build_ok": true,
+   "commands": [
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c kem.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/kem.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c indcpa.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/indcpa.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c polyvec.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/polyvec.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c poly.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/poly.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c ntt.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/ntt.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c cbd.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/cbd.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c reduce.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/reduce.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c verify.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/verify.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c fips202.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/fips202.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c symmetric-shake.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/symmetric-shake.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c randombytes.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/randombytes.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 /tmp/cs_vulnerable_Oz_y1f56t5d/kem.o /tmp/cs_vulnerable_Oz_y1f56t5d/indcpa.o /tmp/cs_vulnerable_Oz_y1f56t5d/polyvec.o /tmp/cs_vulnerable_Oz_y1f56t5d/poly.o /tmp/cs_vulnerable_Oz_y1f56t5d/ntt.o /tmp/cs_vulnerable_Oz_y1f56t5d/cbd.o /tmp/cs_vulnerable_Oz_y1f56t5d/reduce.o /tmp/cs_vulnerable_Oz_y1f56t5d/verify.o /tmp/cs_vulnerable_Oz_y1f56t5d/fips202.o /tmp/cs_vulnerable_Oz_y1f56t5d/symmetric-shake.o /tmp/cs_vulnerable_Oz_y1f56t5d/randombytes.o test_kyber.c -o /tmp/cs_vulnerable_Oz_y1f56t5d/test_kyber"
+   ],
+   "objects": {
+    "poly.c": {
+     "path_measured": "poly.o",
+     "sha256": "804e6782b57f99d8433fb0e24353217d14644165a569bb3e871711d60f39f4e8",
+     "text_section": ".text",
+     "text_bytes": 1069,
+     "rodata_section": "(absent)",
+     "rodata_bytes": 0
+    },
+    "polyvec.c": {
+     "path_measured": "polyvec.o",
+     "sha256": "54aae1b2a026cd38a2f6c5a69c247cd1b2646c779dcdd54728c01297765ba3aa",
+     "text_section": ".text",
+     "text_bytes": 967,
+     "rodata_section": "(absent)",
+     "rodata_bytes": 0
+    }
+   },
+   "executable": {
+    "path_measured": "test_kyber",
+    "sha256": "8459061a732c441b986dc72b5a5922d6ee172c8e33504d13985c08f29b36ded0",
+    "text_section": ".text",
+    "text_bytes": 10178,
+    "rodata_section": ".rodata",
+    "rodata_bytes": 617
+   }
+  },
+  {
+   "optimisation": "-Oz",
+   "revision": "patched",
+   "build_ok": true,
+   "commands": [
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c kem.c -o /tmp/cs_patched_Oz_fyuqdk01/kem.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c indcpa.c -o /tmp/cs_patched_Oz_fyuqdk01/indcpa.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c polyvec.c -o /tmp/cs_patched_Oz_fyuqdk01/polyvec.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c poly.c -o /tmp/cs_patched_Oz_fyuqdk01/poly.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c ntt.c -o /tmp/cs_patched_Oz_fyuqdk01/ntt.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c cbd.c -o /tmp/cs_patched_Oz_fyuqdk01/cbd.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c reduce.c -o /tmp/cs_patched_Oz_fyuqdk01/reduce.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c verify.c -o /tmp/cs_patched_Oz_fyuqdk01/verify.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c fips202.c -o /tmp/cs_patched_Oz_fyuqdk01/fips202.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c symmetric-shake.c -o /tmp/cs_patched_Oz_fyuqdk01/symmetric-shake.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c randombytes.c -o /tmp/cs_patched_Oz_fyuqdk01/randombytes.o",
+    "gcc -w -Oz -fomit-frame-pointer -DKYBER_K=3 /tmp/cs_patched_Oz_fyuqdk01/kem.o /tmp/cs_patched_Oz_fyuqdk01/indcpa.o /tmp/cs_patched_Oz_fyuqdk01/polyvec.o /tmp/cs_patched_Oz_fyuqdk01/poly.o /tmp/cs_patched_Oz_fyuqdk01/ntt.o /tmp/cs_patched_Oz_fyuqdk01/cbd.o /tmp/cs_patched_Oz_fyuqdk01/reduce.o /tmp/cs_patched_Oz_fyuqdk01/verify.o /tmp/cs_patched_Oz_fyuqdk01/fips202.o /tmp/cs_patched_Oz_fyuqdk01/symmetric-shake.o /tmp/cs_patched_Oz_fyuqdk01/randombytes.o test_kyber.c -o /tmp/cs_patched_Oz_fyuqdk01/test_kyber"
+   ],
+   "objects": {
+    "poly.c": {
+     "path_measured": "poly.o",
+     "sha256": "38bb764e2339d60aed7e7d787fcd1d44bed6f7c72f92901f8b151c0aaa51e211",
+     "text_section": ".text",
+     "text_bytes": 1052,
+     "rodata_section": "(absent)",
+     "rodata_bytes": 0
+    },
+    "polyvec.c": {
+     "path_measured": "polyvec.o",
+     "sha256": "91d4ade6e5cced6be41b954ac09efb272db66ada6e27367e1fc7ec7247c2b93c",
+     "text_section": ".text",
+     "text_bytes": 979,
+     "rodata_section": "(absent)",
+     "rodata_bytes": 0
+    }
+   },
+   "executable": {
+    "path_measured": "test_kyber",
+    "sha256": "3039d4828ffd52ae55d8dcee98cf50298bc01f2ac8cd73936696afeb2c4a41ee",
+    "text_section": ".text",
+    "text_bytes": 10173,
+    "rodata_section": ".rodata",
+    "rodata_bytes": 617
+   }
+  }
+ ],
+ "comparisons": [
+  {
+   "optimisation": "-O2",
+   "level": {
+    "object:poly.c": {
+     "section_names": [
+      ".text",
+      "(absent)"
+     ],
+     "vulnerable": {
+      "text": 1423,
+      "rodata": 0
+     },
+     "patched": {
+      "text": 1647,
+      "rodata": 0
+     },
+     "delta_text": 224,
+     "delta_rodata": 0
+    },
+    "object:polyvec.c": {
+     "section_names": [
+      ".text",
+      "(absent)"
+     ],
+     "vulnerable": {
+      "text": 1223,
+      "rodata": 0
+     },
+     "patched": {
+      "text": 1207,
+      "rodata": 0
+     },
+     "delta_text": -16,
+     "delta_rodata": 0
+    },
+    "executable:test_kyber": {
+     "section_names": [
+      ".text",
+      ".rodata"
+     ],
+     "vulnerable": {
+      "text": 12561,
+      "rodata": 617
+     },
+     "patched": {
+      "text": 12753,
+      "rodata": 649
+     },
+     "delta_text": 192,
+     "delta_rodata": 32
+    }
+   }
+  },
+  {
+   "optimisation": "-Os",
+   "level": {
+    "object:poly.c": {
+     "section_names": [
+      ".text",
+      "(absent)"
+     ],
+     "vulnerable": {
+      "text": 1069,
+      "rodata": 0
+     },
+     "patched": {
+      "text": 1052,
+      "rodata": 0
+     },
+     "delta_text": -17,
+     "delta_rodata": 0
+    },
+    "object:polyvec.c": {
+     "section_names": [
+      ".text",
+      "(absent)"
+     ],
+     "vulnerable": {
+      "text": 967,
+      "rodata": 0
+     },
+     "patched": {
+      "text": 979,
+      "rodata": 0
+     },
+     "delta_text": 12,
+     "delta_rodata": 0
+    },
+    "executable:test_kyber": {
+     "section_names": [
+      ".text",
+      ".rodata"
+     ],
+     "vulnerable": {
+      "text": 10317,
+      "rodata": 617
+     },
+     "patched": {
+      "text": 10296,
+      "rodata": 617
+     },
+     "delta_text": -21,
+     "delta_rodata": 0
+    }
+   }
+  },
+  {
+   "optimisation": "-Oz",
+   "level": {
+    "object:poly.c": {
+     "section_names": [
+      ".text",
+      "(absent)"
+     ],
+     "vulnerable": {
+      "text": 1069,
+      "rodata": 0
+     },
+     "patched": {
+      "text": 1052,
+      "rodata": 0
+     },
+     "delta_text": -17,
+     "delta_rodata": 0
+    },
+    "object:polyvec.c": {
+     "section_names": [
+      ".text",
+      "(absent)"
+     ],
+     "vulnerable": {
+      "text": 967,
+      "rodata": 0
+     },
+     "patched": {
+      "text": 979,
+      "rodata": 0
+     },
+     "delta_text": 12,
+     "delta_rodata": 0
+    },
+    "executable:test_kyber": {
+     "section_names": [
+      ".text",
+      ".rodata"
+     ],
+     "vulnerable": {
+      "text": 10178,
+      "rodata": 617
+     },
+     "patched": {
+      "text": 10173,
+      "rodata": 617
+     },
+     "delta_text": -5,
+     "delta_rodata": 0
+    }
+   }
+  }
+ ]
+}

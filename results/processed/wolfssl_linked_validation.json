@@ -1,0 +1,70 @@
+{
+ "experiment": "wolfSSL linked-executable validation and audit",
+ "why": "Section 5.2 recorded wolfSSL as object-level only, because autotools was unavailable on the measurement host. This builds the pinned commit with autotools in CI, links wolfcrypt/test/testwolfcrypt, runs it, and audits the linked binary.",
+ "commit": "7a8aae3e40138d19c640ae5bc0bc4e8f2998c22d",
+ "toolchain": [
+  "cc: gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "commit: 7a8aae3e40138d19c640ae5bc0bc4e8f2998c22d"
+ ],
+ "level": "linked executable (distinct from the object-level audit in Table 5.1)",
+ "cells": [
+  {
+   "configuration": "CONV_WITH_DIV",
+   "optimisation": "-O2",
+   "binary_measured": "wolfcrypt/test/testwolfcrypt",
+   "binary_sha256": "066070be0a2196a54306ef36cf271b8f5808ec343b26c6b6399218ad96f7377b",
+   "arch": "x86_64",
+   "total_divisions": 25,
+   "secret_dependent_divisions": 0,
+   "verdict": "NO_SECRET_DEPENDENT_DIV",
+   "functional_test": "wolfcrypt/test/testwolfcrypt",
+   "functional_exit_status": 0,
+   "vulnerable_functions": []
+  },
+  {
+   "configuration": "CONV_WITH_DIV",
+   "optimisation": "-Os",
+   "binary_measured": "wolfcrypt/test/testwolfcrypt",
+   "binary_sha256": "85ec58fd508ff8abe3811180d370a774bbf726163eb19bfd717860a5b4854ae1",
+   "arch": "x86_64",
+   "total_divisions": 99,
+   "secret_dependent_divisions": 48,
+   "verdict": "VULNERABLE",
+   "functional_test": "wolfcrypt/test/testwolfcrypt",
+   "functional_exit_status": 0,
+   "vulnerable_functions": [
+    "mlkem_compress_4",
+    "mlkem_compress_5",
+    "mlkem_to_msg",
+    "mlkem_vec_compress_10",
+    "mlkem_vec_compress_11"
+   ]
+  },
+  {
+   "configuration": "default",
+   "optimisation": "-O2",
+   "binary_measured": "wolfcrypt/test/testwolfcrypt",
+   "binary_sha256": "f6b700cf404241cf182d05118af3c7b2686bca68f3ddfa3a5d6192e162e95d7a",
+   "arch": "x86_64",
+   "total_divisions": 25,
+   "secret_dependent_divisions": 0,
+   "verdict": "NO_SECRET_DEPENDENT_DIV",
+   "functional_test": "wolfcrypt/test/testwolfcrypt",
+   "functional_exit_status": 0,
+   "vulnerable_functions": []
+  },
+  {
+   "configuration": "default",
+   "optimisation": "-Os",
+   "binary_measured": "wolfcrypt/test/testwolfcrypt",
+   "binary_sha256": "dfd46ee79d703626767d393fe0a11775e8763470491dae099eb1a62f8e63167f",
+   "arch": "x86_64",
+   "total_divisions": 51,
+   "secret_dependent_divisions": 0,
+   "verdict": "NO_SECRET_DEPENDENT_DIV",
+   "functional_test": "wolfcrypt/test/testwolfcrypt",
+   "functional_exit_status": 0,
+   "vulnerable_functions": []
+  }
+ ]
+}

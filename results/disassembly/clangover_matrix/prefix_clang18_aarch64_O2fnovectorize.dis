@@ -1,0 +1,42 @@
+00000000000001a4 <pqcrystals_kyber512_ref_poly_frommsg>:
+ 1a4:	aa1f03e8 	mov	x8, xzr
+ 1a8:	91002009 	add	x9, x0, #0x8
+ 1ac:	5280d02a 	mov	w10, #0x681                 	// #1665
+ 1b0:	3868682b 	ldrb	w11, [x1, x8]
+ 1b4:	1300016b 	sbfx	w11, w11, #0, #1
+ 1b8:	0a0a016b 	and	w11, w11, w10
+ 1bc:	781f812b 	sturh	w11, [x9, #-8]
+ 1c0:	3868682b 	ldrb	w11, [x1, x8]
+ 1c4:	5302056b 	lsl	w11, w11, #30
+ 1c8:	0a8b7d4b 	and	w11, w10, w11, asr #31
+ 1cc:	781fa12b 	sturh	w11, [x9, #-6]
+ 1d0:	3868682b 	ldrb	w11, [x1, x8]
+ 1d4:	5303096b 	lsl	w11, w11, #29
+ 1d8:	0a8b7d4b 	and	w11, w10, w11, asr #31
+ 1dc:	781fc12b 	sturh	w11, [x9, #-4]
+ 1e0:	3868682b 	ldrb	w11, [x1, x8]
+ 1e4:	53040d6b 	lsl	w11, w11, #28
+ 1e8:	0a8b7d4b 	and	w11, w10, w11, asr #31
+ 1ec:	781fe12b 	sturh	w11, [x9, #-2]
+ 1f0:	3868682b 	ldrb	w11, [x1, x8]
+ 1f4:	5305116b 	lsl	w11, w11, #27
+ 1f8:	0a8b7d4b 	and	w11, w10, w11, asr #31
+ 1fc:	7900012b 	strh	w11, [x9]
+ 200:	3868682b 	ldrb	w11, [x1, x8]
+ 204:	5306156b 	lsl	w11, w11, #26
+ 208:	0a8b7d4b 	and	w11, w10, w11, asr #31
+ 20c:	7900052b 	strh	w11, [x9, #2]
+ 210:	3868682b 	ldrb	w11, [x1, x8]
+ 214:	5307196b 	lsl	w11, w11, #25
+ 218:	0a8b7d4b 	and	w11, w10, w11, asr #31
+ 21c:	7900092b 	strh	w11, [x9, #4]
+ 220:	38e8682b 	ldrsb	w11, [x1, x8]
+ 224:	91000508 	add	x8, x8, #0x1
+ 228:	7100017f 	cmp	w11, #0x0
+ 22c:	1a8aa3eb 	csel	w11, wzr, w10, ge	// ge = tcont
+ 230:	f100811f 	cmp	x8, #0x20
+ 234:	79000d2b 	strh	w11, [x9, #6]
+ 238:	91004129 	add	x9, x9, #0x10
+ 23c:	54fffba1 	b.ne	1b0 <pqcrystals_kyber512_ref_poly_frommsg+0xc>  // b.any
+ 240:	d65f03c0 	ret
+

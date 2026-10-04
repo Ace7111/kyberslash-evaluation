@@ -482,6 +482,128 @@ report a false negative quietly.
 
 ---
 
+## F10. Code-size cost of the patch is immaterial under the tested conditions
+
+Section 3.12 splits mitigation evaluation into security effectiveness and complete
+implementation-cost characterisation. The performance half came from the leakage screen; this
+closes the code-size half, which §5.9 had recorded as outstanding.
+
+Vulnerable `a621b8d` and patched `272125f` were compiled with the same compiler, the same
+optimisation level and the same flag list, differing only in the checked-out source. Object and
+executable measurements are reported separately and never mixed: `poly.o` and `polyvec.o` are
+the translation units the patch changes, while the linked `test_kyber` also contains Keccak,
+the NTT and the test driver.
+
+**aarch64 / Mach-O, GCC 16.1.0** — sections `(__TEXT,__text)` and `(__TEXT,__const)`:
+
+| Level | exe `__text` | Δ | exe `__const` | Δ |
+| --- | --- | --- | --- | --- |
+| `-O2` | 9,632 → 9,632 | 0 | 576 → 528 | −48 |
+| `-Os` | 7,984 → 7,996 | **+12** | 448 → 448 | 0 |
+| `-Oz` | 7,984 → 7,996 | **+12** | 448 → 448 | 0 |
+
+**x86-64 / ELF, GCC 13.3.0** — sections `.text` and `.rodata`:
+
+| Level | exe `.text` | Δ | exe `.rodata` | Δ |
+| --- | --- | --- | --- | --- |
+| `-O2` | 12,561 → 12,753 | **+192** | 617 → 649 | +32 |
+| `-Os` | 10,317 → 10,296 | **−21** | 617 → 617 | 0 |
+| `-Oz` | 10,178 → 10,173 | **−5** | 617 → 617 | 0 |
+
+The largest executable effect is +192 bytes of `.text` on a 12.5 KB section, about 1.5 %. At the
+size-oriented levels the patched x86-64 build is marginally *smaller*, while on aarch64 it is 12
+bytes larger. The direction is therefore platform-dependent and the magnitude is small either
+way. Taken with the ~1 % median-time result in §5.9, no material implementation cost is
+demonstrated under the tested conditions. This is not a general claim about every build,
+workload or target. Records: `results/processed/code_size_{aarch64_macho,x86_64_elf}.json`,
+raw output under `results/logs/`.
+
+---
+
+## F11. Clangover reproduced on x86-64 and not on aarch64, invariantly across Clang 15-18
+
+This is the experiment F6 recorded as outstanding, and it resolves the confound F7 recorded.
+
+**Design.** Pre-fix `272125f` and post-fix `9b8d306`, `poly.c` at ML-KEM-512, Clang 15.0.7,
+16.0.6, 17.0.6 and 18.1.3, six optimisation settings — the four the proof of concept reports
+(`-Os`, `-O1`, `-O2 -fno-vectorize`, `-O3 -fno-vectorize`) plus plain `-O2` and `-O3`. Each
+architecture is built on its own native runner, so compiler release, source revision, parameter
+set and flags are held fixed and only the target changes. 96 cells.
+
+**Branch counts are not the finding.** `scripts/inspect_branches.py` screens for a conditional
+branch whose flags derive from memory addressed through the secret message pointer. At x86-64
+`-O2` the branch count is 11 under Clang 15 and 12 under 16, 17 and 18, while the
+secret-dependent count is 8 in all four — the clearest available demonstration of why F6's
+methodological point matters.
+
+**Pre-fix revision, secret-dependent branches in `poly_frommsg`:**
+
+| Flags | x86-64 | aarch64 |
+| --- | --- | --- |
+| `-O1` | 0 | 0 |
+| `-Os` | 0 | 0 |
+| `-O2` | **8** | 0 |
+| `-O2 -fno-vectorize` | **8** | 0 |
+| `-O3` | **15** | 0 |
+| `-O3 -fno-vectorize` | **15** | 0 |
+
+Identical in all four releases. The emitted code is unmistakable: at x86-64 `-O2` the eight
+branches are one per bit of the message byte — `testb $0x1,(%rsi,%rax,1)` through
+`testb $0x40,...` and `cmpb $0x0,...` for the sign bit, each followed by a conditional jump,
+with `%rsi` the `msg` argument.
+
+**Post-fix revision:** 0 secret-dependent branches in all 48 cells. The `cmov_int16` mitigation
+holds across both architectures and all four releases.
+
+**What this establishes, and what it does not.**
+
+- Clangover **is** reproducible on x86-64 as a secret-dependent branch, under controlled
+  conditions, corroborating the proof of concept's report of at least the x86 ISA.
+- Clangover was **not reproduced on aarch64** — now with release, revision, parameter set and
+  flags held identical, so the earlier aarch64 result is not an artefact of `-fno-vectorize` or
+  of a different compiler build. The difference tracks the target architecture.
+- The compiler-release component of RQ2 has an answer within this range: the verdict is
+  **invariant** across Clang 15 to 18. What determines the outcome is the optimisation setting
+  and the architecture, not the release. No configuration disagreed across releases.
+- `-fno-vectorize` is **not** required on x86-64; plain `-O2` and `-O3` also emit the branches.
+- On this revision and parameter set, `-O1` and `-Os` were clean on x86-64. The proof of
+  concept reports those settings for its own target tree, and this is bounded to `272125f` at
+  ML-KEM-512 with Ubuntu's Clang builds. It is not a claim that the proof of concept is wrong.
+
+Records: `results/processed/clangover_compiler_matrix.json`; 96 archived `poly_frommsg`
+disassemblies under `results/disassembly/clangover_matrix/`.
+
+---
+
+## F12. wolfSSL's result confirmed at linked-executable level
+
+§5.2 recorded wolfSSL as object-level only, because autotools was unavailable on the
+measurement host. A CI job now builds the pinned commit `7a8aae3e` with autotools, links
+`wolfcrypt/test/testwolfcrypt`, runs it, and audits the linked binary.
+
+| Configuration | Level | Functional test | Total div | Secret-dependent | Verdict |
+| --- | --- | --- | --- | --- | --- |
+| default | `-O2` | exit 0 | 25 | 0 | clean |
+| default | `-Os` | exit 0 | 51 | 0 | clean |
+| `CONV_WITH_DIV` | `-O2` | exit 0 | 25 | 0 | clean |
+| `CONV_WITH_DIV` | `-Os` | exit 0 | 99 | **48** | VULNERABLE |
+
+Every figure matches the object-level audit. The 48 secret-dependent divisions are attributed
+to `mlkem_to_msg` and the four compression routines, `mlkem_vec_compress_10` among them. All
+three existing claims are upheld at the stronger evidence level: the default path is clean, the
+documented `CONV_WITH_DIV` option restores the mechanism at `-Os`, and `-O2` strength-reduces
+it away. The four conditions now carry an executable functional-test result where previously
+they carried none.
+
+This does not change the archival qualification in §5.1. The two wolfSSL `-O2` conditions in the
+original count remain documented contemporaneously rather than as per-cell JSON; what has
+changed is that the configurations now also have linked-executable evidence.
+
+Records: `results/processed/wolfssl_linked_validation.json`, logs under
+`results/logs/wolfssl_linked/`.
+
+---
+
 ## Instrument defects found during this work
 
 Recorded because an instrument whose failure modes are undisclosed cannot be assessed.
@@ -538,6 +660,23 @@ CI positive control on its first run; no local test could have found it, because
 testing was on aarch64. Fixed by matching the line's structure rather than a field index,
 with four regression cases pinning both layouts.
 
+**D8 - the branch screen failed its own controls on x86-64, in both directions.** The screen
+written for F11 reproduced the manual aarch64 classification in §5.5 immediately, which was
+reassuring and misleading: on x86-64 it both missed a known secret-dependent branch and
+invented one. It missed the positive because on x86 a flag-setting instruction can carry a
+memory operand, so `testb $0x1,(%rbx,%r14)` performs the load and sets the flags at once and a
+register-only taint check sees nothing. It invented one because `leaq 0x20(%rsi),%rcx` was read
+as a load, tainting `%rcx`, which turned the vectoriser's own alias check into a reported
+vulnerability. A third defect preceded both: the parser accepted an AArch64 encoding word such
+as `f100811f` as a mnemonic, because it begins with a letter, so every `cmp` so encoded was
+invisible as a flag source and a stale flag source survived across a branch -- briefly
+contradicting the correct §5.5 result. That is the same field-layout error as D6.
+
+None of these reached a reported result. The positive control caught all three, and the CI gate
+refused to run the 96-cell matrix until they were fixed. The sequence is the clearest
+vindication in this project of insisting on a positive control before trusting a negative: the
+screen's agreement with a known-correct negative on one architecture said nothing whatever
+about its behaviour on another.
 ---
 
 ## Reproducibility of the leakage figures
