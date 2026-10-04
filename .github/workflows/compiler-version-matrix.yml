@@ -41,7 +41,11 @@ jobs:
   clangover:
     name: clang-${{ matrix.clang }} ${{ matrix.revision }} ${{ matrix.target }}
     needs: screen-selftest
-    runs-on: ubuntu-latest
+    # Native runner per architecture. Cross-compiling with --target needs an aarch64 sysroot
+    # that the x86-64 image does not carry, and a native build is the stronger comparison
+    # anyway: both targets are then built by the distribution's own clang for that
+    # architecture, at the same release.
+    runs-on: ${{ matrix.target == 'aarch64' && 'ubuntu-24.04-arm' || 'ubuntu-latest' }}
     strategy:
       fail-fast: false
       matrix:
@@ -100,7 +104,6 @@ jobs:
           # aarch64 is reached by cross-compilation with the *same* clang binary, so that
           # architecture is the only variable that changes between the two targets.
           TGT=""
-          [ "${{ matrix.target }}" = "aarch64" ] && TGT="--target=aarch64-linux-gnu"
           # The four settings the proof of concept reports, plus the vectorised forms of -O2
           # and -O3. Without those, a difference between architectures could be an artefact of
           # -fno-vectorize rather than of the target.
@@ -108,7 +111,7 @@ jobs:
           for FLAGS in "$@"; do
             TAG=$(echo "$FLAGS" | tr -d ' -' )
             O=out/${{ matrix.revision }}_clang${{ matrix.clang }}_${{ matrix.target }}_${TAG}
-            ( cd kyber/ref && $CC $TGT -w $FLAGS -DKYBER_K=2 -c poly.c -o /tmp/poly_$TAG.o )
+            ( cd kyber/ref && $CC -w $FLAGS -DKYBER_K=2 -c poly.c -o /tmp/poly_$TAG.o )
             objdump -d /tmp/poly_$TAG.o > ${O}.dis
             sha=$(sha256sum /tmp/poly_$TAG.o | cut -d' ' -f1)
             python3 scripts/inspect_branches.py \
