@@ -11,6 +11,7 @@ import json, pathlib, subprocess, sys
 
 def main():
     rec_path, sha, flags, cc, src_dir, param = sys.argv[1:7]
+    target = sys.argv[7] if len(sys.argv) > 7 else None
     p = pathlib.Path(rec_path)
     d = json.loads(p.read_text())
 
@@ -24,6 +25,8 @@ def main():
     d["revision_commit"] = cap(["git", "-C", src_dir, "rev-parse", "HEAD"])
     d["param_set"] = param
     d["objdump"] = cap(["objdump", "--version"]).splitlines()[0]
+    if target:
+        d["target_triple_arch"] = target
     p.write_text(json.dumps(d, indent=1) + "\n")
     print(f'{d["label"]}: {d["verdict"]} '
           f'({d["conditional_branches"]} branch(es), '
