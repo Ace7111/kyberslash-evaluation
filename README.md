@@ -30,12 +30,14 @@ questions, alongside eight instrument defects (D1–D8) recorded in the same fil
   11.6×. Measure them separately.
 - The mechanism reproduces on x86-64 as well as aarch64 (F8). The overlapping GCC settings
   agree: `-Os` emits on both, `-O2` is clean on both.
-- Clangover reproduced on x86-64 and **not** on aarch64, across a 96-cell controlled matrix
+- Clangover reproduced on x86-64 and **not** on aarch64, across a 144-cell controlled matrix
   holding compiler release, revision, parameter set and flags fixed (F11). The verdict is
   invariant across Clang 15.0.7, 16.0.6, 17.0.6 and 18.1.3: the optimisation setting and the
   architecture decide it, not the release. On the pre-fix revision at x86-64 `-O2` the eight
-  flagged branches are one per bit of the message byte. Branch counts are not treated as
-  findings — the count varies across releases while the secret-dependent count does not.
+  flagged branches are one per bit of the message byte. **Current HEAD `da52c4d` is clean in all
+  twelve of its configurations**, so RQ2 is answered for the implementation it names rather than
+  by inference from the historical fix. Branch counts are not treated as findings — the count
+  varies across releases while the secret-dependent count does not.
 - No material code-size cost from the patch under the tested conditions (F10): at most +192
   bytes of `.text` in a 12.5 KB executable, and marginally smaller at `-Os`/`-Oz` on x86-64.
 - wolfSSL's result confirmed at linked-executable level with a passing functional test (F12).
@@ -81,7 +83,7 @@ python3 scripts/inspect_binary.py results/builds/<cell>/test_kyber
 | `harness/` | Divider model and fixed-vs-random timing harness |
 | `tests/test_classify.py` | 31 classifier cases and 4 disassembly-parsing cases |
 | `tests/test_branches.py` | 22 branch-screen cases: positive/negative controls, §5.5 ground truth, parser regressions |
-| `.github/workflows/` | CI binary audit with a positive control, plus the controlled compiler-version and architecture matrix |
+| `.github/workflows/` | CI binary audit with a positive control, plus the 144-cell compiler-version and architecture matrix |
 | `results/raw/` | Original observations with SHA-256 checksums |
 | `results/processed/` | Per-cell manifests and analyses as JSON |
 | `results/figures/` | Dissertation figures 2.1, 2.2, 4.1 and 5.1, plus two talk-only charts |

@@ -520,15 +520,24 @@ raw output under `results/logs/`.
 
 ---
 
-## F11. Clangover reproduced on x86-64 and not on aarch64, invariantly across Clang 15-18
+## F11. Clangover reproduced on x86-64, not on aarch64, invariantly across Clang 15-18, with current HEAD clean
 
 This is the experiment F6 recorded as outstanding, and it resolves the confound F7 recorded.
 
-**Design.** Pre-fix `272125f` and post-fix `9b8d306`, `poly.c` at ML-KEM-512, Clang 15.0.7,
-16.0.6, 17.0.6 and 18.1.3, six optimisation settings — the four the proof of concept reports
-(`-Os`, `-O1`, `-O2 -fno-vectorize`, `-O3 -fno-vectorize`) plus plain `-O2` and `-O3`. Each
-architecture is built on its own native runner, so compiler release, source revision, parameter
-set and flags are held fixed and only the target changes. 96 cells.
+**Design.** Three revisions — pre-fix `272125f`, post-fix `9b8d306` and current HEAD
+`da52c4d` — with `poly.c` at ML-KEM-512, Clang 15.0.7, 16.0.6, 17.0.6 and 18.1.3, six
+optimisation settings: the four the proof of concept reports (`-Os`, `-O1`,
+`-O2 -fno-vectorize`, `-O3 -fno-vectorize`) plus plain `-O2` and `-O3`. Each architecture is
+built on its own native runner, so compiler release, source revision, parameter set and flags
+are held fixed and only the target changes. **144 cells.**
+
+Current HEAD is in the matrix deliberately. RQ2 asks about the current reference
+implementation, and `da52c4d` is not simply a copy of the revision that fixed the defect: its
+`poly_frommsg` is byte-identical to `9b8d306`, but `cmov_int16` in `verify.c` gained an
+`__asm__("" : "+r"(b))` barrier that `9b8d306` does not carry. Upstream's comment says it is
+there for consumers who copy the code or change how it is built. Testing only the historical
+post-fix revision would have characterised the historical fix and left the implementation the
+question names untested.
 
 **Branch counts are not the finding.** `scripts/inspect_branches.py` screens for a conditional
 branch whose flags derive from memory addressed through the secret message pointer. At x86-64
@@ -552,13 +561,17 @@ branches are one per bit of the message byte — `testb $0x1,(%rsi,%rax,1)` thro
 `testb $0x40,...` and `cmpb $0x0,...` for the sign bit, each followed by a conditional jump,
 with `%rsi` the `msg` argument.
 
-**Post-fix revision:** 0 secret-dependent branches in all 48 cells. The `cmov_int16` mitigation
-holds across both architectures and all four releases.
+**Post-fix revision and current HEAD:** 0 secret-dependent branches in all 96 of their cells.
+The `cmov_int16` mitigation holds across both architectures and all four releases, and the
+implementation currently shipped is clean in all twelve of its configurations.
 
 **What this establishes, and what it does not.**
 
 - Clangover **is** reproducible on x86-64 as a secret-dependent branch, under controlled
   conditions, corroborating the proof of concept's report of at least the x86 ISA.
+- **RQ2 is answered for the implementation it names.** Current HEAD is clean on both
+  architectures at all four releases and all six settings, so the answer no longer rests on
+  inferring current behaviour from the historical fix.
 - Clangover was **not reproduced on aarch64** — now with release, revision, parameter set and
   flags held identical, so the earlier aarch64 result is not an artefact of `-fno-vectorize` or
   of a different compiler build. The difference tracks the target architecture.
@@ -570,7 +583,7 @@ holds across both architectures and all four releases.
   concept reports those settings for its own target tree, and this is bounded to `272125f` at
   ML-KEM-512 with Ubuntu's Clang builds. It is not a claim that the proof of concept is wrong.
 
-Records: `results/processed/clangover_compiler_matrix.json`; 96 archived `poly_frommsg`
+Records: `results/processed/clangover_compiler_matrix.json`; 144 archived `poly_frommsg`
 disassemblies under `results/disassembly/clangover_matrix/`.
 
 ---

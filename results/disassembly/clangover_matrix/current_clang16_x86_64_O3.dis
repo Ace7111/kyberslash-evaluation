@@ -1,0 +1,87 @@
+0000000000000aa0 <pqcrystals_kyber512_ref_poly_frommsg>:
+     aa0:	41 57                	push   %r15
+     aa2:	41 56                	push   %r14
+     aa4:	53                   	push   %rbx
+     aa5:	48 89 f3             	mov    %rsi,%rbx
+     aa8:	49 89 fe             	mov    %rdi,%r14
+     aab:	45 31 ff             	xor    %r15d,%r15d
+     aae:	66 90                	xchg   %ax,%ax
+     ab0:	4b 8d 3c 3e          	lea    (%r14,%r15,1),%rdi
+     ab4:	66 43 c7 04 3e 00 00 	movw   $0x0,(%r14,%r15,1)
+     abb:	0f b6 13             	movzbl (%rbx),%edx
+     abe:	83 e2 01             	and    $0x1,%edx
+     ac1:	be 81 06 00 00       	mov    $0x681,%esi
+     ac6:	e8 00 00 00 00       	call   acb <pqcrystals_kyber512_ref_poly_frommsg+0x2b>
+     acb:	4b 8d 3c 3e          	lea    (%r14,%r15,1),%rdi
+     acf:	48 83 c7 02          	add    $0x2,%rdi
+     ad3:	66 43 c7 44 3e 02 00 	movw   $0x0,0x2(%r14,%r15,1)
+     ada:	00 
+     adb:	0f b6 13             	movzbl (%rbx),%edx
+     ade:	d1 ea                	shr    $1,%edx
+     ae0:	83 e2 01             	and    $0x1,%edx
+     ae3:	be 81 06 00 00       	mov    $0x681,%esi
+     ae8:	e8 00 00 00 00       	call   aed <pqcrystals_kyber512_ref_poly_frommsg+0x4d>
+     aed:	4b 8d 3c 3e          	lea    (%r14,%r15,1),%rdi
+     af1:	48 83 c7 04          	add    $0x4,%rdi
+     af5:	66 43 c7 44 3e 04 00 	movw   $0x0,0x4(%r14,%r15,1)
+     afc:	00 
+     afd:	0f b6 13             	movzbl (%rbx),%edx
+     b00:	c1 ea 02             	shr    $0x2,%edx
+     b03:	83 e2 01             	and    $0x1,%edx
+     b06:	be 81 06 00 00       	mov    $0x681,%esi
+     b0b:	e8 00 00 00 00       	call   b10 <pqcrystals_kyber512_ref_poly_frommsg+0x70>
+     b10:	4b 8d 3c 3e          	lea    (%r14,%r15,1),%rdi
+     b14:	48 83 c7 06          	add    $0x6,%rdi
+     b18:	66 43 c7 44 3e 06 00 	movw   $0x0,0x6(%r14,%r15,1)
+     b1f:	00 
+     b20:	0f b6 13             	movzbl (%rbx),%edx
+     b23:	c1 ea 03             	shr    $0x3,%edx
+     b26:	83 e2 01             	and    $0x1,%edx
+     b29:	be 81 06 00 00       	mov    $0x681,%esi
+     b2e:	e8 00 00 00 00       	call   b33 <pqcrystals_kyber512_ref_poly_frommsg+0x93>
+     b33:	4b 8d 3c 3e          	lea    (%r14,%r15,1),%rdi
+     b37:	48 83 c7 08          	add    $0x8,%rdi
+     b3b:	66 43 c7 44 3e 08 00 	movw   $0x0,0x8(%r14,%r15,1)
+     b42:	00 
+     b43:	0f b6 13             	movzbl (%rbx),%edx
+     b46:	c1 ea 04             	shr    $0x4,%edx
+     b49:	83 e2 01             	and    $0x1,%edx
+     b4c:	be 81 06 00 00       	mov    $0x681,%esi
+     b51:	e8 00 00 00 00       	call   b56 <pqcrystals_kyber512_ref_poly_frommsg+0xb6>
+     b56:	4b 8d 3c 3e          	lea    (%r14,%r15,1),%rdi
+     b5a:	48 83 c7 0a          	add    $0xa,%rdi
+     b5e:	66 43 c7 44 3e 0a 00 	movw   $0x0,0xa(%r14,%r15,1)
+     b65:	00 
+     b66:	0f b6 13             	movzbl (%rbx),%edx
+     b69:	c1 ea 05             	shr    $0x5,%edx
+     b6c:	83 e2 01             	and    $0x1,%edx
+     b6f:	be 81 06 00 00       	mov    $0x681,%esi
+     b74:	e8 00 00 00 00       	call   b79 <pqcrystals_kyber512_ref_poly_frommsg+0xd9>
+     b79:	4b 8d 3c 3e          	lea    (%r14,%r15,1),%rdi
+     b7d:	48 83 c7 0c          	add    $0xc,%rdi
+     b81:	66 43 c7 44 3e 0c 00 	movw   $0x0,0xc(%r14,%r15,1)
+     b88:	00 
+     b89:	0f b6 13             	movzbl (%rbx),%edx
+     b8c:	c1 ea 06             	shr    $0x6,%edx
+     b8f:	83 e2 01             	and    $0x1,%edx
+     b92:	be 81 06 00 00       	mov    $0x681,%esi
+     b97:	e8 00 00 00 00       	call   b9c <pqcrystals_kyber512_ref_poly_frommsg+0xfc>
+     b9c:	4b 8d 3c 3e          	lea    (%r14,%r15,1),%rdi
+     ba0:	48 83 c7 0e          	add    $0xe,%rdi
+     ba4:	66 43 c7 44 3e 0e 00 	movw   $0x0,0xe(%r14,%r15,1)
+     bab:	00 
+     bac:	0f b6 13             	movzbl (%rbx),%edx
+     baf:	c1 ea 07             	shr    $0x7,%edx
+     bb2:	be 81 06 00 00       	mov    $0x681,%esi
+     bb7:	e8 00 00 00 00       	call   bbc <pqcrystals_kyber512_ref_poly_frommsg+0x11c>
+     bbc:	48 ff c3             	inc    %rbx
+     bbf:	49 83 c7 10          	add    $0x10,%r15
+     bc3:	49 81 ff 00 02 00 00 	cmp    $0x200,%r15
+     bca:	0f 85 e0 fe ff ff    	jne    ab0 <pqcrystals_kyber512_ref_poly_frommsg+0x10>
+     bd0:	5b                   	pop    %rbx
+     bd1:	41 5e                	pop    %r14
+     bd3:	41 5f                	pop    %r15
+     bd5:	c3                   	ret
+     bd6:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+     bdd:	00 00 00 
+

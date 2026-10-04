@@ -29,8 +29,728 @@
   "-O3 -fno-vectorize",
   "-Os"
  ],
- "cell_count": 96,
+ "cell_count": 144,
  "cells": [
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "aarch64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "8318848ced066bc0ceade815a15ac99f2404c33ece730b8d0965b4d6d2916fcd",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang15_aarch64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "aarch64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "aa656ed1eb83e0b47d4c9cf107b3842c7feda30002b59c6f5d07d33700d73769",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang15_aarch64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "aarch64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "8c5a12b09bc5b209b0a1ba56d5e7bb182bd3ef6ced254de379deb68de782330a",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang15_aarch64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "aarch64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "43ce4bacbc275441def52695a20a13c87e0224545574ed622a9cf822d88bc42b",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang15_aarch64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "aarch64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "8c5a12b09bc5b209b0a1ba56d5e7bb182bd3ef6ced254de379deb68de782330a",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang15_aarch64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "aarch64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "7f5fb3b543064e025d27ab75fed033f2668e76f6251e70bac720a2717bc694c8",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang15_aarch64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "x86_64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "cbd00005f88deea58ad0b4fb4654fb6147f8e81560a445e87ac6111911dfbf5c",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang15_x86_64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "x86_64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "b5d6fb3d73c4414e4421d793bb658fce67b730f174b9ca950108dcc6d199bd44",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang15_x86_64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "x86_64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "cbbb6cf88a66402773aba09656ff95c45b76ff2bb1e1827a45a902d9b50a66ff",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang15_x86_64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "x86_64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "bc89308f7a4658e79d757686c44813cb6ffc25ccd41d7085713754af4debfce5",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang15_x86_64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "x86_64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "cbbb6cf88a66402773aba09656ff95c45b76ff2bb1e1827a45a902d9b50a66ff",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang15_x86_64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 15.0.7",
+   "clang_release": "15.0.7",
+   "target_arch": "x86_64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "589d9e121f4df56ca9699bffb0cb3b9e8739ca9da1dd0429a6979678cc1f88f2",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang15_x86_64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "29aa306bbe25af7f679d8523c1f7320eea9b07ed417113ecbaff1ee27b0d86a3",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang16_aarch64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "a23530e7ec3704219e4624aa714a3ba2fbc31d887c1bf6c75bff8b8dd408496a",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang16_aarch64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "6eae7e7d6e2124805366282229cc8771709337a6a9e163bd036a9f42ec67301a",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang16_aarch64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "3e6adf538d50a7ff25ea91081e612982c239de11417f12ced5411f62710c18b0",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang16_aarch64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "6eae7e7d6e2124805366282229cc8771709337a6a9e163bd036a9f42ec67301a",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang16_aarch64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "aarch64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "f3309f9945573f17a9b51b342f78172b2a48846a17a78b1e35db377db8af6ab6",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang16_aarch64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "a5f29918de8d0bb37a5bfdf789f060a3e773514cab8eb12339391c76370ae06e",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang16_x86_64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "44362a985f9a7feb50efd6c2833549ac50ef1d4eaeb0bbe3ff1e76999c61c45d",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang16_x86_64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "d4761474c9dd47cc9d6a97adcaad8a7d626d43dc6e122ffbd796b285ae3e4a46",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang16_x86_64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "c0a702ef06f12bec9af4b92e2a7c07af9763353461462c8e7ec85770a1e865ca",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang16_x86_64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "d4761474c9dd47cc9d6a97adcaad8a7d626d43dc6e122ffbd796b285ae3e4a46",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang16_x86_64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 16.0.6 (23ubuntu4)",
+   "clang_release": "16.0.6",
+   "target_arch": "x86_64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "a066df0bcc329928f35aba65fffe602270c845ee26c436f766097281b909efb1",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang16_x86_64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "5f82d9029f367306ff629af09bd5ecc0d1d24694bf1fd867d12e25f4b8bf30fc",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang17_aarch64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "28c3e31cfad676f902e7285e00d53e11c82c191af1facb94434b35d987ead0b0",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang17_aarch64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "d4fa5b48e311350ee4ad992a68146b683d54554ceebebf125ec917e273f412bf",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang17_aarch64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "ccb47c0e2f1120d95278e59cd6a373fe85d0709689f86a41508880fcacb78383",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang17_aarch64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "aarch64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "d4fa5b48e311350ee4ad992a68146b683d54554ceebebf125ec917e273f412bf",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang17_aarch64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "aarch64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "c1d724d780bfc4391ce0ce21fb6bd606af98a62466f038b64826fa092d369e9a",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang17_aarch64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "640df283d68950437bafe2b526e0dbb7c08a0c8b8336afc6c6ba5edfeee09d4f",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang17_x86_64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "fc9dc764249837345ea23464c5f2a011340fa4bce1f3d92e526014e0f319786f",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang17_x86_64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "198601f514a8e30f305ccea08b2e1be7d2ecec9ecb0dbe0cecc9c331b7bc084a",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang17_x86_64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "1b975c4489bb9551f19528de8074a40bc352ac738929893ec133d93045f3ba50",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang17_x86_64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "x86_64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "198601f514a8e30f305ccea08b2e1be7d2ecec9ecb0dbe0cecc9c331b7bc084a",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang17_x86_64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 17.0.6 (9ubuntu1)",
+   "clang_release": "17.0.6",
+   "target_arch": "x86_64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "cffb3573a2ce10d572b3109ad84980624bcd8f6a1efd1e87f16c65b876c963c3",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang17_x86_64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "aarch64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "e3a2e2f3fc01a987c15b73a47ff445645fd94509ecc8f211e9b65fe6e69d30d4",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang18_aarch64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "aarch64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "db4c092a9b526a22a4c5d70957c0f07f25b5f92bde1e625f900c6dc8aa258abb",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang18_aarch64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "aarch64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "ad1970e26fcb3ed14151649f329c4e7159d7b8ea22350f8dcf4e5ff96359df02",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang18_aarch64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "aarch64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "ccb582d072bd78e131bf96cee154e1492f11e7c6c9c5d63167f9fbe0d8f2c9db",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang18_aarch64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "aarch64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "ad1970e26fcb3ed14151649f329c4e7159d7b8ea22350f8dcf4e5ff96359df02",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang18_aarch64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "aarch64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "8475800e6e2634ced68da8faaabc75f940d3437eabca945a2a0e6aa995ab7f9b",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang18_aarch64_Os.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "x86_64",
+   "flags": "-O1",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "f659f832913dad8fffbc56887e64a112c4d3787ab6bd737ef99baf355200ee0e",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang18_x86_64_O1.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "x86_64",
+   "flags": "-O2",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "8577e52f2477805f3e1cca3f19694910d57ecd9dab3bd1afb256361771cd093e",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang18_x86_64_O2.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "x86_64",
+   "flags": "-O2 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "8a3bc246bcfa511c48a33eaecc4ca293e083895ac7a0e1713f9ddd84e783ee68",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang18_x86_64_O2fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "x86_64",
+   "flags": "-O3",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "7d16e0c0428ec60bc0e10158c4613391f59846b7b7185757cb9c469c1f62851e",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang18_x86_64_O3.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "x86_64",
+   "flags": "-O3 -fno-vectorize",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "8a3bc246bcfa511c48a33eaecc4ca293e083895ac7a0e1713f9ddd84e783ee68",
+   "conditional_branches": 1,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang18_x86_64_O3fnovectorize.dis",
+   "secret_dependent_detail": []
+  },
+  {
+   "revision": "current",
+   "revision_commit": "da52c4d60a73d745cabdf70829eb1e6a64ccce2f",
+   "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+   "clang_release": "18.1.3",
+   "target_arch": "x86_64",
+   "flags": "-Os",
+   "param_set": "ML-KEM-512 (KYBER_K=2)",
+   "object_sha256": "797459edbba9c78326fec7c6ca7b81bd430bbb96e199fe64732ae32102fc5b32",
+   "conditional_branches": 2,
+   "secret_dependent_branches": 0,
+   "verdict": "NO_SECRET_DEPENDENT_BRANCH",
+   "evidence_file": "current_clang18_x86_64_Os.dis",
+   "secret_dependent_detail": []
+  },
   {
    "revision": "postfix",
    "revision_commit": "9b8d30698a3e7449aeb34e62339d4176f11e3c6c",
@@ -2593,6 +3313,186 @@
   }
  ],
  "release_invariance": {
+  "current|aarch64|-O1": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "current|aarch64|-O2": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "current|aarch64|-O2 -fno-vectorize": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "current|aarch64|-O3": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "current|aarch64|-O3 -fno-vectorize": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "current|aarch64|-Os": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "current|x86_64|-O1": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "current|x86_64|-O2": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "current|x86_64|-O2 -fno-vectorize": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "current|x86_64|-O3": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "current|x86_64|-O3 -fno-vectorize": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
+  "current|x86_64|-Os": {
+   "releases_tested": [
+    "15.0.7",
+    "16.0.6",
+    "17.0.6",
+    "18.1.3"
+   ],
+   "verdict_identical_across_releases": true,
+   "verdict": [
+    "NO_SECRET_DEPENDENT_BRANCH"
+   ],
+   "secret_dependent_branch_counts": [
+    0
+   ]
+  },
   "postfix|aarch64|-O1": {
    "releases_tested": [
     "15.0.7",
