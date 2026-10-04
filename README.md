@@ -35,7 +35,7 @@ questions, alongside eight instrument defects (D1–D8) recorded in the same fil
   invariant across Clang 15.0.7, 16.0.6, 17.0.6 and 18.1.3: the optimisation setting and the
   architecture decide it, not the release. On the pre-fix revision at x86-64 `-O2` the eight
   flagged branches are one per bit of the message byte. **Current HEAD `da52c4d` is clean in all
-  twelve of its configurations**, so RQ2 is answered for the implementation it names rather than
+  forty-eight of its cells**, so RQ2 is answered for the implementation it names rather than
   by inference from the historical fix. Branch counts are not treated as findings — the count
   varies across releases while the secret-dependent count does not.
 - No material code-size cost from the patch under the tested conditions (F10): at most +192

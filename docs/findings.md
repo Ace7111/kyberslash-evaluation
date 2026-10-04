@@ -563,7 +563,7 @@ with `%rsi` the `msg` argument.
 
 **Post-fix revision and current HEAD:** 0 secret-dependent branches in all 96 of their cells.
 The `cmov_int16` mitigation holds across both architectures and all four releases, and the
-implementation currently shipped is clean in all twelve of its configurations.
+implementation currently shipped is clean in all forty-eight of its cells.
 
 **What this establishes, and what it does not.**
 
