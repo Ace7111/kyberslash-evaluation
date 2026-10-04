@@ -1,0 +1,206 @@
+# Controlled compiler-version experiment on a fixed architecture.
+#
+# Section 5.5 records two gaps this workflow exists to close. First, the local matrix used one
+# release of each compiler per architecture, so compiler release and architecture changed
+# together and no isolated version effect could be inferred. Second, Clangover was examined
+# only on aarch64; no controlled reproduction was attempted on x86-64, the ISA the published
+# proof of concept reports.
+#
+# The design fixes the architecture at x86-64 and varies only the Clang release, across the
+# v15-18 range the proof of concept names, at the optimisation settings it reports. Source
+# revisions are pinned. Branch counts are NOT treated as findings: each build is screened for a
+# genuinely secret-dependent branch, and the disassembly is archived so every classification
+# can be checked by hand.
+#
+# The screen's own positive control runs first. A screen that has not been shown to detect a
+# known secret-dependent branch cannot support a negative result.
+
+name: compiler-version matrix (x86-64)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/compiler-version-matrix.yml'
+      - 'scripts/inspect_branches.py'
+      - 'scripts/measure_code_size.py'
+
+jobs:
+  screen-selftest:
+    name: branch-screen positive control
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: Classifier and branch-screen regression tests
+        run: |
+          python3 tests/test_classify.py
+          python3 tests/test_branches.py
+
+  clangover:
+    name: clang-${{ matrix.clang }} ${{ matrix.revision }}
+    needs: screen-selftest
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        clang: ['15', '16', '17', '18']
+        revision: [prefix, postfix]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+
+      - name: Install clang-${{ matrix.clang }}
+        id: cc
+        run: |
+          set -x
+          sudo apt-get update -qq
+          if ! sudo apt-get install -y "clang-${{ matrix.clang }}"; then
+            wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- ${{ matrix.clang }} || true
+            sudo apt-get install -y "clang-${{ matrix.clang }}" || true
+          fi
+          if command -v "clang-${{ matrix.clang }}"; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+            clang-${{ matrix.clang }} --version | head -1
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "clang-${{ matrix.clang }} NOT AVAILABLE on this runner image"
+          fi
+
+      - name: Record environment
+        if: steps.cc.outputs.available == 'true'
+        run: |
+          mkdir -p out
+          { echo "runner: $ImageOS / $(lsb_release -ds 2>/dev/null)"
+            echo "uname: $(uname -mrs)"
+            echo "cc: $(clang-${{ matrix.clang }} --version | head -1)"
+            echo "objdump: $(objdump --version | head -1)"
+          } | tee out/environment.txt
+
+      - name: Fetch pinned revision
+        if: steps.cc.outputs.available == 'true'
+        run: |
+          git clone -q https://github.com/pq-crystals/kyber.git kyber
+          if [ "${{ matrix.revision }}" = "prefix" ]; then
+            REV=272125f6acc8e8b6850fd68ceb901a660ff48196
+          else
+            REV=9b8d30698a3e7449aeb34e62339d4176f11e3c6c
+          fi
+          git -C kyber checkout -q "$REV"
+          echo "REV=$REV" >> "$GITHUB_ENV"
+          git -C kyber rev-parse HEAD
+
+      - name: Build, disassemble and screen poly_frommsg
+        if: steps.cc.outputs.available == 'true'
+        run: |
+          CC=clang-${{ matrix.clang }}
+          # The optimisation settings the clangover proof of concept reports.
+          set -- "-Os" "-O1" "-O2 -fno-vectorize" "-O3 -fno-vectorize"
+          for FLAGS in "$@"; do
+            TAG=$(echo "$FLAGS" | tr -d ' -' )
+            O=out/${{ matrix.revision }}_clang${{ matrix.clang }}_${TAG}
+            ( cd kyber/ref && $CC -w $FLAGS -DKYBER_K=2 -c poly.c -o /tmp/poly_$TAG.o )
+            objdump -d /tmp/poly_$TAG.o > ${O}.dis
+            sha=$(sha256sum /tmp/poly_$TAG.o | cut -d' ' -f1)
+            python3 scripts/inspect_branches.py \
+              --function poly_frommsg --file ${O}.dis --arch x86_64 \
+              --label "${{ matrix.revision }} clang-${{ matrix.clang }} $FLAGS" \
+              --json-out ${O}.json || true
+            python3 scripts/annotate_branch_record.py "$O.json" "$sha" \
+              "$FLAGS" "$CC" kyber "ML-KEM-512 (KYBER_K=2)"
+          done
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: clangover-${{ matrix.revision }}-clang${{ matrix.clang }}
+          path: out/
+          if-no-files-found: ignore
+
+  code-size-elf:
+    name: code size (ELF, x86-64)
+    needs: screen-selftest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: Fetch corpus and create worktrees
+        run: |
+          git clone -q https://github.com/pq-crystals/kyber.git targets/pq-crystals-kyber
+          for p in kyber-vulnerable:a621b8dde405cc507cbcfc5f794570a4f98d69cc \
+                   kyber-patched:272125f6acc8e8b6850fd68ceb901a660ff48196; do
+            git -C targets/pq-crystals-kyber worktree add -f \
+              "$PWD/worktrees/${p%%:*}" "${p##*:}" >/dev/null
+          done
+      - name: Measure .text and .rodata
+        run: |
+          mkdir -p out
+          gcc --version | head -1 | tee out/toolchain.txt
+          python3 scripts/measure_code_size.py --cc gcc \
+            --opt=-O2 --opt=-Os --opt=-Oz \
+            --json-out out/code_size_x86_64_elf.json \
+            --raw-out out/code_size_x86_64_elf.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: code-size-elf, path: out/ }
+
+  wolfssl-linked:
+    name: wolfSSL linked executable
+    needs: screen-selftest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: Build wolfSSL with ML-KEM and run its test suite
+        id: build
+        continue-on-error: true
+        run: |
+          set -x
+          sudo apt-get update -qq
+          sudo apt-get install -y autoconf automake libtool
+          git clone -q https://github.com/wolfSSL/wolfssl.git
+          git -C wolfssl checkout -q 7a8aae3e40138d19c640ae5bc0bc4e8f2998c22d
+          mkdir -p out
+          { echo "cc: $(gcc --version | head -1)"
+            echo "commit: $(git -C wolfssl rev-parse HEAD)"; } | tee out/environment.txt
+          cd wolfssl && ./autogen.sh
+          for CFG in default convwithdiv; do
+            for OPT in -O2 -Os; do
+              make distclean >/dev/null 2>&1 || true
+              EXTRA=""
+              [ "$CFG" = "convwithdiv" ] && EXTRA="-DCONV_WITH_DIV"
+              ./configure --enable-kyber=all --enable-shake256 --disable-shared \
+                          CFLAGS="$OPT $EXTRA" >/dev/null 2>&1 \
+                || ./configure --enable-mlkem --enable-shake256 --disable-shared \
+                          CFLAGS="$OPT $EXTRA" >/dev/null 2>&1
+              make -j4 >/dev/null 2>&1 || { echo "BUILD FAILED $CFG $OPT"; continue; }
+              TAG="${CFG}${OPT}"
+              # functional test: upstream self-test covering the enabled algorithms
+              ./wolfcrypt/test/testwolfcrypt > ../out/functest_$TAG.txt 2>&1
+              echo "exit_status=$? config=$CFG opt=$OPT" | tee -a ../out/functest_$TAG.txt
+              LIB=src/.libs/libwolfssl.a
+              OBJ=$(find . -name 'wc_mlkem_poly.o' -o -name 'wc_kyber_poly.o' | head -1)
+              [ -n "$OBJ" ] && sha256sum "$OBJ" >> ../out/hashes.txt
+              [ -f "$LIB" ] && sha256sum "$LIB" >> ../out/hashes.txt
+              [ -n "$OBJ" ] && python3 ../scripts/inspect_binary.py "$OBJ" \
+                 > ../out/audit_object_$TAG.txt 2>&1 || true
+              if [ -f wolfcrypt/test/testwolfcrypt ]; then
+                sha256sum wolfcrypt/test/testwolfcrypt >> ../out/hashes.txt
+                python3 ../scripts/inspect_binary.py wolfcrypt/test/testwolfcrypt \
+                   > ../out/audit_linked_$TAG.txt 2>&1 || true
+              fi
+            done
+          done
+      - name: Report blocker if the build did not complete
+        if: steps.build.outcome != 'success'
+        run: |
+          mkdir -p out
+          echo "wolfSSL linked build did not complete on this runner; see logs." \
+            | tee out/BLOCKER.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: wolfssl-linked, path: out/, if-no-files-found: ignore }

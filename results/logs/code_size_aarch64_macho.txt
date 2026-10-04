@@ -1,0 +1,525 @@
+
+==============================================================================
+vulnerable -O2
+==============================================================================
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c kem.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/kem.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c indcpa.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/indcpa.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c polyvec.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/polyvec.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c poly.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/poly.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c ntt.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/ntt.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c cbd.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/cbd.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c reduce.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/reduce.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c verify.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/verify.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c fips202.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/fips202.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c symmetric-shake.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/symmetric-shake.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c randombytes.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/randombytes.o
+rc=0
+
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/kem.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/indcpa.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/polyvec.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/poly.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/ntt.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/cbd.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/reduce.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/verify.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/fips202.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/symmetric-shake.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/randombytes.o test_kyber.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_O2_4cu2490r/test_kyber
+rc=0
+
+
+--- size: vulnerable -O2 poly.c ---
+Segment : 1792
+	Section (__TEXT, __text): 1128
+	Section (__TEXT, __eh_frame): 664
+	total 1792
+total 1792
+
+
+--- size: vulnerable -O2 polyvec.c ---
+Segment : 1280
+	Section (__TEXT, __text): 744
+	Section (__TEXT, __const): 8
+	Section (__TEXT, __literal16): 48
+	Section (__TEXT, __eh_frame): 480
+	total 1280
+total 1280
+
+
+--- size: vulnerable -O2 test_kyber (linked) ---
+Segment __PAGEZERO: 4294967296 (zero fill) 
+Segment __TEXT: 16384
+	Section __text: 9632
+	Section __text_startup: 140
+	Section __stubs: 72
+	Section __const: 576
+	Section __cstring: 180
+	Section __eh_frame: 4048
+	total 14648
+Segment __DATA_CONST: 16384
+	Section __got: 48
+	total 48
+Segment __DATA: 16384
+	Section __data: 4
+	total 4
+Segment __LINKEDIT: 16384
+total 4295032832
+
+
+==============================================================================
+patched -O2
+==============================================================================
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c kem.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/kem.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c indcpa.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/indcpa.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c polyvec.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/polyvec.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c poly.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/poly.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c ntt.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/ntt.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c cbd.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/cbd.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c reduce.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/reduce.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c verify.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/verify.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c fips202.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/fips202.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c symmetric-shake.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/symmetric-shake.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 -c randombytes.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/randombytes.o
+rc=0
+
+$ gcc-16 -w -O2 -fomit-frame-pointer -DKYBER_K=3 /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/kem.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/indcpa.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/polyvec.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/poly.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/ntt.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/cbd.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/reduce.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/verify.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/fips202.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/symmetric-shake.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/randombytes.o test_kyber.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_O2_ddx3gqr9/test_kyber
+rc=0
+
+
+--- size: patched -O2 poly.c ---
+Segment : 1792
+	Section (__TEXT, __text): 1128
+	Section (__TEXT, __eh_frame): 664
+	total 1792
+total 1792
+
+
+--- size: patched -O2 polyvec.c ---
+Segment : 1256
+	Section (__TEXT, __text): 744
+	Section (__TEXT, __literal16): 16
+	Section (__TEXT, __eh_frame): 488
+	total 1248
+total 1256
+
+
+--- size: patched -O2 test_kyber (linked) ---
+Segment __PAGEZERO: 4294967296 (zero fill) 
+Segment __TEXT: 16384
+	Section __text: 9632
+	Section __text_startup: 140
+	Section __stubs: 72
+	Section __const: 528
+	Section __cstring: 180
+	Section __eh_frame: 4056
+	total 14608
+Segment __DATA_CONST: 16384
+	Section __got: 48
+	total 48
+Segment __DATA: 16384
+	Section __data: 4
+	total 4
+Segment __LINKEDIT: 16384
+total 4295032832
+
+
+==============================================================================
+vulnerable -Os
+==============================================================================
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c kem.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/kem.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c indcpa.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/indcpa.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c polyvec.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/polyvec.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c poly.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/poly.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c ntt.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/ntt.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c cbd.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/cbd.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c reduce.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/reduce.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c verify.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/verify.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c fips202.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/fips202.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c symmetric-shake.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/symmetric-shake.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c randombytes.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/randombytes.o
+rc=0
+
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/kem.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/indcpa.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/polyvec.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/poly.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/ntt.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/cbd.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/reduce.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/verify.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/fips202.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/symmetric-shake.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/randombytes.o test_kyber.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Os_5l1bcope/test_kyber
+rc=0
+
+
+--- size: vulnerable -Os poly.c ---
+Segment : 1640
+	Section (__TEXT, __text): 992
+	Section (__TEXT, __eh_frame): 648
+	total 1640
+total 1640
+
+
+--- size: vulnerable -Os polyvec.c ---
+Segment : 1272
+	Section (__TEXT, __text): 772
+	Section (__TEXT, __eh_frame): 496
+	total 1268
+total 1272
+
+
+--- size: vulnerable -Os test_kyber (linked) ---
+Segment __PAGEZERO: 4294967296 (zero fill) 
+Segment __TEXT: 16384
+	Section __text: 7984
+	Section __text_startup: 132
+	Section __stubs: 96
+	Section __const: 448
+	Section __cstring: 150
+	Section __eh_frame: 4024
+	total 12834
+Segment __DATA_CONST: 16384
+	Section __got: 64
+	total 64
+Segment __DATA: 16384
+	Section __data: 4
+	total 4
+Segment __LINKEDIT: 16384
+total 4295032832
+
+
+==============================================================================
+patched -Os
+==============================================================================
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c kem.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/kem.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c indcpa.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/indcpa.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c polyvec.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/polyvec.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c poly.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/poly.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c ntt.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/ntt.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c cbd.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/cbd.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c reduce.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/reduce.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c verify.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/verify.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c fips202.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/fips202.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c symmetric-shake.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/symmetric-shake.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 -c randombytes.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/randombytes.o
+rc=0
+
+$ gcc-16 -w -Os -fomit-frame-pointer -DKYBER_K=3 /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/kem.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/indcpa.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/polyvec.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/poly.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/ntt.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/cbd.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/reduce.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/verify.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/fips202.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/symmetric-shake.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/randombytes.o test_kyber.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Os_de32lrid/test_kyber
+rc=0
+
+
+--- size: patched -Os poly.c ---
+Segment : 1648
+	Section (__TEXT, __text): 996
+	Section (__TEXT, __eh_frame): 648
+	total 1644
+total 1648
+
+
+--- size: patched -Os polyvec.c ---
+Segment : 1280
+	Section (__TEXT, __text): 780
+	Section (__TEXT, __eh_frame): 496
+	total 1276
+total 1280
+
+
+--- size: patched -Os test_kyber (linked) ---
+Segment __PAGEZERO: 4294967296 (zero fill) 
+Segment __TEXT: 16384
+	Section __text: 7996
+	Section __text_startup: 132
+	Section __stubs: 96
+	Section __const: 448
+	Section __cstring: 150
+	Section __eh_frame: 4024
+	total 12846
+Segment __DATA_CONST: 16384
+	Section __got: 64
+	total 64
+Segment __DATA: 16384
+	Section __data: 4
+	total 4
+Segment __LINKEDIT: 16384
+total 4295032832
+
+
+==============================================================================
+vulnerable -Oz
+==============================================================================
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c kem.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/kem.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c indcpa.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/indcpa.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c polyvec.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/polyvec.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c poly.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/poly.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c ntt.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/ntt.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c cbd.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/cbd.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c reduce.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/reduce.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c verify.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/verify.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c fips202.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/fips202.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c symmetric-shake.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/symmetric-shake.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-vulnerable/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c randombytes.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/randombytes.o
+rc=0
+
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/kem.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/indcpa.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/polyvec.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/poly.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/ntt.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/cbd.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/reduce.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/verify.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/fips202.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/symmetric-shake.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/randombytes.o test_kyber.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_vulnerable_Oz_6uztcajl/test_kyber
+rc=0
+
+
+--- size: vulnerable -Oz poly.c ---
+Segment : 1640
+	Section (__TEXT, __text): 992
+	Section (__TEXT, __eh_frame): 648
+	total 1640
+total 1640
+
+
+--- size: vulnerable -Oz polyvec.c ---
+Segment : 1272
+	Section (__TEXT, __text): 772
+	Section (__TEXT, __eh_frame): 496
+	total 1268
+total 1272
+
+
+--- size: vulnerable -Oz test_kyber (linked) ---
+Segment __PAGEZERO: 4294967296 (zero fill) 
+Segment __TEXT: 16384
+	Section __text: 7984
+	Section __text_startup: 132
+	Section __stubs: 96
+	Section __const: 448
+	Section __cstring: 150
+	Section __eh_frame: 4024
+	total 12834
+Segment __DATA_CONST: 16384
+	Section __got: 64
+	total 64
+Segment __DATA: 16384
+	Section __data: 4
+	total 4
+Segment __LINKEDIT: 16384
+total 4295032832
+
+
+==============================================================================
+patched -Oz
+==============================================================================
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c kem.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/kem.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c indcpa.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/indcpa.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c polyvec.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/polyvec.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c poly.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/poly.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c ntt.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/ntt.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c cbd.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/cbd.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c reduce.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/reduce.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c verify.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/verify.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c fips202.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/fips202.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c symmetric-shake.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/symmetric-shake.o
+rc=0
+
+$ cd /Users/mateenrafiq/Desktop/Work/dissertation/kyberslash-evaluation/worktrees/kyber-patched/ref
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 -c randombytes.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/randombytes.o
+rc=0
+
+$ gcc-16 -w -Oz -fomit-frame-pointer -DKYBER_K=3 /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/kem.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/indcpa.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/polyvec.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/poly.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/ntt.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/cbd.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/reduce.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/verify.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/fips202.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/symmetric-shake.o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/randombytes.o test_kyber.c -o /var/folders/d6/69jr602x5w134wd8z0m92grh0000gn/T/cs_patched_Oz_e6dt2rct/test_kyber
+rc=0
+
+
+--- size: patched -Oz poly.c ---
+Segment : 1648
+	Section (__TEXT, __text): 996
+	Section (__TEXT, __eh_frame): 648
+	total 1644
+total 1648
+
+
+--- size: patched -Oz polyvec.c ---
+Segment : 1280
+	Section (__TEXT, __text): 780
+	Section (__TEXT, __eh_frame): 496
+	total 1276
+total 1280
+
+
+--- size: patched -Oz test_kyber (linked) ---
+Segment __PAGEZERO: 4294967296 (zero fill) 
+Segment __TEXT: 16384
+	Section __text: 7996
+	Section __text_startup: 132
+	Section __stubs: 96
+	Section __const: 448
+	Section __cstring: 150
+	Section __eh_frame: 4024
+	total 12846
+Segment __DATA_CONST: 16384
+	Section __got: 64
+	total 64
+Segment __DATA: 16384
+	Section __data: 4
+	total 4
+Segment __LINKEDIT: 16384
+total 4295032832
+
