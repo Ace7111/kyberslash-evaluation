@@ -121,9 +121,15 @@ def screen(instrs, arch, secret_regs):
                 why = f"{mn} tests {sorted(used & tainted)}" if dep else f"{mn} tests {sorted(used)}"
             else:
                 dep = bool(flags_src and flags_src[2])
-                why = (f"flags from `{flags_src[0]} {flags_src[1]}` on tainted "
-                       f"{sorted(flags_src[3] & tainted)}" if dep else
-                       (f"flags from `{flags_src[0]} {flags_src[1]}`" if flags_src else "no flag source seen"))
+                if not flags_src:
+                    why = "no flag source seen"
+                elif dep:
+                    reg = sorted(flags_src[3] & tainted)
+                    src = (f"on tainted register(s) {reg}" if reg
+                           else "on memory addressed through the secret pointer")
+                    why = f"flags from `{flags_src[0]} {flags_src[1]}` {src}"
+                else:
+                    why = f"flags from `{flags_src[0]} {flags_src[1]}`"
             branches.append({"addr": addr, "insn": f"{mn} {ops}".strip(),
                              "secret_dependent": dep, "reason": why})
             if dep:
@@ -132,7 +138,16 @@ def screen(instrs, arch, secret_regs):
 
         fs = X86_FLAGSET if arch == "x86_64" else ARM_FLAGSET
         if base in fs or mn in fs:
-            flags_src = (mn, ops, bool(used & tainted), used)
+            # On x86 a flag-setting instruction can carry a memory operand, so
+            # `testb $0x1,(%rbx,%r14)` both loads the secret and sets the flags. Checking
+            # register taint alone misses it entirely.
+            mem_secret = False
+            if arch == "x86_64":
+                for mpart in re.findall(r"[^,]*\([^)]*\)", ops):
+                    if any(norm_reg(r, arch) in ptrs or norm_reg(r, arch) in tainted
+                           for r in re.findall(r"%([a-z0-9]+)", mpart)):
+                        mem_secret = True
+            flags_src = (mn, ops, bool(used & tainted) or mem_secret, used)
 
         # taint propagation: destination is last operand on x86 (AT&T), first on ARM
         if arch == "x86_64":
@@ -140,9 +155,16 @@ def screen(instrs, arch, secret_regs):
             dst = parts[-1] if parts else None
             srcs = parts[:-1] if len(parts) > 1 else []
             mem_srcs = [p for p in srcs if "(" in p]
-            # a load whose address uses a secret pointer yields secret data
-            loads_secret = any(norm_reg(r, arch) in ptrs for p in mem_srcs
-                               for r in re.findall(r"%([a-z0-9]+)", p))
+            # `lea` computes an address and never dereferences it, so a memory-form source
+            # means pointer arithmetic, not a load. Treating it as a load taints the result
+            # and turns the vectoriser's `cmpq %rcx,%rdi` alias check into a false positive.
+            is_lea = base == "lea"
+            loads_secret = (not is_lea) and any(
+                norm_reg(r, arch) in ptrs for p in mem_srcs
+                for r in re.findall(r"%([a-z0-9]+)", p))
+            lea_from_ptr = is_lea and any(
+                norm_reg(r, arch) in ptrs for p in mem_srcs
+                for r in re.findall(r"%([a-z0-9]+)", p))
             src_tainted = any(norm_reg(r, arch) in tainted for p in srcs
                               for r in re.findall(r"%([a-z0-9]+)", p))
             src_ptr = any(norm_reg(r, arch) in ptrs for p in srcs
@@ -151,7 +173,7 @@ def screen(instrs, arch, secret_regs):
                 d = norm_reg(dst, arch)
                 if loads_secret or src_tainted:
                     tainted.add(d); ptrs.discard(d)
-                elif src_ptr and base in ("mov", "lea", "add"):
+                elif lea_from_ptr or (src_ptr and base in ("mov", "lea", "add")):
                     ptrs.add(d); tainted.discard(d)   # pointer arithmetic stays a pointer
                 elif base in ("mov", "movz", "movs", "lea", "xor"):
                     tainted.discard(d); ptrs.discard(d)
